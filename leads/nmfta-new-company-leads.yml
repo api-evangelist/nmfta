@@ -1,0 +1,133 @@
+generated: '2026-08-03'
+method: derived
+source: derived from nmfta/companies/nmfta-companies.yml
+type: Leads
+summary:
+  leads: 17
+  min_participants: 1
+  with_governance_seat: 0
+leads:
+- name: Averitt Express
+  suggested_slug: averitt-express
+  participants: 3
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Estes Express Lines
+  suggested_slug: estes-express-lines
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  source_standard: nmfta
+- name: PITT OHIO
+  suggested_slug: pitt-ohio
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Southeastern Freight Lines
+  suggested_slug: southeastern-freight-lines
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  source_standard: nmfta
+- name: ABF Freight
+  suggested_slug: abf-freight
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Daylight Transport
+  suggested_slug: daylight-transport
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Dayton Freight Lines
+  suggested_slug: dayton-freight-lines
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Dependable Highway Express
+  suggested_slug: dependable-highway-express
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Dohrn Transfer Company
+  suggested_slug: dohrn-transfer-company
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Hercules Forwarding
+  suggested_slug: hercules-forwarding
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Polaris Transportation Group
+  suggested_slug: polaris-transportation-group
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: RL Carriers
+  suggested_slug: rl-carriers
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: SMC3
+  suggested_slug: smc3
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: TFI International
+  suggested_slug: tfi-international
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: ULine Express
+  suggested_slug: uline-express
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Ward TLC
+  suggested_slug: ward-tlc
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta
+- name: Worldwide Express
+  suggested_slug: worldwide-express
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  source_standard: nmfta

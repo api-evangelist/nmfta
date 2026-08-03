@@ -1,0 +1,317 @@
+generated: '2026-08-03'
+method: searched
+source:
+- https://dsdc.nmfta.org/digital-ltl-council
+- https://dsdc.nmfta.org/digital-ftl-council/about-us
+- https://dsdc.nmfta.org/
+type: Adoption
+summary:
+  participants: 32
+  in_network: 15
+  caveat: DSDC publishes these companies as participants in its councils. That is a claim of participation
+    in the standards work, not evidence that any of them exposes a conformant DSDC endpoint. No participant
+    has been verified as shipping a callable implementation — the specifications themselves declare no
+    servers, so there is no advertised endpoint to test against.
+adoption:
+- company: ArcBest
+  slug: arcbest
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Blue Yonder
+  slug: blue-yonder
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+- company: CH Robinson
+  slug: ch-robinson-worldwide
+  in_network: true
+  councils:
+  - Digital FTL Council
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+- company: E2open
+  slug: e2open
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+- company: FedEx
+  slug: fedex
+  in_network: true
+  councils:
+  - DSDC
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/
+- company: JB Hunt
+  slug: jb-hunt-transport-services
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+- company: Nordstrom
+  slug: nordstrom
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+- company: Old Dominion Freight Line
+  slug: old-dominion-freight-line
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+- company: project44
+  slug: project44
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Road Runner
+  slug: roadrunner
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Rrd
+  slug: rr-donnelley-and-sons
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Saia
+  slug: saia
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Uber
+  slug: uber
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+- company: US Bank
+  slug: bento
+  in_network: true
+  councils:
+  - Digital FTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+- company: XPO
+  slug: xpo
+  in_network: true
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+- company: ABF Freight
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Averitt Express
+  slug: null
+  in_network: false
+  councils:
+  - Digital FTL Council
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+- company: Daylight Transport
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Dayton Freight Lines
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Dependable Highway Express
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Dohrn Transfer Company
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Estes Express Lines
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+- company: Hercules Forwarding
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: PITT OHIO
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+- company: Polaris Transportation Group
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: RL Carriers
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: SMC3
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Southeastern Freight Lines
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+- company: TFI International
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: ULine Express
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Ward TLC
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+- company: Worldwide Express
+  slug: null
+  in_network: false
+  councils:
+  - Digital LTL Council
+  status: listed participant
+  evidence: member logo published by DSDC
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council

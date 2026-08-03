@@ -1,0 +1,43 @@
+generated: '2026-08-03'
+method: searched
+source: https://github.com/dsdcapis
+type: Contributors
+organization: dsdcapis
+summary:
+  contributors: 5
+  repositories_checked: 6
+  total_contributions: 123
+contributors:
+- github_id: miller79
+  contributions: 64
+  repositories:
+  - .github
+  - Public-Test-Repo
+  - community
+  - full-truckload
+  - less-than-truckload
+  repository_count: 5
+- github_id: Keith-Peterson
+  contributions: 54
+  repositories:
+  - Public-Test-FullTruckload
+  - Public-Test-Repo
+  - full-truckload
+  - less-than-truckload
+  repository_count: 4
+- github_id: djj-789
+  contributions: 2
+  repositories:
+  - full-truckload
+  repository_count: 1
+- github_id: gr-leantech
+  contributions: 2
+  repositories:
+  - Public-Test-Repo
+  - less-than-truckload
+  repository_count: 2
+- github_id: nwmooney
+  contributions: 1
+  repositories:
+  - full-truckload
+  repository_count: 1

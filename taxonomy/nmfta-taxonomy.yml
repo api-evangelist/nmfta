@@ -1,0 +1,132 @@
+generated: '2026-08-03'
+method: searched
+source:
+- https://dsdc.nmfta.org/apis
+- https://github.com/dsdcapis/full-truckload
+- https://github.com/dsdcapis/less-than-truckload
+type: Taxonomy
+summary:
+  apis_advertised: 10
+  councils: 2
+  specifications_in_public_repos: 5
+  note: >-
+    Two views of the same catalog: what dsdc.nmfta.org/apis advertises, and what is actually
+    committed to the dsdcapis GitHub organization. They do not agree, and the difference is
+    recorded per API rather than reconciled away.
+
+councils:
+- name: Digital LTL Council
+  founded: November 2020
+  scope: less-than-truckload
+  first_standard: electronic bill of lading (eBOL), late 2021
+  current_focus: shipment visibility and freight exception handling
+- name: Digital FTL Council
+  scope: full truckload
+  note: >-
+    The Scheduling Standards Consortium (SSC) joined the DSDC Full Truckload Council,
+    consolidating FTL scheduling standardization under one council.
+  source: https://dsdc.nmfta.org/ssc-joins-the-dsdc
+
+apis:
+- name: eBOL
+  council: Digital LTL Council
+  advertised_version: '2.1'
+  advertised_status: Released
+  access: learn-more page plus a gated download form
+  spec_in_repo: >-
+    present only as an external-spec dependency inside the FTL repo
+    (api-specs/ebol/v1.0-public-preview/schemas/external-specs/ltl-ebol-2.1.0-openapi.yaml),
+    not as a standalone LTL specification
+  harvested: nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml
+- name: Pickup Request and Visibility
+  council: Digital LTL Council
+  advertised_version: 1.0.0
+  advertised_status: Released
+  access: gated download form
+  spec_in_repo: absent
+  harvested: null
+- name: Preliminary Freight Charges
+  council: Digital LTL Council
+  advertised_version: 1.0.0
+  advertised_status: Released
+  access: gated download form
+  spec_in_repo: api-specs/preliminary-freight-charges/v1.0/openapi.yaml
+  harvested: nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml
+  harvested_version: 1.0.4
+- name: In-Transit Visibility
+  council: Digital LTL Council
+  advertised_status: In Development
+  spec_in_repo: absent for LTL
+  harvested: null
+- name: eBOL
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  spec_in_repo: api-specs/ebol/v1.0-public-preview/openapi.yaml
+  spec_version_in_repo: 1.0.0-public-preview
+  harvested: nmfta-dsdc-ftl-ebol-openapi.yml
+- name: Invoice and Documentation
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  spec_in_repo: api-specs/invoice-and-documents/v1.0-public-preview/openapi.yaml
+  spec_version_in_repo: 1.0.0-public-preview
+  harvested: nmfta-dsdc-ftl-invoice-and-documents-openapi.yml
+- name: In-Transit Visibility
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  spec_in_repo: api-specs/in-transit-visibility/v1.0-public-preview/openapi.yaml
+  spec_version_in_repo: 1.0.0-public-preview
+  harvested: nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
+- name: Rate/Quote
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  spec_in_repo: api-specs/rate-quote/v1.0-public-preview/openapi.yaml
+  spec_version_in_repo: 1.0.0-public-preview
+  harvested: nmfta-dsdc-ftl-rate-quote-openapi.yml
+- name: Book and Tender
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  spec_in_repo: absent
+  harvested: null
+- name: Appointment Scheduling
+  council: Digital FTL Council
+  advertised_version: 1.1.0
+  advertised_status: Released
+  access: gated download form
+  spec_in_repo: absent
+  harvested: null
+
+findings:
+- id: no-server-declarations
+  observation: >-
+    All six harvested DSDC OpenAPI documents declare an empty or absent `servers` block. Not a
+    template variable, not a placeholder host — nothing. CAMARA at least publishes `{apiRoot}`;
+    DSDC publishes no base URL at all, so the specification cannot be pointed at any endpoint
+    without out-of-band knowledge from a carrier.
+  evidence: nmfta/openapi/_original/*.yml
+- id: site-ahead-of-repo
+  observation: >-
+    dsdc.nmfta.org/apis advertises every FTL API as version 1.1.0 Released. The dsdcapis GitHub
+    organization publishes only v1.0-public-preview for the four FTL specs that exist there, and
+    has no specification at all for Book and Tender or Appointment Scheduling. The public
+    contract is a minor version behind the public claim.
+  evidence:
+  - https://dsdc.nmfta.org/apis
+  - https://github.com/dsdcapis/full-truckload
+- id: ltl-behind-a-form
+  observation: >-
+    The LTL council's specifications are distributed through a lead-capture download form on the
+    DSDC site rather than committed to the public repositories, with the single exception of
+    Preliminary Freight Charges. The FTL council commits to GitHub. Two councils in one body,
+    with opposite distribution postures.
+- id: thin-working-surface
+  observation: >-
+    The dsdcapis organization has six repositories, two of which are named test repositories
+    (Public-Test-Repo, Public-Test-FullTruckload), five human contributors and 123 total
+    contributions across its history. For an industry standard adopted by the largest carriers
+    in North America, the public engineering surface is very small.
+  evidence: nmfta/repositories/nmfta-repositories.yml

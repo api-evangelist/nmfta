@@ -1,0 +1,69 @@
+generated: '2026-08-03'
+method: searched
+source:
+- https://dsdc.nmfta.org/
+- https://dsdc.nmfta.org/digital-ltl-council
+- https://dsdc.nmfta.org/digital-ftl-council/about-us
+- https://nmfta.org/
+type: Governance
+organization:
+  legal_name: National Motor Freight Traffic Association, Inc. (NMFTA)
+  founded: 1956
+  nature: nonprofit membership association setting standards for North American freight
+  standards_division: Digital Standards Development Council (DSDC)
+  note: >-
+    The DSDC is a division of NMFTA, not a separate legal entity. It integrates the earlier
+    Digital LTL Council and Digital FTL Council under one program.
+  contact: dsdc@nmfta.org
+  phone: 866-411-6632
+
+bodies:
+- name: Digital LTL Council
+  type: council
+  founded: November 2020
+  scope: >-
+    Less-than-truckload. Convenes transportation providers, logistics service providers,
+    shippers, technology partners and industry organizations. Published its first eBOL standard
+    in late 2021; current focus is shipment visibility and freight exception handling.
+  url: https://dsdc.nmfta.org/digital-ltl-council
+- name: Digital FTL Council
+  type: council
+  scope: >-
+    Full truckload. Convenes shippers, carriers, logistics intermediaries and freight technology
+    companies to produce a unified set of API standards across the FTL shipment lifecycle.
+  url: https://dsdc.nmfta.org/digital-ftl-council/about-us
+  merged_in:
+  - name: Scheduling Standards Consortium (SSC)
+    note: joined the FTL Council, consolidating FTL scheduling standardization
+    source: https://dsdc.nmfta.org/ssc-joins-the-dsdc
+
+process:
+  model: volunteer workshops
+  note: >-
+    Scope, field definitions and logic are set in workshops run with carriers, shippers, 3PLs
+    and technology providers, which is why the specifications read as industry agreement rather
+    than one platform's data model.
+  contributor_agreement: https://dsdc.nmfta.org/contributor-agreement-form
+  membership_meeting: https://nmfta.org/nmfta-event/2026-dsdc-membership-meeting/
+  speaker_toolkit: https://dsdc.nmfta.org/speaker-toolkit
+
+mandate:
+  regulatory: none
+  note: >-
+    Like CAMARA and unlike the open-banking standards, DSDC's API work is industry-built.
+    Adoption has to be earned on cost and friction, not compelled.
+
+prior_standards:
+  note: >-
+    For most of NMFTA's history its standards were classification and coding rather than APIs —
+    the NMFC freight classification, ClassIT+, SCAC carrier codes and SPLC location codes. The
+    DSDC is the same institution doing the same job for the API layer.
+
+gaps:
+- >-
+  No published roster. The DSDC names no council chairs, no officers and no member companies in
+  text — participation is published only as a wall of member logos, which is what the coalition
+  in companies/ was harvested from. There is no people layer to record.
+- >-
+  No governance page. /about-us returns 404 at the DSDC root; only the FTL council has an about
+  page, and it references "Our Board Members" without naming them.

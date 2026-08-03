@@ -1,0 +1,84 @@
+generated: '2026-08-03'
+method: searched
+source: https://github.com/dsdcapis
+type: Repositories
+organization: dsdcapis
+summary:
+  total: 6
+  archived: 0
+  by_maturity:
+    unclassified: 5
+    governance: 1
+repositories:
+- name: .github
+  url: https://github.com/dsdcapis/.github
+  description: null
+  maturity: governance
+  stars: 0
+  forks: 0
+  open_issues: 0
+  archived: false
+  created: '2024-11-13'
+  updated: '2025-12-02'
+  license: null
+  topics: []
+- name: community
+  url: https://github.com/dsdcapis/community
+  description: Holds all discussions for the DSDC APIs
+  maturity: unclassified
+  stars: 1
+  forks: 0
+  open_issues: 0
+  archived: false
+  created: '2024-10-11'
+  updated: '2025-03-01'
+  license: NOASSERTION
+  topics: []
+- name: full-truckload
+  url: https://github.com/dsdcapis/full-truckload
+  description: Repository that contains the artifacts released by the DSDC Full Truckload Committee
+  maturity: unclassified
+  stars: 3
+  forks: 4
+  open_issues: 0
+  archived: false
+  created: '2024-09-25'
+  updated: '2026-06-26'
+  license: NOASSERTION
+  topics: []
+- name: less-than-truckload
+  url: https://github.com/dsdcapis/less-than-truckload
+  description: Repository that contains the artifacts released by the DSDC LTL Committee.
+  maturity: unclassified
+  stars: 0
+  forks: 2
+  open_issues: 1
+  archived: false
+  created: '2024-10-08'
+  updated: '2026-07-21'
+  license: NOASSERTION
+  topics: []
+- name: Public-Test-FullTruckload
+  url: https://github.com/dsdcapis/Public-Test-FullTruckload
+  description: test full truckload
+  maturity: unclassified
+  stars: 0
+  forks: 0
+  open_issues: 0
+  archived: false
+  created: '2026-07-22'
+  updated: '2026-07-28'
+  license: NOASSERTION
+  topics: []
+- name: Public-Test-Repo
+  url: https://github.com/dsdcapis/Public-Test-Repo
+  description: Testing repo for public site
+  maturity: unclassified
+  stars: 1
+  forks: 0
+  open_issues: 0
+  archived: false
+  created: '2026-05-28'
+  updated: '2026-07-22'
+  license: NOASSERTION
+  topics: []

@@ -1,0 +1,515 @@
+generated: '2026-08-03'
+method: searched
+source:
+- https://dsdc.nmfta.org/digital-ltl-council
+- https://dsdc.nmfta.org/digital-ftl-council/about-us
+- https://dsdc.nmfta.org/
+type: Companies
+summary:
+  companies: 32
+  evidence: logo wall — this body publishes participating companies as images, not as a named roster,
+    so there are no people and no governance seats to record
+  by_body:
+    DSDC: 11
+    Digital FTL Council: 8
+    Digital LTL Council: 25
+  in_network: 15
+  missing: 17
+  api_providers_in_network: 8
+  with_governance_seat: 0
+  governance_seat_in_network: 0
+  matched: '2026-08-03'
+companies:
+- name: Averitt Express
+  key: averittexpress
+  participants: 3
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: averitt-express
+- name: CH Robinson
+  key: chrobinson
+  participants: 3
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+  slug: ch-robinson-worldwide
+  in_network: true
+  is_api_provider: false
+  matched_by: derived-domain
+  matched_domain: chrobinson.com
+- name: Estes Express Lines
+  key: estesexpresslines
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: estes-express-lines
+- name: JB Hunt
+  key: jbhunt
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+  slug: jb-hunt-transport-services
+  in_network: true
+  is_api_provider: true
+  matched_by: derived-domain
+  matched_domain: jbhunt.com
+- name: Nordstrom
+  key: nordstrom
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+  slug: nordstrom
+  in_network: true
+  is_api_provider: false
+  matched_by: name-slug
+- name: Old Dominion Freight Line
+  key: olddominionfreightline
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+  slug: old-dominion-freight-line
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: PITT OHIO
+  key: pittohio
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: pitt-ohio
+- name: Southeastern Freight Lines
+  key: southeasternfreightlines
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: southeastern-freight-lines
+- name: Uber
+  key: uber
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  - https://dsdc.nmfta.org/
+  slug: uber
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: XPO
+  key: xpo
+  participants: 2
+  governance_seats: 0
+  bodies:
+  - DSDC
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  - https://dsdc.nmfta.org/
+  slug: xpo
+  in_network: true
+  is_api_provider: false
+  matched_by: name-slug
+- name: ABF Freight
+  key: abffreight
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: abf-freight
+- name: ArcBest
+  key: arcbest
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: arcbest
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: Blue Yonder
+  key: blueyonder
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  slug: blue-yonder
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: Daylight Transport
+  key: daylighttransport
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: daylight-transport
+- name: Dayton Freight Lines
+  key: daytonfreightlines
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: dayton-freight-lines
+- name: Dependable Highway Express
+  key: dependablehighwayexpress
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: dependable-highway-express
+- name: Dohrn Transfer Company
+  key: dohrntransfercompany
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: dohrn-transfer-company
+- name: E2open
+  key: e2open
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  slug: e2open
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: FedEx
+  key: fedex
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - DSDC
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/
+  slug: fedex
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: Hercules Forwarding
+  key: herculesforwarding
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: hercules-forwarding
+- name: Polaris Transportation Group
+  key: polaristransportationgroup
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: polaris-transportation-group
+- name: project44
+  key: project44
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: project44
+  in_network: true
+  is_api_provider: true
+  matched_by: name-slug
+- name: RL Carriers
+  key: rlcarriers
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: rl-carriers
+- name: Road Runner
+  key: roadrunner
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: roadrunner
+  in_network: true
+  is_api_provider: false
+  matched_by: fuzzy
+- name: Rrd
+  key: rrd
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: rr-donnelley-and-sons
+  in_network: true
+  is_api_provider: false
+  matched_by: derived-domain
+  matched_domain: rrd.com
+- name: Saia
+  key: saia
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: saia
+  in_network: true
+  is_api_provider: false
+  matched_by: name-slug
+- name: SMC3
+  key: smc3
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: smc3
+- name: TFI International
+  key: tfiinternational
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: tfi-international
+- name: ULine Express
+  key: ulineexpress
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: uline-express
+- name: US Bank
+  key: usbank
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital FTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ftl-council/about-us
+  slug: bento
+  in_network: true
+  is_api_provider: false
+  matched_by: derived-domain
+  matched_domain: usbank.com
+- name: Ward TLC
+  key: wardtlc
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: ward-tlc
+- name: Worldwide Express
+  key: worldwideexpress
+  participants: 1
+  governance_seats: 0
+  bodies:
+  - Digital LTL Council
+  leadership_roles: null
+  evidence: logo
+  sources:
+  - https://dsdc.nmfta.org/digital-ltl-council
+  slug: null
+  in_network: false
+  is_api_provider: null
+  matched_by: null
+  suggested_slug: worldwide-express
