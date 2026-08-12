@@ -128,6 +128,12 @@ apis:
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
 common:
+- type: IssueTracker
+  url: https://github.com/dsdcapis/less-than-truckload/issues
+- type: CodeOfConduct
+  url: https://github.com/dsdcapis/less-than-truckload/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/dsdcapis/less-than-truckload/blob/main/CONTRIBUTING.md
 - type: Portal
   url: https://nmfta.org/
 - type: Specification
