@@ -1,0 +1,939 @@
+{
+  "item": [
+    {
+      "id": "6c094697-fada-4b32-ba9e-6d202e36678b",
+      "name": "Events",
+      "description": {
+        "content": "Pull shipment events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5709247-b755-4743-b599-7ebc7770716c",
+          "name": "List shipment events (page-based)",
+          "request": {
+            "name": "List shipment events (page-based)",
+            "description": {
+              "content": "Returns a page of events. Pagination in headers; body uses EventsPage for consistency.\nResults are deterministically ordered by `shipmentId`, `sequence`, `id`.      \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>",
+                  "description": "Filter by canonical shipment id."
+                },
+                {
+                  "disabled": false,
+                  "key": "eventTypes",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/EventType not found in the OpenAPI spec\"}",
+                  "description": "One or more event types."
+                },
+                {
+                  "disabled": false,
+                  "key": "eventTypes",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/EventType not found in the OpenAPI spec\"}",
+                  "description": "One or more event types."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurredFrom",
+                  "value": "<dateTime>",
+                  "description": "occurredAt >= this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurredTo",
+                  "value": "<dateTime>",
+                  "description": "occurredAt < this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page index."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100",
+                  "description": "Results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "asc",
+                  "description": "Sort direction on `shipmentId`, `sequence`, `id`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "765c5941-4408-4576-85dd-4bc00f8038cf",
+              "name": "A page of events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventTypes",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "eventTypes",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "occurredFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "occurredTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57bc21d2-bf52-47c2-887e-7386839299d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventTypes",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "eventTypes",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "occurredFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "occurredTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "06856ab4-2953-460e-9a78-4f5c77b9f46b",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Manage webhook subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5d2f88c-574b-4a07-880e-feda8917aa3f",
+          "name": "List subscriptions",
+          "request": {
+            "name": "List subscriptions",
+            "description": {
+              "content": "Returns a page of subscriptions. Pagination in headers; body uses SubscriptionsPage for consistency.\nResults are deterministically ordered by `id`.      \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "active"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de13d01f-8244-4ffd-893d-798633c7f7f9",
+              "name": "Subscriptions page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "active"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17b4359c-b92d-409e-bf8f-289c9cee91b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "active"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3abe2d29-2225-43f3-b9c4-5411c5f2ea5c",
+          "name": "Create a subscription",
+          "request": {
+            "name": "Create a subscription",
+            "description": {
+              "content": "Create a subscription to receive in-transit events via webhook. \nProvide the delivery configuration webhook url and hmac_secret_id  and filters event_types and shipment IDs. \nReturns the created Subscription on success.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7ebf838-7fd2-4882-8cc5-aec38ce31f90",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2ee0127-248e-47dc-a858-32ee29331fb8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd38b97a-2f21-4622-bfc9-02a4219a8770",
+          "name": "Get a subscription",
+          "request": {
+            "name": "Get a subscription",
+            "description": {
+              "content": "Retrieve a single subscription by its unique ID.\nReturns the subscription's current configuration and status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "847e649d-0524-4218-80e3-36a9f7dab9df",
+              "name": "The subscription that matches the provided subscription ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d59aec4-cf53-4bcf-ae9c-c38961f5aba4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be297b4c-81b8-4e4d-bf77-209256262c47",
+          "name": "Update a subscription (merge-patch)",
+          "request": {
+            "name": "Update a subscription (merge-patch)",
+            "description": {
+              "content": "Partial update using [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386). Provide only fields you want to change.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/merge-patch+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4eb69b00-26b3-40cf-856e-8425bc0bc5d1",
+              "name": "Updated subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd09bc68-aee7-433d-bb83-4e09410e3868",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d49fc3ed-39ea-46c3-b5f1-c9014ea51272",
+          "name": "Delete a subscription",
+          "request": {
+            "name": "Delete a subscription",
+            "description": {
+              "content": "Delete a subscription by its unique ID. Stops future deliveries and removes the subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bf489ba-4757-44f1-9868-82e774e1d2eb",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c79b3199-1a4e-4b72-8642-fd888eaa63d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "238c55a8-aabc-4c55-9756-c850372483fe",
+    "name": "In-Transit Visibility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Overview\nIn-Transit Visibility is the capability to track freight movements through milestones, events and \nlocation updates in real time, from pickup to delivery. It is vital to the lifecycle of a load because\nit provides insight into where a shipment is at each stage and alerts all parties of important\nmilestones or issues. This capability ties into the broader Digital Standards Development\nCouncil open API standards initiative, which aims to digitize data exchange in freight\ntransportation. By adopting standard APIs, the industry can reduce manual processes, improve\ndata accuracy, increase visibility into shipments, enable real-time notifications of shipment\nchanges, and drive process automation.\n\nShippers today continue to demand real-time updates at every key milestone - before pickup,\nduring transit, and upon arrival. In response, industry leaders are making automated digital\ntracking a core part of operations, replacing phone calls and emails with API-based status\nsharing. This broad industry trend underscores how critical in-transit visibility has become. It\nalso reinforces the NMFTA's mission to standardize visibility.\n\nBy implementing this API, all parties - shippers, carriers, and intermediaries - share a single\nsource of truth about a load's status. In-transit updates, when combined with other NMFTA\nstandard APIs (e.g. electronic tendering and eBOL), form a continuous digital thread from load\ncreation to completion, greatly enhancing transparency and efficiency in freight movements.    \n# Value Proposition\n\n## Shipper\n\nGaining in-transit visibility allows shippers to easily get updates on the status and location of their shipments, reducing misunderstandings, human error, and theft. For example, instead of waiting for manual updates, a shipper can see when a load is picked up, in transit, or delayed, and even receive location updates before pickup occurs. This proactive insight gives shippers peace of mind and the ability to address exceptions quickly.\n\n## Carrier\n\nThe In-Transit Visibility API allows carriers to provide digital status updates to relevant parties using a standard protocol. This approach enables tracking information to be shared with shippers and third-party logistics providers (3PLs), supporting automated communication of updates such as departure, arrival, or delay notifications, and contributing to operational transparency.\n\n## 3rd Party\n\nThe In-Transit Visibility API will allow third parties of all kinds to receive and send necessary shipment information to ensure a seamless flow through the life cycle of a shipment. Due to the nature of their business and having to interact with multiple parties in the transportation industry, they stand much to gain by simplification of their business processes, which the In-Transit Visibility specification will enable. Overall, the In-Transit Visibility standard helps 3rd parties coordinate more effectively and provide better service with less overhead.\n\n# Capabilities:\n\n- Pull events: GET /v1/events (page-based, deterministic ordering)\n- Webhook delivery: webhooks/shipmentEvents (EventBatch + HMAC)\n- Subscription management: /v1/subscriptions\n- Pagination strategy: Page-Based method with page/pageSize\n- Standardized event types\n- Ordering, idempotency, retries\n- [RFC 7807 Problem Details](https://datatracker.ietf.org/doc/html/rfc7807)\n\n# Product Requirements Document (PRD)\n\nThe Product Requirements Document (PRD) for this API can be found [here](https://dsdcapis.github.io/full-truckload/api-prds/API%20Product%20Requirements%20-%20In%20Transit%20Visibility.pdf).\n\n\nContact Support:\n Name: DSDC APIs Full Truckload",
+      "type": "text/plain"
+    }
+  }
+}

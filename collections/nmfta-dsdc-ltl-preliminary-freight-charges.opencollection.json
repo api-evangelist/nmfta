@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preliminary Freight Charges (PFC) API",
+    "version": "1.0.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to receive preliminary freight charge notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a subscription to receive notifications for specified accounts, including in-flight shipments for new subscribers."
+        },
+        {
+          "info": {
+            "name": "Gets subscription details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the subscription"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific subscription."
+        },
+        {
+          "info": {
+            "name": "Cancels subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the subscription"
+              }
+            ]
+          },
+          "docs": "Cancels an existing subscription."
+        },
+        {
+          "info": {
+            "name": "Gets in-flight shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId/inflight",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the subscription"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of in-flight shipments for a specific subscription, representing shipments in transit for subscribed accounts at the time of subscription creation. Returns an empty array if no in-flight shipments are found for the subscription."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Preliminary Freight Charges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Post to Subscription defined endpoint PFC information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/preliminary-freight-charges/"
+          },
+          "docs": "Post to Subscription defined endpoint PFC information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Tests webhook endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/webhooks/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tests webhook delivery for notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

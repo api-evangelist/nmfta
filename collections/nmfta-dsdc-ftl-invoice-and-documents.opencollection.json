@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoice & Document API",
+    "version": "1.0.0-public-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoice Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/invoices",
+            "params": [
+              {
+                "name": "uniqueID",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the invoice."
+              },
+              {
+                "name": "shipmentID",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the shipment associated with the invoice."
+              },
+              {
+                "name": "DOT",
+                "value": "",
+                "type": "query",
+                "description": "Department of Transportation identifier"
+              },
+              {
+                "name": "MC",
+                "value": "",
+                "type": "query",
+                "description": "Motor Carrier Identifier"
+              },
+              {
+                "name": "invoiceNumber",
+                "value": "",
+                "type": "query",
+                "description": "Invoice number to filter the invoice."
+              }
+            ]
+          },
+          "docs": "As a Carrier, I want to list all Invoices.\n- The request MAY include optional query parameters to filter the results, such as \n  unique ID, shipment ID, DOT Number, MC Number, or invoice number.\n- All query parameters are optional and can be used individually or in combination to filter results.\n"
+        },
+        {
+          "info": {
+            "name": "Create an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "## Request        \nAs a Carrier, I want to Create an Invoice and send shipment information for a particular \nShipper or 3rd Party.        \n- In a request, the Carrier MUST provide a shipmentID provided by the Shipper or \n  3rd Party participant. \n  - LTL Consideration: Pro Number may be valid for proper tracking to the \n    BOL generation process. \n- In a request, the Carrier MUST identify themselves, so the Shipper/3rd Party is \n  aware of who is sending the Invoice information\n    - Types of u"
+        },
+        {
+          "info": {
+            "name": "Get an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/invoices/:uniqueID",
+            "params": [
+              {
+                "name": "uniqueID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice to update."
+              }
+            ]
+          },
+          "docs": "As a Carrier, I want to retrieve an Invoice by its unique identifier.\n- In a request, the Carrier MUST provide the Unique Identifier in the path to retrieve the specific invoice details.\n"
+        },
+        {
+          "info": {
+            "name": "Update (Replace) an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/invoices/:uniqueID",
+            "params": [
+              {
+                "name": "uniqueID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice to update."
+              },
+              {
+                "name": "comments",
+                "value": "",
+                "type": "query",
+                "description": "Optional comments related to the invoice."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fully replaces an existing invoice with the provided data.\n- The request MUST provide the Unique Identifier in the path to identify the invoice to update.\n- The request body MUST contain the complete invoice object with all required fields (uniqueID, shipmentID, DOT, MC, invoiceHeader, invoiceCharges).\n- The request MAY include optional comments as a query parameter.\n"
+        },
+        {
+          "info": {
+            "name": "Delete an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/invoices/:uniqueID",
+            "params": [
+              {
+                "name": "uniqueID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the invoice to delete."
+              },
+              {
+                "name": "comments",
+                "value": "",
+                "type": "query",
+                "description": "Optional comments related to the invoice deletion."
+              }
+            ]
+          },
+          "docs": "Deletes an existing invoice by its unique identifier.\n- The request MUST provide the Unique Identifier in the path to identify the invoice to delete.\n- The request MAY include optional comments as a query parameter for the deletion.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Document Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Supporting Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/documents",
+            "params": [
+              {
+                "name": "invoiceNumber",
+                "value": "",
+                "type": "query",
+                "description": "Invoice number to filter the documents."
+              },
+              {
+                "name": "DOT",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "MC",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "documentType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "As a Carrier, I want to list all supporting documents for invoices.\n- The request MAY include optional query parameters such as Invoice Number, DOT Number, MC Number, or documentType to filter the results.\n- All query parameters are optional and can be used individually or in combination to filter results.\n"
+        },
+        {
+          "info": {
+            "name": "Upload Supporting Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/documents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "## Request\nAs a Carrier, I want to upload supporting documents for an invoice.\n- In a request, the Carrier MUST provide the Invoice Number to associate the document with the correct invoice.\n- In a request, the Carrier MUST designate the document type so that the acceptance of the response can be \n  tracked on the Shipper/3rd Party side. This can range from the Invoice to the supported twenty-four (24) document types.\n- The request MUST include the document file in PDF, TIF, JPEG, or PNG format."
+        },
+        {
+          "info": {
+            "name": "Retrieve Supporting Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/documents/:invoiceNumber",
+            "params": [
+              {
+                "name": "invoiceNumber",
+                "value": "",
+                "type": "path",
+                "description": "Invoice number to filter the documents."
+              }
+            ]
+          },
+          "docs": "As a Carrier, I want to retrieve supporting documents for an invoice by its Invoice Number.\n- In a request, the Carrier MUST provide the Invoice Number in the path to retrieve the specific documents.\n"
+        },
+        {
+          "info": {
+            "name": "Delete Supporting Documents or Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/documents/:invoiceNumber",
+            "params": [
+              {
+                "name": "invoiceNumber",
+                "value": "",
+                "type": "path",
+                "description": "Invoice number to identify the documents."
+              },
+              {
+                "name": "fileIds",
+                "value": "",
+                "type": "query",
+                "description": "List of file IDs to delete. If omitted, all documents for the invoice will be deleted."
+              },
+              {
+                "name": "comments",
+                "value": "",
+                "type": "query",
+                "description": "Optional comments related to the document deletion."
+              }
+            ]
+          },
+          "docs": "Delete all supporting documents for an invoice, or specific files within the documents.\n- The request MUST provide the Invoice Number in the path to identify the documents to delete.\n- The request MAY include optional fileIds as a query parameter to delete specific files. If omitted, all documents for the invoice will be deleted.\n- The request MAY include optional comments as a query parameter for the deletion.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

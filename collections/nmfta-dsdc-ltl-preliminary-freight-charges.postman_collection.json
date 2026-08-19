@@ -1,0 +1,1157 @@
+{
+  "item": [
+    {
+      "id": "a166d2f3-ba53-4d90-bef7-9b3d91607784",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Manage PFC subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56bd728e-25ed-459f-b00e-d1e70517eeb4",
+          "name": "Subscribe to receive preliminary freight charge notifications",
+          "request": {
+            "name": "Subscribe to receive preliminary freight charge notifications",
+            "description": {
+              "content": "Creates a subscription to receive notifications for specified accounts, including in-flight shipments for new subscribers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhookUrl\": \"<uri>\",\n  \"accounts\": [\n    \"<string>\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a554b00-9018-4515-94fd-a0139b180f58",
+              "name": "Subscription created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\",\n  \"subscriptionId\": \"sub_abc123\",\n  \"status\": \"suspended\",\n  \"createdAt\": \"2025-06-30T10:17:34.050Z\",\n  \"updatedAt\": \"2025-06-30T10:17:34.050Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b58488e5-a227-4d5b-a752-afacf55b5177",
+              "name": "Bad request - invalid parameters or request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid request body or parameters\",\n  \"details\": {\n    \"field\": \"webhookUrl\",\n    \"error\": \"Must be a valid URI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b683320-585d-4e21-b5f2-a2c2b431ca3e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication credentials missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13e4302b-a98e-4311-943a-cc1ab4cc42fb",
+              "name": "Access denied - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"FORBIDDEN\",\n  \"message\": \"User not authorized as debtor or agent\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2493aa29-6d11-4f73-bcc1-98e6deeb5e81",
+              "name": "Conflict - resource already exists or request cannot be completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SUBSCRIPTION_CONFLICT\",\n  \"message\": \"A subscription for this account already exists\",\n  \"details\": {\n    \"accountId\": \"123456\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90b5f4cd-6806-4b32-a5eb-f4692abb7fa6",
+          "name": "Gets subscription details",
+          "request": {
+            "name": "Gets subscription details",
+            "description": {
+              "content": "Retrieves details of a specific subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Unique identifier for the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd66ac05-32a8-4634-b091-a3c198e71dec",
+              "name": "Subscription details retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookUrl\": \"https://yourapi.com/webhooks/pfc\",\n  \"accounts\": [\n    \"ACC001\",\n    \"ACC002\"\n  ],\n  \"dataOptions\": {\n    \"shipmentDataType\": \"revenue_impacts_only\",\n    \"eventType\": \"revenue_impacts_only\"\n  },\n  \"frequency\": \"real_time\",\n  \"includeEventLog\": true,\n  \"billScope\": \"subscribed_accounts\",\n  \"subscriptionId\": \"sub_abc123\",\n  \"status\": \"suspended\",\n  \"createdAt\": \"2025-06-30T10:17:34.050Z\",\n  \"updatedAt\": \"2025-06-30T10:17:34.050Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84c1f02-53ff-4016-973e-bb973d26de58",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication credentials missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "825f0418-8782-4a5c-85e9-2c0788631db0",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"Resource not found\",\n  \"details\": {\n    \"resource\": \"proNumber\",\n    \"value\": \"OTPRO 999-9999999\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51781946-c65d-493a-b339-7c0b0da62889",
+          "name": "Cancels subscription",
+          "request": {
+            "name": "Cancels subscription",
+            "description": {
+              "content": "Cancels an existing subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Unique identifier for the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55563a98-d210-4820-9588-07663b8e6288",
+              "name": "Subscription cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05033e1d-0a19-4f56-9307-551c6fcfcdb9",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication credentials missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "366d37a3-f0e4-4139-bcf6-ed39e035c4b2",
+              "name": "Access denied - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"FORBIDDEN\",\n  \"message\": \"User not authorized as debtor or agent\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b87e525b-4573-48d9-8186-0bf0c1b7b3ba",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"Resource not found\",\n  \"details\": {\n    \"resource\": \"proNumber\",\n    \"value\": \"OTPRO 999-9999999\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1deb5ea-1b17-467b-9017-2b1e01c2df30",
+          "name": "Gets in-flight shipments",
+          "request": {
+            "name": "Gets in-flight shipments",
+            "description": {
+              "content": "Retrieves a list of in-flight shipments for a specific subscription, representing shipments in transit for subscribed accounts at the time of subscription creation. Returns an empty array if no in-flight shipments are found for the subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subscriptions",
+                ":subscriptionId",
+                "inflight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Unique identifier for the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65648021-c937-4c27-b3af-eebd11a18c15",
+              "name": "List of in-flight shipments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "inflight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pfc\": {\n      \"uniqueID\": \"1234567890EXLA\",\n      \"date\": \"2024-11-20T00:00:00.000\",\n      \"version\": \"v1.0\",\n      \"isTest\": false,\n      \"header\": {\n        \"function\": \"PFC1\"\n      }\n    },\n    \"payment\": {\n      \"terms\": \"Prepaid\"\n    },\n    \"shipmentTotals\": {\n      \"pickupDate\": \"2022-11-20T00:00:00.000\",\n      \"grossWeight\": 2000,\n      \"weightUnit\": \"Pounds\",\n      \"handlingUnits\": 2,\n      \"netWeight\": 1975,\n      \"linearLength\": 56,\n      \"dimensionsUnit\": \"inches\",\n      \"cube\": 128,\n      \"cubeDimensionsUnit\": \"Feet\",\n      \"declaredValue\": 700,\n      \"currency\": \"USD\"\n    },\n    \"referenceNumbers\": {\n      \"pro\": \"0011234567\",\n      \"quoteId\": \"E556724\",\n      \"shipmentId\": \"SID556724\",\n      \"masterBol\": \"MBL98472578\",\n      \"trailerId\": \"TID65821\",\n      \"manifestId\": \"M653247\",\n      \"bol\": [\n        \"BL1285647\"\n      ],\n      \"po\": [\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        },\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        }\n      ],\n      \"additionalReferences\": [\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        },\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        }\n      ]\n    },\n    \"origin\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"destination\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"billTo\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationID\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"commodities\": {\n      \"handlingUnits\": [\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        },\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        }\n      ]\n    },\n    \"charges\": {\n      \"grossCharges\": 858.55,\n      \"discountAmount\": 657.65,\n      \"discountPercent\": 77,\n      \"fuelSurchargePercent\": 31,\n      \"fuelSurchargeAmount\": 62.88,\n      \"currencyType\": \"USD\",\n      \"preliminaryTotalCharges\": 263.78,\n      \"totalTareWeight\": 770,\n      \"tareWeightAmount\": 50,\n      \"deficitWeight\": 20.63,\n      \"weightUnit\": \"Pounds\",\n      \"detail\": \"House/Residential Delivery Fee\",\n      \"class\": [\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        },\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        }\n      ],\n      \"changeLog\": [\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        },\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        }\n      ],\n      \"changeLogMessages\": [\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        },\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        }\n      ]\n    },\n    \"accessorials\": {\n      \"codes\": [\n        \"LFTD\"\n      ]\n    }\n  },\n  {\n    \"pfc\": {\n      \"uniqueID\": \"1234567890EXLA\",\n      \"date\": \"2024-11-20T00:00:00.000\",\n      \"version\": \"v1.0\",\n      \"isTest\": false,\n      \"header\": {\n        \"function\": \"PFC1\"\n      }\n    },\n    \"payment\": {\n      \"terms\": \"Prepaid\"\n    },\n    \"shipmentTotals\": {\n      \"pickupDate\": \"2022-11-20T00:00:00.000\",\n      \"grossWeight\": 2000,\n      \"weightUnit\": \"Pounds\",\n      \"handlingUnits\": 2,\n      \"netWeight\": 1975,\n      \"linearLength\": 56,\n      \"dimensionsUnit\": \"inches\",\n      \"cube\": 128,\n      \"cubeDimensionsUnit\": \"Feet\",\n      \"declaredValue\": 700,\n      \"currency\": \"USD\"\n    },\n    \"referenceNumbers\": {\n      \"pro\": \"0011234567\",\n      \"quoteId\": \"E556724\",\n      \"shipmentId\": \"SID556724\",\n      \"masterBol\": \"MBL98472578\",\n      \"trailerId\": \"TID65821\",\n      \"manifestId\": \"M653247\",\n      \"bol\": [\n        \"BL1285647\"\n      ],\n      \"po\": [\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        },\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        }\n      ],\n      \"additionalReferences\": [\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        },\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        }\n      ]\n    },\n    \"origin\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"destination\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"billTo\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationID\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"commodities\": {\n      \"handlingUnits\": [\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        },\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        }\n      ]\n    },\n    \"charges\": {\n      \"grossCharges\": 858.55,\n      \"discountAmount\": 657.65,\n      \"discountPercent\": 77,\n      \"fuelSurchargePercent\": 31,\n      \"fuelSurchargeAmount\": 62.88,\n      \"currencyType\": \"USD\",\n      \"preliminaryTotalCharges\": 263.78,\n      \"totalTareWeight\": 770,\n      \"tareWeightAmount\": 50,\n      \"deficitWeight\": 20.63,\n      \"weightUnit\": \"Pounds\",\n      \"detail\": \"House/Residential Delivery Fee\",\n      \"class\": [\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        },\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        }\n      ],\n      \"changeLog\": [\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        },\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        }\n      ],\n      \"changeLogMessages\": [\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        },\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        }\n      ]\n    },\n    \"accessorials\": {\n      \"codes\": [\n        \"LFTD\"\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7768783-15b0-46c1-a6dd-93c5242f8d94",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "inflight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication credentials missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2332e1ac-2543-490e-9d2f-09a12173a040",
+              "name": "Access denied - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "inflight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"FORBIDDEN\",\n  \"message\": \"User not authorized as debtor or agent\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7f32406-ac1e-47e7-b208-29fb9d49aa53",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "inflight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique identifier for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"Resource not found\",\n  \"details\": {\n    \"resource\": \"proNumber\",\n    \"value\": \"OTPRO 999-9999999\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fabd7ed9-b03f-415a-80d7-8380beea1b86",
+      "name": "Preliminary Freight Charges",
+      "description": {
+        "content": "Access freight charges information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6cd4f961-e355-4e78-bb14-7cd27843257c",
+          "name": "Post to Subscription defined endpoint PFC information",
+          "request": {
+            "name": "Post to Subscription defined endpoint PFC information",
+            "description": {
+              "content": "Post to Subscription defined endpoint PFC information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "preliminary-freight-charges",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d28f6c10-026f-44bb-9f2d-745fef4686d8",
+              "name": "Freight charges history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "preliminary-freight-charges",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pfc\": {\n      \"uniqueID\": \"1234567890EXLA\",\n      \"date\": \"2024-11-20T00:00:00.000\",\n      \"version\": \"v1.0\",\n      \"isTest\": false,\n      \"header\": {\n        \"function\": \"PFC1\"\n      }\n    },\n    \"payment\": {\n      \"terms\": \"Prepaid\"\n    },\n    \"shipmentTotals\": {\n      \"pickupDate\": \"2022-11-20T00:00:00.000\",\n      \"grossWeight\": 2000,\n      \"weightUnit\": \"Pounds\",\n      \"handlingUnits\": 2,\n      \"netWeight\": 1975,\n      \"linearLength\": 56,\n      \"dimensionsUnit\": \"inches\",\n      \"cube\": 128,\n      \"cubeDimensionsUnit\": \"Feet\",\n      \"declaredValue\": 700,\n      \"currency\": \"USD\"\n    },\n    \"referenceNumbers\": {\n      \"pro\": \"0011234567\",\n      \"quoteId\": \"E556724\",\n      \"shipmentId\": \"SID556724\",\n      \"masterBol\": \"MBL98472578\",\n      \"trailerId\": \"TID65821\",\n      \"manifestId\": \"M653247\",\n      \"bol\": [\n        \"BL1285647\"\n      ],\n      \"po\": [\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        },\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        }\n      ],\n      \"additionalReferences\": [\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        },\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        }\n      ]\n    },\n    \"origin\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"destination\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"billTo\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationID\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"commodities\": {\n      \"handlingUnits\": [\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        },\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        }\n      ]\n    },\n    \"charges\": {\n      \"grossCharges\": 858.55,\n      \"discountAmount\": 657.65,\n      \"discountPercent\": 77,\n      \"fuelSurchargePercent\": 31,\n      \"fuelSurchargeAmount\": 62.88,\n      \"currencyType\": \"USD\",\n      \"preliminaryTotalCharges\": 263.78,\n      \"totalTareWeight\": 770,\n      \"tareWeightAmount\": 50,\n      \"deficitWeight\": 20.63,\n      \"weightUnit\": \"Pounds\",\n      \"detail\": \"House/Residential Delivery Fee\",\n      \"class\": [\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        },\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        }\n      ],\n      \"changeLog\": [\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        },\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        }\n      ],\n      \"changeLogMessages\": [\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        },\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        }\n      ]\n    },\n    \"accessorials\": {\n      \"codes\": [\n        \"LFTD\"\n      ]\n    }\n  },\n  {\n    \"pfc\": {\n      \"uniqueID\": \"1234567890EXLA\",\n      \"date\": \"2024-11-20T00:00:00.000\",\n      \"version\": \"v1.0\",\n      \"isTest\": false,\n      \"header\": {\n        \"function\": \"PFC1\"\n      }\n    },\n    \"payment\": {\n      \"terms\": \"Prepaid\"\n    },\n    \"shipmentTotals\": {\n      \"pickupDate\": \"2022-11-20T00:00:00.000\",\n      \"grossWeight\": 2000,\n      \"weightUnit\": \"Pounds\",\n      \"handlingUnits\": 2,\n      \"netWeight\": 1975,\n      \"linearLength\": 56,\n      \"dimensionsUnit\": \"inches\",\n      \"cube\": 128,\n      \"cubeDimensionsUnit\": \"Feet\",\n      \"declaredValue\": 700,\n      \"currency\": \"USD\"\n    },\n    \"referenceNumbers\": {\n      \"pro\": \"0011234567\",\n      \"quoteId\": \"E556724\",\n      \"shipmentId\": \"SID556724\",\n      \"masterBol\": \"MBL98472578\",\n      \"trailerId\": \"TID65821\",\n      \"manifestId\": \"M653247\",\n      \"bol\": [\n        \"BL1285647\"\n      ],\n      \"po\": [\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        },\n        {\n          \"number\": \"554238\",\n          \"pieces\": 5,\n          \"weight\": \"150\",\n          \"weightUnit\": \"Pounds\",\n          \"palletized\": true,\n          \"additionalShipperInfo\": \"Freight must always stay upright\"\n        }\n      ],\n      \"additionalReferences\": [\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        },\n        {\n          \"name\": \"Customer Reference ID\",\n          \"value\": \"CRID12345\"\n        }\n      ]\n    },\n    \"origin\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"destination\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationId\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"billTo\": {\n      \"account\": \"12345\",\n      \"name\": \"Closets Closets Closets\",\n      \"address1\": \"12 S. Closets Place\",\n      \"city\": \"Los Angeles\",\n      \"stateProvince\": \"CA\",\n      \"postalCode\": \"90001\",\n      \"country\": \"USA\",\n      \"locationID\": \"808\",\n      \"address2\": \"ste 3\"\n    },\n    \"commodities\": {\n      \"handlingUnits\": [\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        },\n        {\n          \"count\": 2,\n          \"type\": \"SKD\",\n          \"weight\": 1500,\n          \"weightUnit\": \"Pounds\",\n          \"length\": 48,\n          \"width\": 48,\n          \"height\": 48,\n          \"dimensionUnit\": \"Inches\",\n          \"tareWeight\": 5,\n          \"stackable\": false,\n          \"lineItems\": [\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            },\n            {\n              \"description\": \"Small frameless mirrors\",\n              \"weight\": 1500,\n              \"weightUnit\": \"Pounds\",\n              \"pieces\": 3,\n              \"packagingType\": \"box\",\n              \"classification\": \"55\",\n              \"nmfc\": \"86900\",\n              \"nmfcSub\": \"3\"\n            }\n          ]\n        }\n      ]\n    },\n    \"charges\": {\n      \"grossCharges\": 858.55,\n      \"discountAmount\": 657.65,\n      \"discountPercent\": 77,\n      \"fuelSurchargePercent\": 31,\n      \"fuelSurchargeAmount\": 62.88,\n      \"currencyType\": \"USD\",\n      \"preliminaryTotalCharges\": 263.78,\n      \"totalTareWeight\": 770,\n      \"tareWeightAmount\": 50,\n      \"deficitWeight\": 20.63,\n      \"weightUnit\": \"Pounds\",\n      \"detail\": \"House/Residential Delivery Fee\",\n      \"class\": [\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        },\n        {\n          \"freightClass\": \"55\",\n          \"cwt\": 125\n        }\n      ],\n      \"changeLog\": [\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        },\n        {\n          \"eventCategoryName\": \"Limited Access\",\n          \"eventCode\": \"LTDAD\",\n          \"eventSubCode\": \"FARM\",\n          \"carrierCode\": \"DBRS\",\n          \"carrierDescription\": \"Debris hauled away\",\n          \"weightAndResearchDocAvailable\": false\n        }\n      ],\n      \"changeLogMessages\": [\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        },\n        {\n          \"informationalMessage\": \"The shipment has incurred a charge for an Inside Delivery Fee\"\n        }\n      ]\n    },\n    \"accessorials\": {\n      \"codes\": [\n        \"LFTD\"\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ec221977-3141-4ead-b325-708321f08848",
+      "name": "Webhooks",
+      "description": {
+        "content": "Webhook management and testing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73de0bbc-f30b-4ecf-823a-d15d613b64a2",
+          "name": "Tests webhook endpoint",
+          "request": {
+            "name": "Tests webhook endpoint",
+            "description": {
+              "content": "Tests webhook delivery for notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhookUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "634c4bcb-d20f-4d18-af05-b08f2af2b167",
+              "name": "Webhook test successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d941ca07-121a-4634-bf44-794349586337",
+              "name": "Bad request - invalid parameters or request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid request body or parameters\",\n  \"details\": {\n    \"field\": \"webhookUrl\",\n    \"error\": \"Must be a valid URI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a25d39b-f74a-49d1-9936-c5ae8cc8704b",
+    "name": "Preliminary Freight Charges (PFC) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Preliminary Freight Charges (PFC) API proactively notifies responsible parties (debtors or their authorized agents, including consignees when designated as agents) that a motor carrier has created a freight bill for a shipment associated with that party. Further notifications occur when the bill is updated or removed from their account.\n\n## Key Features\n- Proactive freight charge visibility throughout shipment lifecycle\n- Real-time notifications via subscription-based push API\n- Standardized event codes and change log tracking\n- Unified API supporting both detailed data and change log consumption\n\n## Important Notes\n- PFC is not an invoice or legal document\n- PFC should not be construed as a request for payment\n- The PFC process concludes once the invoice is produced and no further updates are expected\n- Monitoring begins immediately upon onboarding, including any shipments currently in flight\n- Access is restricted to debtors and/or authorized agents only (including consignees when authorized)\n- Data options, notification frequency, and data retention may be limited by carrier capabilities, as defined in the NMFTA PFC PRD\n- Notifications are triggered by changes to shipment-level attributes that affect freight charges, including:\n  - Changes to the Shipper, Consignee, or Bill-To party\n  - Changes to the account number used for pricing\n  - Modifications to payment terms\n  - Addition or removal of accessorial charges (including waived $0 charges)\n  - Shipment characteristic changes that affect rating\n- Customers may choose to process detailed data, change logs, or both, depending on implementation preference\n\n\nContact Support:\n Name: NMFTA Digital LTL Council\n Email: support@nmfta.org",
+      "type": "text/plain"
+    }
+  }
+}

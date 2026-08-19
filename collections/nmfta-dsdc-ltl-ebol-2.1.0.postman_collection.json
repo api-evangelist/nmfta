@@ -1,0 +1,559 @@
+{
+  "item": [
+    {
+      "id": "2f8a632d-400a-4824-8953-76151e452921",
+      "name": "Carrier API Standards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef31c719-cbe8-4549-9b43-34aca5156948",
+          "name": "Create an Electronic Bill of Lading",
+          "request": {
+            "name": "Create an Electronic Bill of Lading",
+            "description": {},
+            "url": {
+              "path": [
+                "bol",
+                "v1",
+                "app",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bol\": {\n    \"function\": \"<string>\",\n    \"requestedPickupDate\": \"<string>\",\n    \"isTest\": \"<boolean>\",\n    \"requestorRole\": \"<string>\",\n    \"specialInstructions\": \"<string>\"\n  },\n  \"version\": \"<string>\",\n  \"commodities\": {\n    \"lineItemLayout\": \"<string>\",\n    \"handlingUnits\": [\n      {\n        \"count\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"tareWeight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"dimensionsUnit\": \"<string>\",\n        \"stackable\": \"<boolean>\",\n        \"lineItems\": [\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          },\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"tareWeight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"dimensionsUnit\": \"<string>\",\n        \"stackable\": \"<boolean>\",\n        \"lineItems\": [\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          },\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"<string>\"\n  },\n  \"origin\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"images\": {\n    \"includeBol\": \"<boolean>\",\n    \"includeShippingLabels\": \"<boolean>\",\n    \"shippingLabels\": {\n      \"format\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"position\": \"<integer>\"\n    },\n    \"email\": {\n      \"includeBol\": \"<boolean>\",\n      \"includeLabels\": \"<boolean>\",\n      \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"<string>\",\n    \"quoteId\": \"<string>\",\n    \"shipmentId\": \"<string>\",\n    \"masterBol\": \"<string>\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"<string>\",\n        \"pieces\": \"<integer>\",\n        \"weight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"palletized\": \"<boolean>\",\n        \"additionalShipperInfo\": \"<string>\"\n      },\n      {\n        \"number\": \"<string>\",\n        \"pieces\": \"<integer>\",\n        \"weight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"palletized\": \"<boolean>\",\n        \"additionalShipperInfo\": \"<string>\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": \"<integer>\",\n    \"netWeight\": \"<integer>\",\n    \"weightUnit\": \"<string>\",\n    \"handlingUnits\": \"<integer>\",\n    \"linearLength\": \"<integer>\",\n    \"dimensionsUnit\": \"<string>\",\n    \"cube\": \"<integer>\",\n    \"cubeDimensionsUnit\": \"<string>\",\n    \"declaredValue\": \"<integer>\",\n    \"currency\": \"<string>\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"terms\": \"<string>\",\n      \"customerCheckAcceptable\": \"<boolean>\",\n      \"remitTo\": {\n        \"name\": \"<string>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": \"<integer>\"\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    \"markDetails\": {\n      \"pieces\": \"<integer>\"\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"<string>\",\n      \"destination\": \"<string>\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"<string>\",\n      \"date\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"delivery\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29672ca5-9a61-423b-9e65-21a513c0b077",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bol\": {\n    \"function\": \"Create\",\n    \"requestedPickupDate\": \"2022-11-20T00:00:00.000\",\n    \"isTest\": true,\n    \"requestorRole\": \"Third Party\",\n    \"specialInstructions\": \"Gate code 123 to enter complex\"\n  },\n  \"version\": \"2.1.0\",\n  \"commodities\": {\n    \"lineItemLayout\": \"Nested\",\n    \"handlingUnits\": [\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"Prepaid\"\n  },\n  \"origin\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"destination\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"billTo\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"images\": {\n    \"includeBol\": true,\n    \"includeShippingLabels\": true,\n    \"shippingLabels\": {\n      \"format\": \"Avery\",\n      \"quantity\": 5,\n      \"position\": 2\n    },\n    \"email\": {\n      \"includeBol\": true,\n      \"includeLabels\": true,\n      \"addresses\": [\n        \"dispatch@shipper.com\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    },\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"123456-7\",\n    \"quoteId\": \"E556724\",\n    \"shipmentId\": \"SID9743985\",\n    \"masterBol\": \"MBL98472587\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"BL19498432\",\n      \"BL99744565\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      },\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      },\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": 2000,\n    \"netWeight\": 1993,\n    \"weightUnit\": \"Pounds\",\n    \"handlingUnits\": 2,\n    \"linearLength\": 96,\n    \"dimensionsUnit\": \"Inches\",\n    \"cube\": 128,\n    \"cubeDimensionsUnit\": \"Feet\",\n    \"declaredValue\": 7,\n    \"currency\": \"USD\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"IDL\",\n      \"LFTP\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"Manny Delgato\",\n        \"phone\": \"7775558899\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"56.71\",\n      \"currency\": \"USD\",\n      \"terms\": \"Collect\",\n      \"customerCheckAcceptable\": true,\n      \"remitTo\": {\n        \"name\": \"Dog Beds by Stella\",\n        \"address1\": \"121 S. Cliffwood Ave.\",\n        \"address2\": \"Suite 55\",\n        \"city\": \"Los Angeles\",\n        \"stateProvince\": \"CA\",\n        \"postalCode\": \"90001\",\n        \"country\": \"USA\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": 25\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"100.00\",\n      \"currency\": \"USD\"\n    },\n    \"markDetails\": {\n      \"pieces\": 25\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"Church\",\n      \"destination\": \"Secure\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"Delivery Window\",\n      \"date\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      },\n      \"delivery\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"Import\",\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"address2\": \"ste 3\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"2.1.0\",\n  \"transactionDate\": \"2022-11-20T00:00:00.000\",\n  \"referenceNumbers\": {\n    \"pro\": \"PRO1234\",\n    \"shipmentConfirmationNumber\": \"SCN1234\"\n  },\n  \"scac\": \"AAAB\",\n  \"images\": {\n    \"bol\": \"JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......\",\n    \"shippingLabels\": \"JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......\"\n  },\n  \"termsAndConditions\": \"Terms and Conditions text available for download at www.myurl-nmfta.org\",\n  \"messageStatus\": {\n    \"status\": \"PASS\",\n    \"code\": \"10000000\",\n    \"message\": \"Transaction was successful.\",\n    \"resolution\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f6291e3-0235-4947-a2c0-cd0189e6b05e",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bol\": {\n    \"function\": \"Create\",\n    \"requestedPickupDate\": \"2022-11-20T00:00:00.000\",\n    \"isTest\": true,\n    \"requestorRole\": \"Third Party\",\n    \"specialInstructions\": \"Gate code 123 to enter complex\"\n  },\n  \"version\": \"2.1.0\",\n  \"commodities\": {\n    \"lineItemLayout\": \"Nested\",\n    \"handlingUnits\": [\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"Prepaid\"\n  },\n  \"origin\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"destination\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"billTo\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"images\": {\n    \"includeBol\": true,\n    \"includeShippingLabels\": true,\n    \"shippingLabels\": {\n      \"format\": \"Avery\",\n      \"quantity\": 5,\n      \"position\": 2\n    },\n    \"email\": {\n      \"includeBol\": true,\n      \"includeLabels\": true,\n      \"addresses\": [\n        \"dispatch@shipper.com\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    },\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"123456-7\",\n    \"quoteId\": \"E556724\",\n    \"shipmentId\": \"SID9743985\",\n    \"masterBol\": \"MBL98472587\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"BL19498432\",\n      \"BL99744565\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      },\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      },\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": 2000,\n    \"netWeight\": 1993,\n    \"weightUnit\": \"Pounds\",\n    \"handlingUnits\": 2,\n    \"linearLength\": 96,\n    \"dimensionsUnit\": \"Inches\",\n    \"cube\": 128,\n    \"cubeDimensionsUnit\": \"Feet\",\n    \"declaredValue\": 7,\n    \"currency\": \"USD\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"IDL\",\n      \"LFTP\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"Manny Delgato\",\n        \"phone\": \"7775558899\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"56.71\",\n      \"currency\": \"USD\",\n      \"terms\": \"Collect\",\n      \"customerCheckAcceptable\": true,\n      \"remitTo\": {\n        \"name\": \"Dog Beds by Stella\",\n        \"address1\": \"121 S. Cliffwood Ave.\",\n        \"address2\": \"Suite 55\",\n        \"city\": \"Los Angeles\",\n        \"stateProvince\": \"CA\",\n        \"postalCode\": \"90001\",\n        \"country\": \"USA\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": 25\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"100.00\",\n      \"currency\": \"USD\"\n    },\n    \"markDetails\": {\n      \"pieces\": 25\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"Church\",\n      \"destination\": \"Secure\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"Delivery Window\",\n      \"date\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      },\n      \"delivery\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"Import\",\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"address2\": \"ste 3\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cfd49d1-e9b9-4a1e-b0df-c815dacd78da",
+          "name": "Update an Electronic Bill of Lading",
+          "request": {
+            "name": "Update an Electronic Bill of Lading",
+            "description": {
+              "content": "This operation updates an existing Electronic Bill of Lading.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bol",
+                "v1",
+                "app",
+                ":pro"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pro",
+                  "description": "(Required) PRO Number of eBOL to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bol\": {\n    \"function\": \"<string>\",\n    \"requestedPickupDate\": \"<string>\",\n    \"isTest\": \"<boolean>\",\n    \"requestorRole\": \"<string>\",\n    \"specialInstructions\": \"<string>\"\n  },\n  \"version\": \"<string>\",\n  \"commodities\": {\n    \"lineItemLayout\": \"<string>\",\n    \"handlingUnits\": [\n      {\n        \"count\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"tareWeight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"dimensionsUnit\": \"<string>\",\n        \"stackable\": \"<boolean>\",\n        \"lineItems\": [\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          },\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"tareWeight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"dimensionsUnit\": \"<string>\",\n        \"stackable\": \"<boolean>\",\n        \"lineItems\": [\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          },\n          {\n            \"weight\": \"<integer>\",\n            \"classification\": \"<string>\",\n            \"description\": \"<string>\",\n            \"hazardous\": \"<boolean>\",\n            \"pieces\": \"<integer>\",\n            \"packagingType\": \"<string>\",\n            \"weightUnit\": \"<string>\",\n            \"nmfc\": \"<string>\",\n            \"nmfcSub\": \"<string>\",\n            \"hazardousDescription\": \"<string>\",\n            \"hazardousDetails\": {\n              \"weight\": \"<integer>\",\n              \"weightUnit\": \"<string>\",\n              \"class\": \"<string>\",\n              \"unnaNumber\": \"<string>\",\n              \"propername\": \"<string>\",\n              \"technicalName\": \"<string>\",\n              \"packingGroup\": \"<string>\",\n              \"contractNumber\": \"<string>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": 7311.106013633096\n  },\n  \"payment\": {\n    \"terms\": \"<string>\"\n  },\n  \"origin\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"billTo\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"account\": \"<string>\",\n    \"locationId\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"images\": {\n    \"includeBol\": \"<boolean>\",\n    \"includeShippingLabels\": \"<boolean>\",\n    \"shippingLabels\": {\n      \"format\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"position\": \"<integer>\"\n    },\n    \"email\": {\n      \"includeBol\": \"<boolean>\",\n      \"includeLabels\": \"<boolean>\",\n      \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"<string>\",\n    \"quoteId\": \"<string>\",\n    \"shipmentId\": \"<string>\",\n    \"masterBol\": \"<string>\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"<string>\",\n        \"pieces\": \"<integer>\",\n        \"weight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"palletized\": \"<boolean>\",\n        \"additionalShipperInfo\": \"<string>\"\n      },\n      {\n        \"number\": \"<string>\",\n        \"pieces\": \"<integer>\",\n        \"weight\": \"<integer>\",\n        \"weightUnit\": \"<string>\",\n        \"palletized\": \"<boolean>\",\n        \"additionalShipperInfo\": \"<string>\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": \"<integer>\",\n    \"netWeight\": \"<integer>\",\n    \"weightUnit\": \"<string>\",\n    \"handlingUnits\": \"<integer>\",\n    \"linearLength\": \"<integer>\",\n    \"dimensionsUnit\": \"<string>\",\n    \"cube\": \"<integer>\",\n    \"cubeDimensionsUnit\": \"<string>\",\n    \"declaredValue\": \"<integer>\",\n    \"currency\": \"<string>\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"<string>\",\n        \"phone\": \"<string>\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"terms\": \"<string>\",\n      \"customerCheckAcceptable\": \"<boolean>\",\n      \"remitTo\": {\n        \"name\": \"<string>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": \"<integer>\"\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    \"markDetails\": {\n      \"pieces\": \"<integer>\"\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"<string>\",\n      \"destination\": \"<string>\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"<string>\",\n      \"date\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"delivery\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"contact\": {\n      \"phone\": \"<string>\",\n      \"phoneExt\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2e4652e-901f-43b4-9d49-16ddbc06d61c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bol\": {\n    \"function\": \"Create\",\n    \"requestedPickupDate\": \"2022-11-20T00:00:00.000\",\n    \"isTest\": true,\n    \"requestorRole\": \"Third Party\",\n    \"specialInstructions\": \"Gate code 123 to enter complex\"\n  },\n  \"version\": \"2.1.0\",\n  \"commodities\": {\n    \"lineItemLayout\": \"Nested\",\n    \"handlingUnits\": [\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"Prepaid\"\n  },\n  \"origin\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"destination\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"billTo\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"images\": {\n    \"includeBol\": true,\n    \"includeShippingLabels\": true,\n    \"shippingLabels\": {\n      \"format\": \"Avery\",\n      \"quantity\": 5,\n      \"position\": 2\n    },\n    \"email\": {\n      \"includeBol\": true,\n      \"includeLabels\": true,\n      \"addresses\": [\n        \"dispatch@shipper.com\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    },\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"123456-7\",\n    \"quoteId\": \"E556724\",\n    \"shipmentId\": \"SID9743985\",\n    \"masterBol\": \"MBL98472587\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"BL19498432\",\n      \"BL99744565\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      },\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      },\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": 2000,\n    \"netWeight\": 1993,\n    \"weightUnit\": \"Pounds\",\n    \"handlingUnits\": 2,\n    \"linearLength\": 96,\n    \"dimensionsUnit\": \"Inches\",\n    \"cube\": 128,\n    \"cubeDimensionsUnit\": \"Feet\",\n    \"declaredValue\": 7,\n    \"currency\": \"USD\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"IDL\",\n      \"LFTP\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"Manny Delgato\",\n        \"phone\": \"7775558899\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"56.71\",\n      \"currency\": \"USD\",\n      \"terms\": \"Collect\",\n      \"customerCheckAcceptable\": true,\n      \"remitTo\": {\n        \"name\": \"Dog Beds by Stella\",\n        \"address1\": \"121 S. Cliffwood Ave.\",\n        \"address2\": \"Suite 55\",\n        \"city\": \"Los Angeles\",\n        \"stateProvince\": \"CA\",\n        \"postalCode\": \"90001\",\n        \"country\": \"USA\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": 25\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"100.00\",\n      \"currency\": \"USD\"\n    },\n    \"markDetails\": {\n      \"pieces\": 25\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"Church\",\n      \"destination\": \"Secure\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"Delivery Window\",\n      \"date\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      },\n      \"delivery\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"Import\",\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"address2\": \"ste 3\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"2.1.0\",\n  \"transactionDate\": \"2022-11-20T00:00:00.000\",\n  \"referenceNumbers\": {\n    \"pro\": \"PRO1234\",\n    \"shipmentConfirmationNumber\": \"SCN1234\"\n  },\n  \"scac\": \"AAAB\",\n  \"images\": {\n    \"bol\": \"JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......\",\n    \"shippingLabels\": \"JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......\"\n  },\n  \"termsAndConditions\": \"Terms and Conditions text available for download at www.myurl-nmfta.org\",\n  \"messageStatus\": {\n    \"status\": \"PASS\",\n    \"code\": \"10000000\",\n    \"message\": \"Transaction was successful.\",\n    \"resolution\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4bec370-8919-4866-9b8d-5b8e71ef071b",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bol\": {\n    \"function\": \"Create\",\n    \"requestedPickupDate\": \"2022-11-20T00:00:00.000\",\n    \"isTest\": true,\n    \"requestorRole\": \"Third Party\",\n    \"specialInstructions\": \"Gate code 123 to enter complex\"\n  },\n  \"version\": \"2.1.0\",\n  \"commodities\": {\n    \"lineItemLayout\": \"Nested\",\n    \"handlingUnits\": [\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"Prepaid\"\n  },\n  \"origin\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"destination\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"billTo\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"images\": {\n    \"includeBol\": true,\n    \"includeShippingLabels\": true,\n    \"shippingLabels\": {\n      \"format\": \"Avery\",\n      \"quantity\": 5,\n      \"position\": 2\n    },\n    \"email\": {\n      \"includeBol\": true,\n      \"includeLabels\": true,\n      \"addresses\": [\n        \"dispatch@shipper.com\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    },\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"123456-7\",\n    \"quoteId\": \"E556724\",\n    \"shipmentId\": \"SID9743985\",\n    \"masterBol\": \"MBL98472587\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"BL19498432\",\n      \"BL99744565\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      },\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      },\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": 2000,\n    \"netWeight\": 1993,\n    \"weightUnit\": \"Pounds\",\n    \"handlingUnits\": 2,\n    \"linearLength\": 96,\n    \"dimensionsUnit\": \"Inches\",\n    \"cube\": 128,\n    \"cubeDimensionsUnit\": \"Feet\",\n    \"declaredValue\": 7,\n    \"currency\": \"USD\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"IDL\",\n      \"LFTP\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"Manny Delgato\",\n        \"phone\": \"7775558899\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"56.71\",\n      \"currency\": \"USD\",\n      \"terms\": \"Collect\",\n      \"customerCheckAcceptable\": true,\n      \"remitTo\": {\n        \"name\": \"Dog Beds by Stella\",\n        \"address1\": \"121 S. Cliffwood Ave.\",\n        \"address2\": \"Suite 55\",\n        \"city\": \"Los Angeles\",\n        \"stateProvince\": \"CA\",\n        \"postalCode\": \"90001\",\n        \"country\": \"USA\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": 25\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"100.00\",\n      \"currency\": \"USD\"\n    },\n    \"markDetails\": {\n      \"pieces\": 25\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"Church\",\n      \"destination\": \"Secure\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"Delivery Window\",\n      \"date\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      },\n      \"delivery\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"Import\",\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"address2\": \"ste 3\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bd03cc1-600d-472b-80ce-13609fa65f54",
+              "name": "eBOL not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to update."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bol\": {\n    \"function\": \"Create\",\n    \"requestedPickupDate\": \"2022-11-20T00:00:00.000\",\n    \"isTest\": true,\n    \"requestorRole\": \"Third Party\",\n    \"specialInstructions\": \"Gate code 123 to enter complex\"\n  },\n  \"version\": \"2.1.0\",\n  \"commodities\": {\n    \"lineItemLayout\": \"Nested\",\n    \"handlingUnits\": [\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      },\n      {\n        \"count\": 2,\n        \"type\": \"SKD\",\n        \"weight\": 1500,\n        \"tareWeight\": 5,\n        \"weightUnit\": \"Pounds\",\n        \"length\": 48,\n        \"width\": 48,\n        \"height\": 48,\n        \"dimensionsUnit\": \"Inches\",\n        \"stackable\": false,\n        \"lineItems\": [\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          },\n          {\n            \"weight\": 1500,\n            \"classification\": \"55\",\n            \"description\": \"Small frameless mirrors\",\n            \"hazardous\": true,\n            \"pieces\": 3,\n            \"packagingType\": \"BOX\",\n            \"weightUnit\": \"Pounds\",\n            \"nmfc\": \"86900\",\n            \"nmfcSub\": \"3\",\n            \"hazardousDescription\": \"UN 1090, Acetone, 3, PG II\",\n            \"hazardousDetails\": {\n              \"weight\": 45,\n              \"weightUnit\": \"Pounds\",\n              \"class\": \"3\",\n              \"unnaNumber\": \"UN1234\",\n              \"propername\": \"Anhydrous ammonia\",\n              \"technicalName\": \"NH3\",\n              \"packingGroup\": \"2\",\n              \"contractNumber\": \"54321\"\n            }\n          }\n        ]\n      }\n    ],\n    \"lineItems\": \"string\"\n  },\n  \"payment\": {\n    \"terms\": \"Prepaid\"\n  },\n  \"origin\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"destination\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"billTo\": {\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    },\n    \"account\": \"12345\",\n    \"locationId\": \"808\",\n    \"address2\": \"ste 3\"\n  },\n  \"images\": {\n    \"includeBol\": true,\n    \"includeShippingLabels\": true,\n    \"shippingLabels\": {\n      \"format\": \"Avery\",\n      \"quantity\": 5,\n      \"position\": 2\n    },\n    \"email\": {\n      \"includeBol\": true,\n      \"includeLabels\": true,\n      \"addresses\": [\n        \"dispatch@shipper.com\"\n      ]\n    }\n  },\n  \"notifications\": [\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    },\n    {\n      \"phoneNumber\": \"8881234567\",\n      \"email\": \"dispatch@consignee.com\"\n    }\n  ],\n  \"referenceNumbers\": {\n    \"pro\": \"123456-7\",\n    \"quoteId\": \"E556724\",\n    \"shipmentId\": \"SID9743985\",\n    \"masterBol\": \"MBL98472587\",\n    \"trailerId\": \"<string>\",\n    \"manifestId\": \"<string>\",\n    \"bol\": [\n      \"BL19498432\",\n      \"BL99744565\"\n    ],\n    \"po\": [\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      },\n      {\n        \"number\": \"554238\",\n        \"pieces\": 5,\n        \"weight\": 150,\n        \"weightUnit\": \"Pounds\",\n        \"palletized\": true,\n        \"additionalShipperInfo\": \"Freight must always stay upright\"\n      }\n    ],\n    \"additionalReferences\": [\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      },\n      {\n        \"name\": \"Customer Reference Id\",\n        \"value\": \"CRID3452-01\"\n      }\n    ]\n  },\n  \"shipmentTotals\": {\n    \"grossWeight\": 2000,\n    \"netWeight\": 1993,\n    \"weightUnit\": \"Pounds\",\n    \"handlingUnits\": 2,\n    \"linearLength\": 96,\n    \"dimensionsUnit\": \"Inches\",\n    \"cube\": 128,\n    \"cubeDimensionsUnit\": \"Feet\",\n    \"declaredValue\": 7,\n    \"currency\": \"USD\"\n  },\n  \"accessorials\": {\n    \"codes\": [\n      \"IDL\",\n      \"LFTP\"\n    ],\n    \"hazardousDetails\": {\n      \"emergencyContact\": {\n        \"name\": \"Manny Delgato\",\n        \"phone\": \"7775558899\"\n      }\n    },\n    \"cod\": {\n      \"amount\": \"56.71\",\n      \"currency\": \"USD\",\n      \"terms\": \"Collect\",\n      \"customerCheckAcceptable\": true,\n      \"remitTo\": {\n        \"name\": \"Dog Beds by Stella\",\n        \"address1\": \"121 S. Cliffwood Ave.\",\n        \"address2\": \"Suite 55\",\n        \"city\": \"Los Angeles\",\n        \"stateProvince\": \"CA\",\n        \"postalCode\": \"90001\",\n        \"country\": \"USA\"\n      }\n    },\n    \"sortAndSegregateDetails\": {\n      \"pieces\": 25\n    },\n    \"fullValueCoverageDetails\": {\n      \"monetaryValue\": \"100.00\",\n      \"currency\": \"USD\"\n    },\n    \"markDetails\": {\n      \"pieces\": 25\n    },\n    \"limitedAccessType\": {\n      \"origin\": \"Church\",\n      \"destination\": \"Secure\"\n    },\n    \"timeCriticalDetails\": {\n      \"type\": \"Delivery Window\",\n      \"date\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    },\n    \"appointmentDetails\": {\n      \"pickup\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      },\n      \"delivery\": {\n        \"start\": \"2021-05-20T00:00:00.000\",\n        \"end\": \"2021-05-22T00:00:00.000\"\n      }\n    }\n  },\n  \"customsBroker\": {\n    \"type\": \"Import\",\n    \"name\": \"Closets Closets Closets\",\n    \"address1\": \"12 S. Closets Place\",\n    \"address2\": \"ste 3\",\n    \"city\": \"Los Angeles\",\n    \"stateProvince\": \"CA\",\n    \"postalCode\": \"90001\",\n    \"country\": \"USA\",\n    \"contact\": {\n      \"phone\": \"5552226666\",\n      \"phoneExt\": \"99\",\n      \"name\": \"Jay Pritchett\",\n      \"email\": \"jpritchett@closets.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "929013f2-866d-4eaa-9a77-ef74f1783624",
+          "name": "Delete an Electronic Bill of Lading",
+          "request": {
+            "name": "Delete an Electronic Bill of Lading",
+            "description": {
+              "content": "This operation deletes an existing Electronic Bill of Lading.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bol",
+                "v1",
+                "app",
+                ":pro"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pro",
+                  "description": "(Required) PRO Number of eBOL to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a699254-27a9-45fb-8840-27a578fcdd1e",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "564ba075-d24e-4fc2-a0f4-9fa5120efc8f",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4df3072b-8b5c-4168-9507-2c660c82868e",
+              "name": "eBOL not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bol",
+                    "v1",
+                    "app",
+                    ":pro"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pro",
+                      "description": "(Required) PRO Number of eBOL to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4153130a-b7ec-4d68-b5d5-43e2345c0083",
+    "name": "Electronic Bill Of Lading Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This document provides an electronic Bill of Lading (eBOL). The eBOL is a legal document that provides a contract between the shipper, carrier and consignee stating what goods are being shipped, where the shipment is coming from and where it’s headed to. “Pro” number is the unique identifier for the document for update and delete functions.",
+      "type": "text/plain"
+    }
+  }
+}

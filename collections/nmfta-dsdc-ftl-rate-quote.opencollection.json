@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rate Quote API",
+    "version": "1.0.0-public-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rate Quote API Standards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a rate quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/ratequote/app",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a rate quote"
+        },
+        {
+          "info": {
+            "name": "Get a rate quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/ratequote/app/:quoteId",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a rate quote"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

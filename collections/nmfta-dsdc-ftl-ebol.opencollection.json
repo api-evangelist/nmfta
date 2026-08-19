@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electronic Bill Of Lading API",
+    "version": "1.0.0-public-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carrier API Standards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create/Update/Delete an Electronic Bill of Lading",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/bol/v1/app",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "## Request\n\nAs a Shipper/3rd Party, I want to Create/Update/Delete an Electronic Bill of Lading and send shipment\ninformation for a particular shipment to a Carrier.\n\n- In a request, the Shipper/3rd Party MUST identify themselves so the Carrier is aware of\nwho is sending the BOL information\n  - Types of Roles: Shipper, Third Party, Consignee\n- In a request, the Shipper/3rd Party MUST provide a requested pickup date. The\nrequested pickup date MUST be in date/time format. The API will allow for a "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

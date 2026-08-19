@@ -1,0 +1,1898 @@
+{
+  "item": [
+    {
+      "id": "4cac0582-cbef-40d3-a68c-18e899ffdd07",
+      "name": "Invoice Management",
+      "description": {
+        "content": "Endpoints for creating, retrieving, and managing invoices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49812bbe-e094-437b-bfe5-ba3594ae4c40",
+          "name": "Create an Invoice",
+          "request": {
+            "name": "Create an Invoice",
+            "description": {
+              "content": "## Request        \nAs a Carrier, I want to Create an Invoice and send shipment information for a particular \nShipper or 3rd Party.        \n- In a request, the Carrier MUST provide a shipmentID provided by the Shipper or \n  3rd Party participant. \n  - LTL Consideration: Pro Number may be valid for proper tracking to the \n    BOL generation process. \n- In a request, the Carrier MUST identify themselves, so the Shipper/3rd Party is \n  aware of who is sending the Invoice information\n    - Types of universal identifiers: DOT Number or MC number.\n- In a request, the Carrier MUST designate the Invoice Number to properly record \n  the instance of payment for the Shipper/3rd party.\n- In a request, the Carrier MUST designate a Date associated with their shipment\n  so that proper payment intervals are followed to by the Shipper/3rd party.\n- In a request, the Carrier MUST specify an amount for proper payment tracking \n  and agreed upon terms specified in the tender. \n\n## Response        \n- In a response, NMFTA MUST provide a response for successful or failure \n  to transfer identification and values.\n- In a response, the Shipper/3rd Party MUST provide an acceptance or \n  failure of transfer.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5797b27-0e77-4cfb-95c7-89d052514ded",
+              "name": "Invoice created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c75dce34-e814-4c13-8356-87ca8f2e5974",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cb4edee-59c1-42f6-ba13-7aed8fa7470c",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a64c88d-57c4-4831-bda4-a55be215e6e6",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "As a Carrier, I want to list all Invoices.\n- The request MAY include optional query parameters to filter the results, such as \n  unique ID, shipment ID, DOT Number, MC Number, or invoice number.\n- All query parameters are optional and can be used individually or in combination to filter results.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uniqueID",
+                  "value": "<string>",
+                  "description": "Unique identifier for the invoice."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentID",
+                  "value": "<string>",
+                  "description": "Unique identifier for the shipment associated with the invoice."
+                },
+                {
+                  "disabled": false,
+                  "key": "DOT",
+                  "value": "<string>",
+                  "description": "Department of Transportation identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "MC",
+                  "value": "<string>",
+                  "description": "Motor Carrier Identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoiceNumber",
+                  "value": "<string>",
+                  "description": "Invoice number to filter the invoice."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "865b8a2b-faf2-47a2-9a0f-64fd5bbcd26f",
+              "name": "Invoices retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uniqueID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference ./schemas/schemas.yaml#/components/schemas/Invoice not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference ./schemas/schemas.yaml#/components/schemas/Invoice not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58593621-95d8-4a05-a9ac-9c7be5cdc959",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uniqueID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51d8efe8-bf95-40b7-8592-7bb1eda73348",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uniqueID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f923d63-84cf-446a-b1e1-574d49c1e88f",
+          "name": "Get an Invoice",
+          "request": {
+            "name": "Get an Invoice",
+            "description": {
+              "content": "As a Carrier, I want to retrieve an Invoice by its unique identifier.\n- In a request, the Carrier MUST provide the Unique Identifier in the path to retrieve the specific invoice details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":uniqueID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uniqueID",
+                  "description": "(Required) Unique identifier for the invoice to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d95ae30a-8688-4c5b-8306-278162e2e257",
+              "name": "Invoice retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c98307d-f61b-4fbb-9860-7ab3ee4d7085",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3d72bc0-4c08-44d8-83e4-b8dee9fb7eb9",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e05fb812-33f3-4848-94c3-b214db461296",
+          "name": "Update (Replace) an Invoice",
+          "request": {
+            "name": "Update (Replace) an Invoice",
+            "description": {
+              "content": "Fully replaces an existing invoice with the provided data.\n- The request MUST provide the Unique Identifier in the path to identify the invoice to update.\n- The request body MUST contain the complete invoice object with all required fields (uniqueID, shipmentID, DOT, MC, invoiceHeader, invoiceCharges).\n- The request MAY include optional comments as a query parameter.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":uniqueID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "comments",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec\"}",
+                  "description": "Optional comments related to the invoice."
+                },
+                {
+                  "disabled": false,
+                  "key": "comments",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec\"}",
+                  "description": "Optional comments related to the invoice."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uniqueID",
+                  "description": "(Required) Unique identifier for the invoice to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac8fc351-459f-4214-91c4-4fa658667bb6",
+              "name": "Invoice updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b20b213d-7b3e-444f-86c1-51109356cd54",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9b236be-8cab-42db-bce8-74f7634838d5",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "comments",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5013be73-d5f8-45f8-99e0-93dbf72e83cc",
+          "name": "Delete an Invoice",
+          "request": {
+            "name": "Delete an Invoice",
+            "description": {
+              "content": "Deletes an existing invoice by its unique identifier.\n- The request MUST provide the Unique Identifier in the path to identify the invoice to delete.\n- The request MAY include optional comments as a query parameter for the deletion.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":uniqueID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec",
+                  "description": "Optional comments related to the invoice deletion."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uniqueID",
+                  "description": "(Required) Unique identifier for the invoice to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60c14943-d1d6-40db-893f-240fbe94d20f",
+              "name": "Invoice deleted successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c42d481-c5f6-484a-a95b-39541ba30692",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff4b584e-0a4e-4929-9f75-cdf5ad69a283",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":uniqueID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uniqueID",
+                      "description": "(Required) Unique identifier for the invoice to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1801b28c-6eb5-4b52-8c7f-0b45cddc554f",
+      "name": "Document Management",
+      "description": {
+        "content": "Endpoints for uploading, and managing supporting documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b97d16c8-d4f6-4cdb-b424-f7da669c6674",
+          "name": "Upload Supporting Documents",
+          "request": {
+            "name": "Upload Supporting Documents",
+            "description": {
+              "content": "## Request\nAs a Carrier, I want to upload supporting documents for an invoice.\n- In a request, the Carrier MUST provide the Invoice Number to associate the document with the correct invoice.\n- In a request, the Carrier MUST designate the document type so that the acceptance of the response can be \n  tracked on the Shipper/3rd Party side. This can range from the Invoice to the supported twenty-four (24) document types.\n- The request MUST include the document file in PDF, TIF, JPEG, or PNG format.\n- The maximum file size MUST not exceed 25 MB.\n- In a request, the Carrier MUST specify the document type so that the \n  acceptance of the response can be tracked on the Shipper/3rd Party side. This \n  can range from the Invoice to the supported twenty-four (24) document types.\n    - Bill of Lading (BOL)\n    - Catalog Page (CAT)\n    - Communications & Correspondence (COMM)\n    - Contract (CON)\n    - Customer Specific Rules Tariff (RULE)\n    - Dimension Certificate (DIM)\n    - Detention Receipt (DTR)\n    - Discount Matrix (DIS)\n    - Freight Bill (FRB)\n    - Fuel Tables (FUEL)\n    - Invoice (INV)\n    - Inspection Certificate (INSP)\n    - Letter of Authority (LOA)\n    - Lumper Receipt (LPR)\n    - Material Safety Data Sheet (MSDS)\n    - Packing Slip (PAC)\n    - Photos (IMG)\n    - Proof of Delivery (POD)\n    - Quote (QUO)\n    - Residential Dispute Support (RESI)\n    - Spec Sheet (SPEC)\n    - Scale (SCL)\n    - Statement Bill (STB)\n    - Weight & Inspection Certificate (W&I)\n\n## Response\n  - In a response, NMFTA MUST provide a response for successful or failure to transfer identification and values.\n  - In a response, the Shipper/3rd Party MUST provide an acceptance or failure of transfer.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6620af4-294f-4a90-9ca8-dd521516aa59",
+              "name": "Document uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "052bc544-559d-429a-ad2d-13e9f74b7c08",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5f29cd2-47b7-4cac-9f8e-15f5d62c44e1",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05a8930d-506b-422c-b9ee-455462ed689d",
+          "name": "List Supporting Documents",
+          "request": {
+            "name": "List Supporting Documents",
+            "description": {
+              "content": "As a Carrier, I want to list all supporting documents for invoices.\n- The request MAY include optional query parameters such as Invoice Number, DOT Number, MC Number, or documentType to filter the results.\n- All query parameters are optional and can be used individually or in combination to filter results.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "invoiceNumber",
+                  "value": "<string>",
+                  "description": "Invoice number to filter the documents."
+                },
+                {
+                  "disabled": false,
+                  "key": "DOT",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "MC",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentType",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/DocumentType not found in the OpenAPI spec\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentType",
+                  "value": "{\"value\":\"reference ./schemas/schemas.yaml#/components/schemas/DocumentType not found in the OpenAPI spec\"}"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a76676f-0cd5-4054-a366-f65db8746117",
+              "name": "Documents retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference ./schemas/schemas.yaml#/components/schemas/DocumentResponse not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference ./schemas/schemas.yaml#/components/schemas/DocumentResponse not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2bf4238-6204-4461-900a-4f924f6786e0",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1049ccd3-6efe-449a-b1fb-424154cfb9a4",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "invoiceNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DOT",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MC",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b206e33-fedb-4769-a26b-50add389f9ad",
+          "name": "Retrieve Supporting Documents",
+          "request": {
+            "name": "Retrieve Supporting Documents",
+            "description": {
+              "content": "As a Carrier, I want to retrieve supporting documents for an invoice by its Invoice Number.\n- In a request, the Carrier MUST provide the Invoice Number in the path to retrieve the specific documents.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":invoiceNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceNumber",
+                  "description": "(Required) Invoice number to filter the documents."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8f762b8-00df-42ff-af31-27fb33e64b98",
+              "name": "Document(s) retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to filter the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c44e24d4-f980-4ede-b578-48dec7d3150b",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to filter the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59d29d54-1f52-42e9-af33-a4321aab3e1c",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to filter the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "002f7ba9-755f-4c5f-ba73-4abc3cbafb2c",
+          "name": "Delete Supporting Documents or Files",
+          "request": {
+            "name": "Delete Supporting Documents or Files",
+            "description": {
+              "content": "Delete all supporting documents for an invoice, or specific files within the documents.\n- The request MUST provide the Invoice Number in the path to identify the documents to delete.\n- The request MAY include optional fileIds as a query parameter to delete specific files. If omitted, all documents for the invoice will be deleted.\n- The request MAY include optional comments as a query parameter for the deletion.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":invoiceNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileIds",
+                  "value": "<string>",
+                  "description": "List of file IDs to delete. If omitted, all documents for the invoice will be deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "fileIds",
+                  "value": "<string>",
+                  "description": "List of file IDs to delete. If omitted, all documents for the invoice will be deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec",
+                  "description": "Optional comments related to the document deletion."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceNumber",
+                  "description": "(Required) Invoice number to identify the documents."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad443fcc-d0f0-407d-9f28-11b41478f620",
+              "name": "Document(s) or file(s) deleted successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to identify the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff5dd6c0-ce3a-4166-863a-47a490d9374b",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to identify the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16bc1c2f-f906-4a66-90ab-ea58ab6618be",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":invoiceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "value",
+                      "value": "reference ./schemas/schemas.yaml#/components/schemas/Comment not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceNumber",
+                      "description": "(Required) Invoice number to identify the documents."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "541718f6-7d63-4ffb-8de7-bd126e0c1f28",
+    "name": "Invoice & Document API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Overview\n\nNMFTA is on a journey with logistical and banking institutions to transform the electronic transfer of invoice data and supporting documents through an open-source API. Systems across the economic landscape will leverage this information to bring speed through data availability. Today, EDI and digital document uploads across numerous company specific applications are required for doing business within the logistical sector. Ultimately, this work will include managing a corpus of electronic data values and document file type returns with the focus on the transfer of the Invoice and supporting documents supporting all logistical types.\n\nPart of the journey is to build an open API to ensure all logistical and banking partners to reach a level of automation that scales with the business demand. With adoption of the FTL council, medium- and long-term value will be achieved for all parties across the economic markets and transportation providers. Teams from DSDC (Digital Standards Development Council) and support from the LTL council have come together for a collective goal to achieve business value for all.\n\n# The GAP\n\nMultiple sources and various technology implementations have created an endless landscape for shippers, carriers, and banking institutions that continue to empower antiquated physical documentation or outgrown EDI processes. APIs do not currently have all consistent components to fully operationalize document data transfers and document type dissemination, especially in the areas of \"invoice data values\", \"bill of lading\" and \"freight bills\"\n\n# Value Proposition\n\nThe Invoice and Documents API will allow for the ability to seamlessly pass specific invoice and related shipment information regardless of transport type to obtain or pass an invoice or related documentation. This will transform the logistics industry by simplification of complex billing processes through accuracy and timeliness in one place will be paramount for all shipments. With a design to handle all complexities for any shipment, a simplified standard source will meet all business needs quickly while providing companies with the needed forecasting for growth.\n\n## Carriers\n\nProviding the ability to pass and create an invoice through details to a Shipper or 3rd Party through standard shipment details. Additional documentation will also be able to be passed for additional proof of payment through supporting document types through shipment criteria. The ease will allow for Carriers to ensure that they avoid being cornered within the market.\n\n## Shippers\n\nReceiving Carrier invoices and supplemental documentation for payment will allow for central standard empowering timely and accurate validation of services while providing the ability to eliminate slower physical or open-source transfers.\n\n## 3rd Party\n\nEnsuring no delay in data validation or accuracy in supplying the appropriate information to support Invoice and supporting documentation for all parties\n\n# Product Requirements Document (PRD)\n\nThe Product Requirements Document (PRD) for this API can be found [here](https://dsdcapis.github.io/full-truckload/api-prds/API%20Product%20Requirements%20-%20Invoice%20Documents.pdf).\n\n\nContact Support:\n Name: DSDC APIs Full Truckload",
+      "type": "text/plain"
+    }
+  }
+}

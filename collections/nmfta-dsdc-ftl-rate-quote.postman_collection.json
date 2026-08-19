@@ -1,0 +1,213 @@
+{
+  "item": [
+    {
+      "id": "953b213f-2b83-418f-b20b-ca245f6e7538",
+      "name": "Rate Quote API Standards",
+      "description": {
+        "content": "Standards for the FTL Rate Quote API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a0c8b1c-9ec9-4a30-ab42-57d58477a623",
+          "name": "Create a rate quote",
+          "request": {
+            "name": "Create a rate quote",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ratequote",
+                "app"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9194bcd4-595d-49be-8f1a-4d68d28e34ab",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratequote",
+                    "app"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a896437c-47a6-42ce-9374-afae548c3ffb",
+          "name": "Get a rate quote",
+          "request": {
+            "name": "Get a rate quote",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ratequote",
+                "app",
+                ":quoteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quoteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88b06814-9141-4069-bec2-70cc705c69ef",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratequote",
+                    "app",
+                    ":quoteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quoteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "339229a5-8426-425a-ae01-4f6e4e21b347",
+    "name": "Rate Quote API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Overview\n\nThe Rate Quote API provides a standard way to request freight rate quotes for\nFull Truckload (FTL) shipments. It enables shippers, carriers, and third parties\nto exchange rate information in a consistent, digitized format, reducing manual\nprocesses and improving pricing transparency across the supply chain.\n\n# Value Proposition\n\n## Shipper\n\nShippers can submit a single standardized rate quote request and receive\nresponses from one or more carriers, allowing them to compare rates, transit\ntimes, and service options without managing carrier-specific integrations.\n\n## Carrier\n\nCarriers can receive rate quote requests in a standard format, simplifying\nconnectivity with a large number of shippers and third parties while reducing\nonboarding costs and manual quoting processes.\n\n## 3rd Party\n\nThird parties such as brokers and 3PLs can embed the Rate Quote API into their\nplatforms to retrieve spot and contract rates programmatically, enabling\nautomated load matching and competitive rate shopping.\n\n\nContact Support:\n Name: DSDC APIs Rate Quote Full Truckload",
+      "type": "text/plain"
+    }
+  }
+}

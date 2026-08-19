@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "In-Transit Visibility API",
+    "version": "1.0.0-public-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List shipment events (page-based)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/events",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by canonical shipment id."
+              },
+              {
+                "name": "eventTypes",
+                "value": "",
+                "type": "query",
+                "description": "One or more event types."
+              },
+              {
+                "name": "occurredFrom",
+                "value": "",
+                "type": "query",
+                "description": "occurredAt >= this timestamp."
+              },
+              {
+                "name": "occurredTo",
+                "value": "",
+                "type": "query",
+                "description": "occurredAt < this timestamp."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "1-based page index."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Results per page."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction on `shipmentId`, `sequence`, `id`."
+              }
+            ]
+          },
+          "docs": "Returns a page of events. Pagination in headers; body uses EventsPage for consistency.\nResults are deterministically ordered by `shipmentId`, `sequence`, `id`.      \n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/subscriptions",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a page of subscriptions. Pagination in headers; body uses SubscriptionsPage for consistency.\nResults are deterministically ordered by `id`.      \n"
+        },
+        {
+          "info": {
+            "name": "Create a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a subscription to receive in-transit events via webhook. \nProvide the delivery configuration webhook url and hmac_secret_id  and filters event_types and shipment IDs. \nReturns the created Subscription on success.\n"
+        },
+        {
+          "info": {
+            "name": "Get a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single subscription by its unique ID.\nReturns the subscription's current configuration and status.\n"
+        },
+        {
+          "info": {
+            "name": "Update a subscription (merge-patch)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partial update using [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386). Provide only fields you want to change."
+        },
+        {
+          "info": {
+            "name": "Delete a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a subscription by its unique ID. Stops future deliveries and removes the subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
