@@ -43,88 +43,140 @@ x-category: Specification
 x-host: National Motor Freight Traffic Association
 x-host-structure: Trade association division
 apis:
-- aid: nmfta:nmfta-dsdc-ltl-ebol-api
-  name: DSDC LTL eBOL API
-  description: The Digital LTL Council's electronic bill of lading standard, version 2.1.0 — the council's
-    first and most adopted contract. This is the standard's own specification, not any carrier's implementation.
+- aid: nmfta:nmfta-carrier-api-standards-api
+  name: NMFTA Carrier API Standards API
+  description: Standards for Carrier APIs
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
-  - eBOL
-  - Bill of Lading
-  - LTL
+  - Carrier API Standards
   properties:
   - type: OpenAPI
-    url: openapi/nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml
+    url: openapi/nmfta-carrier-api-standards-api-openapi.yml
   - type: Documentation
     url: https://dsdc.nmfta.org/apis/ebol-api-standard
-- aid: nmfta:nmfta-dsdc-ltl-preliminary-freight-charges-api
-  name: DSDC LTL Preliminary Freight Charges API
-  description: Gives shippers, carriers and 3PLs visibility into freight charges as they evolve — reclassifications,
-    reweighs and accessorial changes mid-shipment rather than weeks later on the invoice. The only LTL
-    specification committed to the public DSDC repositories.
-  humanURL: https://dsdc.nmfta.org/apis/preliminary-freight-charges-api-standard
-  tags:
-  - Freight Charges
-  - Pricing
-  - LTL
-  properties:
-  - type: OpenAPI
-    url: openapi/nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml
   - type: SourceCode
     url: https://github.com/dsdcapis/less-than-truckload
-- aid: nmfta:nmfta-dsdc-ftl-ebol-api
-  name: DSDC FTL eBOL API
-  description: The Digital FTL Council's electronic bill of lading standard. Published in the public repository
-    as 1.0.0-public-preview while the DSDC website advertises 1.1.0 as released.
-  humanURL: https://dsdcapis.github.io/full-truckload/
-  tags:
-  - eBOL
-  - Bill of Lading
-  - FTL
-  properties:
-  - type: OpenAPI
-    url: openapi/nmfta-dsdc-ftl-ebol-openapi.yml
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
-- aid: nmfta:nmfta-dsdc-ftl-rate-quote-api
-  name: DSDC FTL Rate/Quote API
-  description: Full truckload rate and quote exchange between shippers, carriers and intermediaries. Published
-    as 1.0.0-public-preview.
-  humanURL: https://dsdcapis.github.io/full-truckload/
+- aid: nmfta:nmfta-document-management-api
+  name: NMFTA Document Management API
+  description: Endpoints for uploading, and managing supporting documents.
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
-  - Rate Quote
-  - Pricing
-  - FTL
+  - Document Management
   properties:
   - type: OpenAPI
-    url: openapi/nmfta-dsdc-ftl-rate-quote-openapi.yml
+    url: openapi/nmfta-document-management-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
-- aid: nmfta:nmfta-dsdc-ftl-invoice-and-documents-api
-  name: DSDC FTL Invoice and Documents API
-  description: Invoicing and supporting document exchange for full truckload movements. Published as 1.0.0-public-preview.
-  humanURL: https://dsdcapis.github.io/full-truckload/
+- aid: nmfta:nmfta-events-api
+  name: NMFTA Events API
+  description: Pull shipment events
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
-  - Invoicing
-  - Documents
-  - FTL
+  - Events
   properties:
   - type: OpenAPI
-    url: openapi/nmfta-dsdc-ftl-invoice-and-documents-openapi.yml
+    url: openapi/nmfta-events-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
-- aid: nmfta:nmfta-dsdc-ftl-in-transit-visibility-api
-  name: DSDC FTL In-Transit Visibility API
-  description: Shipment status and location events while a full truckload movement is under way. Published
-    as 1.0.0-public-preview; the LTL council's equivalent is still in development.
-  humanURL: https://dsdcapis.github.io/full-truckload/
+- aid: nmfta:nmfta-in-transit-visibility-api-api
+  name: NMFTA In Transit Visibility API
+  description: >-
+    The In Transit Visibility API API from NMFTA — 0 operation(s) for in transit visibility api.
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
-  - Visibility
-  - Tracking
-  - FTL
+  - In Transit Visibility API
   properties:
   - type: OpenAPI
-    url: openapi/nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
+    url: openapi/nmfta-in-transit-visibility-api-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
+  - type: SourceCode
+    url: https://github.com/dsdcapis/full-truckload
+- aid: nmfta:nmfta-invoice-management-api
+  name: NMFTA Invoice Management API
+  description: Endpoints for creating, retrieving, and managing invoices.
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
+  tags:
+  - Invoice Management
+  properties:
+  - type: OpenAPI
+    url: openapi/nmfta-invoice-management-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
+  - type: SourceCode
+    url: https://github.com/dsdcapis/full-truckload
+- aid: nmfta:nmfta-preliminary-freight-charges-api
+  name: NMFTA Preliminary Freight Charges API
+  description: Access freight charges information
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
+  tags:
+  - Preliminary Freight Charges
+  properties:
+  - type: OpenAPI
+    url: openapi/nmfta-preliminary-freight-charges-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
+  - type: SourceCode
+    url: https://github.com/dsdcapis/full-truckload
+- aid: nmfta:nmfta-rate-quote-api-standards-api
+  name: NMFTA Rate Quote API Standards API
+  description: Standards for the FTL Rate Quote API
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
+  tags:
+  - Rate Quote API Standards
+  properties:
+  - type: OpenAPI
+    url: openapi/nmfta-rate-quote-api-standards-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
+  - type: SourceCode
+    url: https://github.com/dsdcapis/full-truckload
+- aid: nmfta:nmfta-subscriptions-api
+  name: NMFTA Subscriptions API
+  description: Manage webhook subscriptions
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/nmfta-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
+  - type: SourceCode
+    url: https://github.com/dsdcapis/full-truckload
+- aid: nmfta:nmfta-webhooks-api
+  name: NMFTA Webhooks API
+  description: Webhook management and testing
+  humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/nmfta-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://dsdc.nmfta.org/apis/ebol-api-standard
+  - type: SourceCode
+    url: https://github.com/dsdcapis/less-than-truckload
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
 common:
