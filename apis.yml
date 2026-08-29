@@ -32,6 +32,18 @@ tags:
 - Transportation
 - Trucking
 kind: standard
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nmfta.png
 access: 3rd-Party
 created: '2026-08-03'
