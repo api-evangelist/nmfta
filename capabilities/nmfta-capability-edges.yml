@@ -1,0 +1,67 @@
+slug: nmfta
+provider: NMFTA
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Carrier API Standards
+  spec_file: nmfta-carrier-api-standards-api-openapi.yml
+  capability_id: BC-2500
+  capability_id_l1: BC-2500
+  capability_name: Cargo Documentation Management
+  confidence: 0.88
+  evidence: POST /bol/v1/app  bol  Create/Update/Delete an Electronic Bill of Lading; schemas FTL_BOL_Request,
+    BOL_Response
+  reason: Operations create, update and delete electronic bills of lading for motor freight (FTL/LTL eBOL),
+    which is cargo transport documentation issuance. L2 left null because the listed BoL sub-capability
+    is scoped to ocean/inland-water while this is road freight, so the narrower id is not clearly supported.
+- tag: Events
+  spec_file: nmfta-events-api-openapi.yml
+  capability_id: BC-2510.10
+  capability_id_l1: BC-2510
+  capability_name: Event Capture and Status Management
+  confidence: 0.87
+  evidence: GET /v1/events  listEvents  List shipment events (page-based); "In-Transit Visibility is the
+    capability to track freight movements through milestones, events and location updates in real time"
+  reason: The operation exposes shipment milestone/location events for in-transit visibility, which is
+    event capture and status management within shipment visibility.
+- tag: Invoice Management
+  spec_file: nmfta-invoice-management-api-openapi.yml
+  capability_id: BC-2530.10
+  capability_id_l1: BC-2530
+  capability_name: Freight Invoicing Management
+  confidence: 0.87
+  evidence: POST /invoices  createInvoice  Create an Invoice; "focus on the transfer of the Invoice and
+    supporting documents supporting all logistical types"
+  reason: Full CRUD over freight invoices exchanged between logistics and banking partners is freight
+    invoice generation and distribution.
+- tag: Rate Quote API Standards
+  spec_file: nmfta-rate-quote-api-standards-api-openapi.yml
+  capability_id: BC-2520
+  capability_id_l1: BC-2520
+  capability_name: Freight Rating & Tariff Management
+  confidence: 0.82
+  evidence: POST /v1/ratequote/app  createRateQuote  Create a rate quote; "a standard way to request freight
+    rate quotes for Full Truckload (FTL) shipments"
+  reason: Operations request and retrieve freight rate quotes between shippers and carriers, i.e. freight
+    rating/pricing; L2 left null as the text does not clearly distinguish contract, spot or tariff rating.
+- tag: Preliminary Freight Charges
+  spec_file: nmfta-preliminary-freight-charges-api-openapi.yml
+  capability_id: BC-2530
+  capability_id_l1: BC-2530
+  capability_name: Freight Billing & Settlement Management
+  confidence: 0.7
+  evidence: '"proactively notifies responsible parties (debtors or their authorized agents ...) that a
+    motor carrier has created a freight bill for a shipment"; schema PreliminaryFreightCharge'
+  reason: Pushes pre-invoice freight charge information for a shipment to the debtor, part of the freight
+    billing chain; L2 withheld because the spec explicitly states "PFC is not an invoice" and no rating
+    or settlement sub-capability is squarely named.
