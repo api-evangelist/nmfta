@@ -1,0 +1,1365 @@
+openapi: 3.2.0
+info:
+  title: Nmfta Carrier API Standards API
+  version: '1.0'
+  description: 'Operations tagged Carrier API Standards across 2 of this provider''s published API definitions: nmfta-dsdc-ftl-ebol-openapi.yml, nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Carrier API Standards
+  description: Standards for Carrier APIs
+paths:
+  /bol/v1/app:
+    post:
+      summary: Create/Update/Delete an Electronic Bill of Lading
+      operationId: bol
+      description: "## Request\n\nAs a Shipper/3rd Party, I want to Create/Update/Delete an Electronic Bill of Lading and send shipment\ninformation for a particular shipment to a Carrier.\n\n- In a request, the Shipper/3rd Party MUST identify themselves so the Carrier is aware of\nwho is sending the BOL information\n  - Types of Roles: Shipper, Third Party, Consignee\n- In a request, the Shipper/3rd Party MUST provide a requested pickup date. The\nrequested pickup date MUST be in date/time format. The API will allow for a Pickup\nBegin and Pickup End date/time.\n  - LTL Consideration: The requested pickup date is NOT a formal LTL Pickup\nRequest\n- In a request, the Shipper/3rd Party MUST designate the origin and destination for the\nshipment. This can be via a location id understood by both parties, or via the address of\nthe location.\n- In a request, the Shipper/3rd Party MAY designate whether or not they want an image of\nthe BOL and/or Shipping Labels returned in the response.\n- In a request, the Shipper/3rd Party MAY designate a reference number associated with\ntheir shipment.\n- In a request, the Shipper/3rd Party MUST specify freight Billing terms for the shipment.\n- In a request, the Shipper/3rd Party MUST specify the Billing information for the shipment,\nincluding name, address, and contact information.\n- In a request, a Shipper/3rd Party MAY provide special shipment requirements that would\nindicate if accessorials are needed.\n  - Examples Include, but not limited to:\n    - Limited Access\n    - Time Critical\n    - Lift Gate Required\n    - Expedite\n- In a request, the Shipper/3rd Party MUST specify the commodity of the freight being\nshipped.\n  - LTL Consideration: The classification of LTL commodities MUST be included for\nan LTL shipment\n- In a request, additional details on the shipment MAY be included. The API will allow for\ninformation to be provided at both the commodity level, as well as at the total shipment\nlevel.\n  - LTL Consideration: The weight, handling units, and dimensions of an LTL\nshipment MUST be included\n  - Examples include:\n    - Weight\n    - Handling Units\n    - Linear Length\n    - Overall Dimensions\n- Shipper/3rd Party SHOULD provide details for a HAZMAT shipment. This information\nwith be conditionally required based on U.S. Department of Transportation's (DOT)\nHazardous Materials Regulations (49 CFR Parts 171-180). This includes:\n  - Hazardous Description\n  - Total Quantity\n    - Weight or Volume (i.e. lbs, kilograms, liters, etc.)\n  - Hazard class or Division\n  - Identification Number (UN/NA)\n  - Proper Name\n  - Technical Name\n  - Packaging Group\n  - Emergency Response\n    - 24-Hour Emergency Response\n    - Emergency Response Guidebook (ERG) Guide Number\n  - Marine Pollutant Marking\n  - Contact Number\n- Shipper/3rd Party SHOULD provide Total Shipment Value in a designated currency (USD\nas an option) for high value shipments that may require additional considerations by the\nCarrier.\n\n## Response\n\nAs a Carrier, I want to respond to the Shipper/3rd Party who created the electronic Bill of Lading\nand either accept or reject, as well as provide a unique shipment identifier associated with the\nshipment.\n\n- In a response, the Carrier must indicate if the eBOL was successfully accepted\n  - Reasons an eBOL request would be rejected:\n    - Not enough information provided in eBOL request\n    - Internal error in Carrier system (example: PRO number Shipper sent\n    already associated with a different shipment)\n- In a response, the Carrier MUST provide the timestamp of the transaction date for the\nelectronic bill of lading.\n- In a response, the Carrier MUST designate a reference number to uniquely identify the\nshipment, if one was not provided in the request.\n  - If a reference number was provided in the request, then it MUST be provided in\n  the response.\n  - Reference Best Practices for list of available reference number types.\n- The Carrier MUST provide BOL details in the response, and MUST provide a PDF image\nof the BOL and Shipping labels if requested in the Request body.\n"
+      tags:
+      - Carrier API Standards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: ./schemas/external-specs/ltl-ebol-2.1.0-openapi.yaml#/components/schemas/BOL_Request
+              - $ref: '#/components/schemas/FTL_BOL_Request'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: ./schemas/external-specs/ltl-ebol-2.1.0-openapi.yaml#/components/schemas/BOL_Response
+                - $ref: '#/components/schemas/FTL_BOL_Response'
+        '400':
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: ./schemas/external-specs/ltl-ebol-2.1.0-openapi.yaml#/components/schemas/Result_Status_Codes
+                  - $ref: ./schemas/ftl.yaml#/components/schemas/Result_Status_Codes
+  /bol/v1/app/:
+    post:
+      summary: Create an Electronic Bill of Lading
+      tags:
+      - Carrier API Standards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BOL_Request'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BOL_Response'
+        '400':
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result_Status_Codes'
+  /bol/v1/app/{pro}:
+    put:
+      summary: Update an Electronic Bill of Lading
+      tags:
+      - Carrier API Standards
+      description: This operation updates an existing Electronic Bill of Lading.
+      parameters:
+      - in: path
+        name: pro
+        schema:
+          type: string
+        required: true
+        description: PRO Number of eBOL to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BOL_Request'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BOL_Response'
+        '400':
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result_Status_Codes'
+        '404':
+          description: eBOL not found.
+    delete:
+      summary: Delete an Electronic Bill of Lading
+      description: This operation deletes an existing Electronic Bill of Lading.
+      parameters:
+      - in: path
+        name: pro
+        schema:
+          type: string
+        required: true
+        description: PRO Number of eBOL to delete.
+      operationId: ''
+      tags:
+      - Carrier API Standards
+      responses:
+        '200':
+          description: Successful response.
+        '404':
+          description: eBOL not found.
+        '400':
+          description: Error response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result_Status_Codes'
+components:
+  schemas:
+    FTL_BOL_Response:
+      allOf:
+      - type: object
+        properties:
+          version:
+            $ref: '#/components/schemas/FTL_Version'
+      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
+    FTL_Version:
+      title: Version
+      type: string
+      description: 'Indicates which version of the Digital FTL Council Bill of Lading spec you are consuming
+
+        '
+      enum:
+      - 1.0.0-TL
+    FTL_BOL_Request:
+      allOf:
+      - type: object
+        required:
+        - bol
+        - version
+        properties:
+          bol:
+            allOf:
+            - type: object
+              required:
+              - function
+              properties:
+                function:
+                  type: string
+                  description: 'The intent for the submitted request.
+
+                    '
+                  enum:
+                  - Create
+                  - Update
+                  - Delete
+            - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Header
+          version:
+            $ref: '#/components/schemas/FTL_Version'
+      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Request
+    BOL_Response:
+      title: LTL BOL Response
+      type: object
+      properties:
+        version:
+          type: string
+          example: 2.1.0
+          description: Indicates which version of the Digital LTL Council Bill of Lading spec was returned
+        transactionDate:
+          type: string
+          example: '2022-11-20T00:00:00.000'
+          description: The date associated with this electronic bill of lading transaction.
+        referenceNumbers:
+          type: object
+          properties:
+            pro:
+              type: string
+              example: PRO1234
+              description: Shipper's pre-assigned PRO number for the requested carrier. If one was not provided in the request, one will be auto assigned by the carrier.
+            shipmentConfirmationNumber:
+              type: string
+              example: SCN1234
+              description: Number provided by the carrier to acknowledge they accepted the BOL.
+        scac:
+          type: string
+          example: AAAB
+          description: 4-letter, Standard Carrier Alpha Code, returned by the carrier.
+        images:
+          type: object
+          properties:
+            bol:
+              type: string
+              description: Base 64 encoded PDF of the populated Bill Of Lading.  Any bar code within the image(s) should include the check digit when applicable.
+              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
+            shippingLabels:
+              type: string
+              description: Base 64 encoded PDF of the populated shipping Labels.  Any bar code within the image(s) should include the check digit when applicable.
+              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
+        termsAndConditions:
+          type: string
+          example: Terms and Conditions text available for download at www.myurl-nmfta.org
+          description: 'Add terms and conditions here if desired, or a link to your  terms and conditions.    '
+        messageStatus:
+          type: object
+          description: Object containing message status details.
+          properties:
+            status:
+              type: string
+              description: 'Indicates the status of the request. <br><br>
+
+                PASS - Request is successful with no exceptions.<br>
+
+                FAIL - Request is unsuccessful due to some exception.<br>
+
+                WARNING - Request is successful with some exception.
+
+                '
+              example: PASS
+            code:
+              type: string
+              description: Indicates response detail code.
+              example: '10000000'
+            message:
+              type: string
+              description: Provides information pertaining to the response code.
+              example: Transaction was successful.
+            resolution:
+              type: string
+              description: Provides guidance pertaining to the response code.
+              example: ''
+            information:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  type:
+                    type: string
+                  message:
+                    type: string
+              example: []
+        resultStatusCodes:
+          description: Error response
+          type: array
+          items:
+            $ref: '#/components/schemas/Result_Status_Codes'
+    BOL_Request:
+      title: LTL BOL Request
+      description: Objects and/or attributes that are required are indicated by a _**red asterisk**_*. For those that are conditionally required, it will be indicated within their description, including the condition in which they are required.
+      type: object
+      required:
+      - bol
+      - version
+      - commodities
+      - payment
+      - origin
+      - destination
+      - billTo
+      properties:
+        bol:
+          type: object
+          required:
+          - function
+          - requestedPickupDate
+          - isTest
+          - requestorRole
+          properties:
+            requestedPickupDate:
+              type: string
+              example: '2022-11-20T00:00:00.000'
+              description: 'The intended Ship Date. NOTE this does not serve as a Pickup Request
+
+
+                Valid Formats:
+
+                * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                '
+            function:
+              type: string
+              example: Create
+              description: 'The intent for the submitted request.
+
+
+                Valid Values:
+
+                * Create - Used for initial creation
+
+                '
+            isTest:
+              type: boolean
+              example: true
+              description: Indicates whether or not the submitted request is intended to be a test or not.
+            requestorRole:
+              type: string
+              example: Third Party
+              description: 'Identifies the party making the request.
+
+
+                Valid Values: See Requestor_Roles schema at the bottom of this page.
+
+                '
+            specialInstructions:
+              type: string
+              example: Gate code 123 to enter complex
+              description: 'Special delivery instructions that need to be followed for the shipment''s delivery.            '
+        version:
+          type: string
+          example: 2.1.0
+          description: 'Indicates which minor version of the Digital LTL Council Bill of Lading spec you are consuming
+
+
+            Valid values: 2.0.0, 2.0.1, 2.1.0
+
+            '
+        images:
+          type: object
+          properties:
+            includeBol:
+              type: boolean
+              description: "Indicates whether or not you want an image of the populated BOL returned in the response. \n\nDefault is false.\n"
+              example: true
+            includeShippingLabels:
+              type: boolean
+              description: "Indicates whether or not you want image(s) of the shipping labels returned in the response. \n\nDefault is false.\n"
+              example: true
+            shippingLabels:
+              type: object
+              properties:
+                format:
+                  type: string
+                  description: "Specifies the printer format type for the labels. \nRequired when images.includeShippingLabels is true. \nValid Values: See the Shipping_Label_Formats schema at the bottom of this page.\n"
+                  example: Avery
+                quantity:
+                  type: integer
+                  description: "Specifies the quantity of pages desired. \n\nRequired when images.includeShippingLabels is true.\n"
+                  example: 5
+                position:
+                  type: integer
+                  description: "Specifies the starting position for the shipping labels.\n\nRequired when images.shippingLabel is Avery. \n\nValid Values:\n* 1 - 6\n"
+                  example: 2
+            email:
+              type: object
+              properties:
+                includeBol:
+                  type: boolean
+                  description: 'Used to request the bill of lading PDF to be sent to one or more email addresses
+
+                    '
+                  example: true
+                includeLabels:
+                  type: boolean
+                  description: 'Used to request the shipping labels PDF to be sent to one or more email addresses
+
+                    '
+                  example: true
+                addresses:
+                  type: array
+                  description: 'Provide one or more email addresses to receive the bol and/or shipping labels PDF
+
+                    '
+                  items:
+                    type: string
+                  example:
+                  - dispatch@shipper.com
+        notifications:
+          type: array
+          description: include if you want notifications of shipment movements by text message or email
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+                description: Phone number of contact for updates about shipment movements
+                example: '8881234567'
+              email:
+                type: string
+                description: Email address of contact for updates about shipment movements
+                example: dispatch@consignee.com
+        referenceNumbers:
+          type: object
+          properties:
+            pro:
+              type: string
+              description: Shipper's pre-assigned PRO number for the requested carrier. If one was not provided in the request, one will be auto assigned by the carrier.  The PRO number value should include the check digit when applicable.
+              example: 123456-7
+            quoteId:
+              type: string
+              description: Quote (estimate) number provided by the carrier after submitting a rate quote request.
+              example: E556724
+            shipmentId:
+              type: string
+              description: Shipment Id (SID) number for the shipment.
+              example: SID9743985
+            masterBol:
+              type: string
+              description: Master Bill of Lading number for the shipment.
+              example: MBL98472587
+            trailerId:
+              type: string
+              description: When passed, indicates that the shipment is associated to a specific, spotted trailer.
+            manifestId:
+              type: string
+              description: When passed, indicates that the shipment is associated to a manifest that includes multiple shipments, possibly across multiple spotted trailers.
+            bol:
+              type: array
+              items:
+                type: string
+              example:
+              - BL19498432
+              - BL99744565
+            po:
+              type: array
+              items:
+                type: object
+                properties:
+                  number:
+                    type: string
+                    example: '554238'
+                    description: The Purchase Order number.
+                  pieces:
+                    type: integer
+                    example: 5
+                    description: Total pieces associated with the Purchase Order
+                  weight:
+                    type: integer
+                    example: 150
+                    description: Total weight associated with the Purchase Order
+                  weightUnit:
+                    type: string
+                    example: Pounds
+                    description: "The unit of measurement for weight.  Defaults to Pounds (Imperial) if not passed.\n\nValid Values: Pounds or Kilograms                     \n"
+                  palletized:
+                    type: boolean
+                    example: true
+                    description: Indicates whether or not the pieces associated with the purchase order are on a pallet/slip/skid or not.
+                  additionalShipperInfo:
+                    type: string
+                    example: Freight must always stay upright
+                    description: Additional information from shipper per line item
+            additionalReferences:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Customer Reference Id
+                    description: 'Indicates the name of the reference number being provided.
+
+                      '
+                  value:
+                    type: string
+                    example: CRID3452-01
+                    description: Additional reference number that correlates to the additional reference name.
+        payment:
+          type: object
+          required:
+          - terms
+          properties:
+            terms:
+              type: string
+              example: Prepaid
+              description: 'Freight Billing Terms for the shipment
+
+
+                Valid Values: See the Payment_Terms schema at the bottom of this
+
+                page.
+
+                '
+        commodities:
+          type: object
+          required:
+          - lineItemLayout
+          - handlingUnits
+          - lineItems
+          properties:
+            lineItemLayout:
+              type: string
+              example: Nested
+              description: '
+
+                Valid values: Nested or Stacked
+
+
+                Nested: Indicates if the Handling Unit/Line Item relationship is
+
+                known. If this value is used, each Line Item associated to a
+
+                Handling Unit is conditionally required to be passed within that
+
+                Handling Unit''s object.
+
+
+                Stacked: Indicates if the Handling Unit/Line Item relationship
+
+                is not known.  If this value is used, Line Items may passed
+
+                within any Handling Unit object.
+
+                '
+            handlingUnits:
+              type: array
+              items:
+                type: object
+                required:
+                - count
+                - type
+                - weight
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+                    description: Number of handling units being described
+                  type:
+                    type: string
+                    example: SKD
+                    description: 'Type of the handling units being described
+
+
+                      Valid Values: See the Handling_Unit_Types schema at the
+
+                      bottom of this page
+
+                      '
+                  tareWeight:
+                    type: integer
+                    example: 5
+                    description: Weight of the skids/pallets/slips used in the shipment.
+                  weight:
+                    type: integer
+                    description: Total weight for the specified handling units.
+                    example: 1500
+                  weightUnit:
+                    type: string
+                    example: Pounds
+                    description: "The unit of measurement for weight.  Defaults to Pounds (Imperial) if not passed.\n\nValid Values: Pounds or Kilograms                                    \n"
+                  length:
+                    type: integer
+                    example: 48
+                    description: The length of the handling units being described.
+                  width:
+                    type: integer
+                    example: 48
+                    description: The width of the handling units being described.
+                  height:
+                    type: integer
+                    example: 48
+                    description: The height of the handling units being described.
+                  dimensionsUnit:
+                    type: string
+                    example: Inches
+                    description: 'The unit of measurement for dimensions.  Defaults to Inches (Imperial) if not passed.
+
+
+                      Valid Values: Inches or Centimeters
+
+                      '
+                  stackable:
+                    type: boolean
+                    example: false
+                    description: 'Identifies whether or not the freight being described can be stacked on one another.
+
+
+                      Default is false.
+
+                      '
+                  lineItems:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - weight
+                      - classification
+                      - description
+                      - hazardous
+                      - stackable
+                      - pieces
+                      - packagingType
+                      properties:
+                        description:
+                          type: string
+                          example: Small frameless mirrors
+                          description: Description of the freight being described.
+                        weight:
+                          type: integer
+                          example: 1500
+                          description: Total weight for the specified lineItem.
+                        weightUnit:
+                          type: string
+                          example: Pounds
+                          description: 'The unit of measurement for weight.  Defaults to Pounds (Imperial) if not passed.
+
+
+                            Valid Values: Pounds or Kilograms
+
+                            '
+                        pieces:
+                          type: integer
+                          example: 3
+                          description: Number of individual pieces for the line item being described.
+                        packagingType:
+                          type: string
+                          example: BOX
+                          description: 'Packaging type for the individual pieces of the line item being described.
+
+
+                            Valid Values: See the Packaging_Types schema at the
+
+                            bottom of this page
+
+                            '
+                        classification:
+                          type: string
+                          example: '55'
+                          description: 'Classification of the line item being described.
+
+
+                            Valid Values: See the Classification_Codes schema at
+
+                            the bottom of this page.
+
+                            '
+                        nmfc:
+                          type: string
+                          description: NMFC code of the freight being described.
+                          example: '86900'
+                        nmfcSub:
+                          type: string
+                          description: The Sub value for the NMFC of the freight being described.
+                          example: '3'
+                        hazardous:
+                          type: boolean
+                          example: true
+                          description: Identifies whether or not the freight being described contains hazardous materials.
+                        hazardousDescription:
+                          type: string
+                          example: UN 1090, Acetone, 3, PG II
+                          description: Conditionally required when 'hazardous' is 'true'. Provides a detailed description of the hazardous item.
+                        hazardousDetails:
+                          type: object
+                          properties:
+                            weight:
+                              type: integer
+                              example: 45
+                              description: Total weight of hazardous material coveraged by one description.
+                            weightUnit:
+                              type: string
+                              example: Pounds
+                              description: "The unit of measurement for weight.  Defaults to Pounds (Imperial) if not passed.\n\nValid Values: Pounds or Kilograms                                                     \n"
+                            class:
+                              type: string
+                              example: '3'
+                              description: Class that the hazardous material is catogorized by.
+                            unnaNumber:
+                              type: string
+                              example: UN1234
+                              description: Proper Identification Number (UN or NA) corresponding to the Proper Shipping Name
+                            propername:
+                              type: string
+                              example: Anhydrous ammonia
+                              description: 'Proper shipping name for the hazardous material.
+
+
+                                From DOT regulations 172.101
+
+                                '
+                            technicalName:
+                              type: string
+                              example: NH3
+                              description: 'Technical name for the hazardous material. Not all hazardous items will have a technical name.
+
+                                From DOT regulations 172.101
+
+                                '
+                            packingGroup:
+                              type: string
+                              example: '2'
+                              description: Hazmat Packing Group number. Not all hazmat items have a packing group
+                            contractNumber:
+                              type: string
+                              example: '54321'
+                              description: The contract number with the hazardous materials contact
+        shipmentTotals:
+          type: object
+          properties:
+            grossWeight:
+              type: integer
+              example: 2000
+              description: Total weight of the entire shipment, including handling units (tare weight).
+            netWeight:
+              type: integer
+              example: 1993
+              description: Total weight of the entire shipment, not including handling units (tare weight).
+            weightUnit:
+              type: string
+              example: Pounds
+              description: 'The unit of measurement for weight.  Defaults to Pounds (Imperial) if not passed.
+
+
+                Valid Values: Pounds or Kilograms
+
+                '
+            handlingUnits:
+              type: integer
+              example: 2
+              description: Handling unit count for the entire shipment
+            linearLength:
+              type: integer
+              description: Linear length for the entire shipment
+              example: 96
+            dimensionsUnit:
+              type: string
+              example: Inches
+              description: 'The unit of measurement for dimensions.  Defaults to Inches (Imperial) if not passed.
+
+
+                Valid Values: Inches or Centimeters
+
+                '
+            cube:
+              type: integer
+              example: 128
+              description: Cubic volume of the entire shipment (total length X total width X total height).
+            cubeDimensionsUnit:
+              type: string
+              example: Feet
+              description: 'The unit of measurement for cubic dimensions.  Defaults to Feet (Imperial) if not passed.
+
+
+                Valid Values: Feet or Meters
+
+                '
+            declaredValue:
+              type: integer
+              example: 7
+              description: Total monetary value of the shipment in USD (sometimes needed for cross-border moves).
+            currency:
+              type: string
+              example: USD
+              description: 'Optional attribute to indicate currency of declaredValue.
+
+                Defaults to USD.
+
+
+                Valid values: See the Currencies schema at the bottom of this
+
+                page.
+
+                '
+        accessorials:
+          type: object
+          properties:
+            codes:
+              type: array
+              description: 'An array to hold the list of services requested for the shipment
+
+
+                Valid Values: See the Accessorial_Codes schema at the bottom of
+
+                this page.
+
+                '
+              items:
+                type: string
+              example:
+              - IDL
+              - LFTP
+            hazardousDetails:
+              type: object
+              description: 'Required if accessorial codes list contains HAZ and/or if any commodity line item''s hazardous flag is set to true.
+
+                '
+              properties:
+                emergencyContact:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Manny Delgato
+                      description: Full name of who should be contacted in the case of a hazardous materials-related issue.
+                    phone:
+                      type: string
+                      example: '7775558899'
+                      description: 'Phone number of who should be contacted in the case of a hazardous materials-related issue.
+
+
+                        Valid Formats:
+
+                        * ########## (10 digits - Area code + phone)
+
+                        '
+            cod:
+              type: object
+              description: "Required when accessorial code COD is present in the accessorial.codes list. \n"
+              properties:
+                amount:
+                  type: string
+                  example: '56.71'
+                  description: 'Amount to be received for the COD.
+
+
+                    Valid Formats:
+
+                    * ##.## (2 decimal places only)
+
+                    '
+                currency:
+                  type: string
+                  example: USD
+                  description: 'Optional attribute to indicate currency of COD. Defaults to USD.
+
+
+                    Valid values: See the Currencies schema at the bottom of this page.
+
+                    '
+                terms:
+                  type: string
+                  example: Collect
+                  description: 'Payment terms associated with the COD.
+
+
+                    Valid Values:
+
+                    * Prepaid
+
+                    * Collect
+
+                    '
+                customerCheckAcceptable:
+                  type: boolean
+                  example: true
+                  description: Indicates whether or not a customer check or cash is acceptable.
+                remitTo:
+                  type: object
+                  description: "Required when accessorial code COD is present in the accessorial.codes list. \n"
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the remit to company.
+                      example: Dog Beds by Stella
+                    address1:
+                      type: string
+                      description: Primary Address line of the remit to company.
+                      example: 121 S. Cliffwood Ave.
+                    address2:
+                      type: string
+                      description: Secondary Address of the remit to company.
+                      example: Suite 55
+                    city:
+                      type: string
+                      example: Los Angeles
+                      description: City Name of the remit to company.
+                    stateProvince:
+                      type: string
+                      description: 'Two letter state/province code of the remit to company.
+
+
+                        Valid Values: See the State_Province_Codes schema at the bottom of this page.
+
+                        '
+                      example: CA
+                    postalCode:
+                      type: string
+                      example: '90001'
+                      description: "The 5-digit + 4 or 5-digit for the United States, 5-digit for Mexico, or 6-character for Canada, postal code for the remit to company location.\n\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+                    country:
+                      type: string
+                      example: USA
+                      description: 'Three letter country code of the remit to company.
+
+
+                        Valid Values: See the Country_Codes schema at the bottom of this page.
+
+                        '
+            sortAndSegregateDetails:
+              type: object
+              description: "Required when accessorial code SRT is present in the accessorial.codes list. \n"
+              properties:
+                pieces:
+                  type: integer
+                  description: Number of pieces in a shipment to be sorted/segregated
+                  example: 25
+            fullValueCoverageDetails:
+              type: object
+              description: "Required when accessorial code FVC is present in the accessorial.codes list. \n"
+              properties:
+                monetaryValue:
+                  type: string
+                  description: "Value of the cargo.\n\n Valid Formats:\n* ##.## (2 decimal places only)\n"
+                  example: '100.00'
+                currency:
+                  type: string
+                  example: USD
+                  description: "Optional attribute to indicate currency of monetaryValue. \nDefaults to USD.\n\nValid values: See the Currencies schema at the bottom of this page.\n"
+            markDetails:
+              type: object
+              description: 'Required when accessorial code MARK is present in the accessorial.codes list.
+
+                '
+              properties:
+                pieces:
+                  type: integer
+                  description: Number of pieces in a shipment requiring marking or tagging
+                  example: 25
+            limitedAccessType:
+              type: object
+              description: 'Optional attribute to indicate the limited access type when accessorial code LTDAP or LTDAD is present in the accessorial.codes list.
+
+                '
+              properties:
+                origin:
+                  type: string
+                  description: "Optional attribute to indicate the limited access type when accessorial code LTDAP is present in the accessorial.codes list. \n\nValid Values: See the Limited_Access_Types schema at the bottom of this page. \n"
+                  example: Church
+                destination:
+                  type: string
+                  description: "Optional attribute to indicate the limited access type when accessorial code LTDAD is present in the accessorial.codes list. \n\nValid Values: See the Limited_Access_Types schema at the bottom of this page. \n"
+                  example: Secure
+            timeCriticalDetails:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: Delivery Window
+                  description: 'Type of delivery required for the requested Time Critical Service.
+
+
+                    Required when accessorials.code list include TCS.
+
+
+                    Valid Values: See the Time_Critical_Types schema at the bottom of this page.
+
+                    '
+                date:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      example: '2021-05-20T00:00:00.000'
+                      description: 'The date (with or without time) the shipment is requested to be delivered.
+
+
+                        Required when timeCriticalDetails.type is populated with any valid value.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+                    end:
+                      type: string
+                      example: '2021-05-22T00:00:00.000'
+                      description: 'The end date (with or without time) of the requested delivery window.
+
+
+                        Required when the timeCriticalDetails.type is Delivery Window.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+            appointmentDetails:
+              type: object
+              properties:
+                pickup:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      example: '2021-05-20T00:00:00.000'
+                      description: 'Starting appointment date (with or without time) the shipment is requested to be picked up.
+
+
+                        Required when accessorials.code list include APTP.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+                    end:
+                      type: string
+                      example: '2021-05-22T00:00:00.000'
+                      description: 'Ending appointment date (with or without time) the shipment is requested to be picked up.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+                delivery:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      example: '2021-05-20T00:00:00.000'
+                      description: 'Starting appointment date (with or without time) the shipment is requested to be delivered.
+
+
+                        Required when accessorials.code list include APTD.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+                    end:
+                      type: string
+                      example: '2021-05-22T00:00:00.000'
+                      description: 'Ending appointment date (with or without time) the shipment is requested to be delivered.
+
+
+                        Valid Formats: * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                        '
+        origin:
+          type: object
+          required:
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          - contact
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the origin.
+              example: '12345'
+            locationId:
+              type: string
+              description: Company's location id for the origin
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the origin location.
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary Address line for the origin location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary Address line for the origin location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the origin location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the origin location.
+
+
+                Valid Values: See the State_Province_Codes schema at the bottom of this page.
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: "The 5-digit + 4 or 5-digit for the United States, 5-digit for Mexico, or 6-character for Canada, postal code for the origin location.\n\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the origin location.
+
+
+                Valid Values: See the Country_Codes schema at the bottom of this page.
+
+                '
+            contact:
+              type: object
+              description: 'Object containing contact details for the shipper.
+
+                '
+              required:
+              - phone
+              properties:
+                phone:
+                  type: string
+                  example: '5552226666'
+                  description: 'Ten digit phone number, without country code and/or dashes, for the origin location''s contact person.
+
+
+                    Valid Formats: * ########## (10 digits - Area code + phone)
+
+                    '
+                phoneExt:
+                  type: string
+                  example: '99'
+                  description: Phone extensionfor the origin location's contact person.
+                name:
+                  type: string
+                  example: Jay Pritchett
+                  description: Name of the origin location's contact person.
+                email:
+                  type: string
+                  example: jpritchett@closets.com
+                  description: Email address of the origin location's contact person.
+        destination:
+          type: object
+          required:
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          - contact
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the destination.
+              example: '12345'
+            locationId:
+              type: string
+              description: Company's location id for the destination
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the destination location.
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary Address line for the destination location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary Address line for the destination location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the destination location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the destination location.
+
+
+                Valid Values: See the State_Province_Codes schema at the bottom of this page.
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: "The 5-digit + 4 or 5-digit for the United States, 5-digit for Mexico, or 6-character for Canada, postal code for the destination location.\n\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the destination location.
+
+
+                Valid Values: See the Country_Codes schema at the bottom of this page.
+
+                '
+            contact:
+              type: object
+              description: 'Object containing contact details for the destination.
+
+                '
+              required:
+              - phone
+              properties:
+                phone:
+                  type: string
+                  example: '5552226666'
+                  description: 'Ten digit phone number, without country code and/or dashes, for the destination location''s contact person.
+
+
+                    Valid Formats: * ########## (10 digits - Area code + phone)
+
+                    '
+                phoneExt:
+                  type: string
+                  example: '99'
+                  description: Phone extensionfor the destination location's contact person.
+                name:
+                  type: string
+                  example: Jay Pritchett
+                  description: Name of the destination location's contact person.
+                email:
+                  type: string
+                  example: jpritchett@closets.com
+                  description: Email address of the destination location's contact person.
+        billTo:
+          type: object
+          required:
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          - contact
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the billTo.
+              example: '12345'
+            locationId:
+              type: string
+              description: Company's location id for the billTo.
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the billTo location.
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary Address line for the billTo location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary Address line for the billTo location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the billTo location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the billTo location.
+
+
+                Valid Values: See the State_Province_Codes schema at the bottom of this page.
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: "The 5-digit + 4 or 5-digit for the United States, 5-digit for Mexico, or 6-character for Canada, postal code for the billTo location.\n\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the billTo location.
+
+
+                Valid Values: See the Country_Codes schema at the bottom of this page.
+
+                '
+            contact:
+              type: object
+              description: 'Object containing contact details for the billTo.
+
+                '
+              required:
+              - phone
+              properties:
+                phone:
+                  type: string
+                  example: '5552226666'
+                  description: 'Ten digit phone number, without country code and/or dashes, for the billTo location''s contact person.
+
+
+                    Valid Formats: * ########## (10 digits - Area code + phone)
+
+                    '
+                phoneExt:
+                  type: string
+                  example: '99'
+                  description: Phone extensionfor the billTo location's contact person.
+                name:
+                  type: string
+                  example: Jay Pritchett
+                  description: Name of the billTo location's contact person.
+                email:
+                  type: string
+                  example: jpritchett@closets.com
+                  description: Email address of the billTo location's contact person.
+        customsBroker:
+          type: object
+          properties:
+            type:
+              type: string
+              example: Import
+              description: "Used to identify a customs broker that is involved in a cross-border freight move.\n\nValid Values: Import or Export\n  * Import: customs broker handling the destination-side of the cross-border freight move\n  * Export: customs broker handling the origin-side of the cross-border freight move\n"
+            name:
+              type: string
+              description: Company name associated with the customsBroker location.
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary Address line for the customsBroker location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary Address line for the customsBroker location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the customsBroker location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the customsBroker location.
+
+
+                Valid Values: See the State_Province_Codes schema at the bottom of this page.
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: "The 5-digit + 4 or 5-digit for the United States, 5-digit for Mexico, or 6-character for Canada, postal code for the customsBroker location.\n\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the customsBroker location.
+
+
+                Valid Values: See the Country_Codes schema at the bottom of this page.
+
+                '
+            contact:
+              type: object
+              description: 'Object containing contact details for the customsBroker.
+
+                '
+              required:
+              - phone
+              properties:
+                phone:
+                  type: string
+                  example: '5552226666'
+                  description: 'Ten digit phone number, without country code and/or dashes, for the customsBroker location''s contact person.
+
+
+                    Valid Formats: * ########## (10 digits - Area code + phone)
+
+                    '
+                phoneExt:
+                  type: string
+                  example: '99'
+                  description: Phone extensionfor the customsBroker location's contact person.
+                name:
+                  type: string
+                  example: Jay Pritchett
+                  description: Name of the customsBroker location's contact person.
+                email:
+                  type: string
+                  example: jpritchett@closets.com
+                  description: Email address of the customsBroker location's contact person.
+    Result_Status_Codes:
+      description: "Numerical codes describing any logical status outcomes.  Not all codes apply to this API, but are included to encourage adoption of these standards across API specifications.\n\nValid Values:\n  * 100 - Informational General Information {{addl_info}}\n  * 200 - Warning Non-Critical Error {{addl_info}}\n  * 300 - Failure Data Error {{addl_info}}\n  * 400 - Failure Formatting Error {{addl_info}}\n  * 500 - Failure Business Logic Error {{addl_info}}\n  * 600 - Failure Carrier Specific Error {{addl_info}}\n  * 700 - Failure Outside Ship Window {{addl_info}}\n  * 800 - Failure No Freight - Will be re-attempted {{addl_info}}\n  * 900 - Failure No Freight - Pick UP Closed {{addl_info}}\n  * 1000 - Failure Freight Not ready {{addl_info}}\n  * 1100 - Failure Packaging Problem {{addl_info}}\n  * 1200 - Failure BoL PDF Image Not Created {{addl_info}}\n  * 1300 - Failure Label PDF Image not Created {{addl_info}}\n  * 1400 - Failure Duplicate Pro {{addl_info}}\n  * 1500 - Failure Unknown Reason {{addl_info}}\n  * 1600 - Failure Shipper Closed {{addl_info}}\n  * 1700 - Failure Duplicate PO {{addl_info}}"
+x-refined-from:
+- nmfta-dsdc-ftl-ebol-openapi.yml
+- nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml

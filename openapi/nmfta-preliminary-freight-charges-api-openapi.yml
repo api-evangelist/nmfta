@@ -1,0 +1,718 @@
+openapi: 3.2.0
+info:
+  title: (PFC) Preliminary Freight Charges API
+  description: "The Preliminary Freight Charges (PFC) API proactively notifies responsible parties (debtors or their authorized agents, including consignees when designated as agents) that a motor carrier has created a freight bill for a shipment associated with that party. Further notifications occur when the bill is updated or removed from their account.\n\n## Key Features\n- Proactive freight charge visibility throughout shipment lifecycle\n- Real-time notifications via subscription-based push API\n- Standardized event codes and change log tracking\n- Unified API supporting both detailed data and change log consumption\n\n## Important Notes\n- PFC is not an invoice or legal document\n- PFC should not be construed as a request for payment\n- The PFC process concludes once the invoice is produced and no further updates are expected\n- Monitoring begins immediately upon onboarding, including any shipments currently in flight\n- Access is restricted to debtors and/or authorized agents only (including consignees when authorized)\n- Data options, notification frequency, and data retention may be limited by carrier capabilities, as defined in the NMFTA PFC PRD\n- Notifications are triggered by changes to shipment-level attributes that affect freight charges, including:\n  - Changes to the Shipper, Consignee, or Bill-To party\n  - Changes to the account number used for pricing\n  - Modifications to payment terms\n  - Addition or removal of accessorial charges (including waived $0 charges)\n  - Shipment characteristic changes that affect rating\n- Customers may choose to process detailed data, change logs, or both, depending on implementation preference\n"
+  version: 1.0.4
+  x-prd-version: December 2025
+  contact:
+    name: NMFTA Digital LTL Council
+    email: support@nmfta.org
+  license:
+    name: NMFTA License
+    url: https://www.nmfta.org/license
+tags:
+- name: Preliminary Freight Charges
+  description: Access freight charges information
+paths:
+  /v1/preliminary-freight-charges/:
+    post:
+      summary: Post to Subscription defined endpoint PFC information
+      description: Post to Subscription defined endpoint PFC information.
+      operationId: postFreightCharges
+      tags:
+      - Preliminary Freight Charges
+      responses:
+        '200':
+          description: Freight charges history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PreliminaryFreightCharge'
+components:
+  schemas:
+    PreliminaryFreightCharge:
+      description: 'Submits a completed Preliminary Freight Charges (PFC) transaction to the endpoint defined by the subscription.
+
+        The payload includes shipment details, charges, references, origin/destination, and other supporting data.
+
+        The response returns a historical list of matched PFCs associated with the submission.
+
+        '
+      type: object
+      required:
+      - pfc
+      - payment
+      - shipmentTotals
+      - referenceNumbers
+      - origin
+      - destination
+      - billTo
+      - commodities
+      - charges
+      properties:
+        pfc:
+          type: object
+          required:
+          - uniqueID
+          - function
+          - date
+          - version
+          - isTest
+          properties:
+            uniqueID:
+              type: string
+              example: 1234567890EXLA
+              description: 'Unique ID for this transaction
+
+
+                Concatenate PRO + SCAC + Ship date (YYYYMMDD ie 20240224), strip special characters.
+
+                '
+            header:
+              type: object
+              properties:
+                function:
+                  type: string
+                  example: PFC1
+                  description: 'The version of PFC
+
+
+                    Valid Values: PFC1, PFC2 and so on
+
+                    '
+            date:
+              type: string
+              example: '2024-11-20T00:00:00.000'
+              description: 'Date of the status being reported
+
+
+                Valid Formats:
+
+                * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                '
+            version:
+              type: string
+              example: v1.0
+              description: 'Indicates which minor version of the Digital LTL Council PFC spec you are consuming
+
+
+                Valid values: v1.0
+
+                '
+            isTest:
+              type: boolean
+              example: false
+              description: Indicates whether or not the submitted request is intended to be a test or not.
+        payment:
+          type: object
+          required:
+          - terms
+          properties:
+            terms:
+              type: string
+              example: Prepaid
+              description: 'Freight Billing Terms for the shipment
+
+
+                Valid Values:
+
+                * Prepaid
+
+                * Collect
+
+                * Third Party
+
+                '
+        shipmentTotals:
+          type: object
+          required:
+          - pickupDate
+          - grossWeight
+          - weightUnit
+          - handlingUnits
+          properties:
+            pickupDate:
+              type: string
+              example: '2022-11-20T00:00:00.000'
+              description: 'Actual ship date
+
+
+                Valid Formats:
+
+                * YYYY-MM-DDTHH:mm:ss.sss (ISO 8601)
+
+                '
+            grossWeight:
+              type: integer
+              example: 2000
+              description: Total weight of the entire shipment, including handling units (tare weight)
+            netWeight:
+              type: integer
+              example: 1975
+              description: Total weight of the entire shipment, not including handling units (tare weight)
+            weightUnit:
+              type: string
+              example: Pounds
+              description: 'The unit of measurement for weight
+
+
+                Valid Values: Pounds or Kilograms
+
+                '
+            handlingUnits:
+              type: integer
+              example: 2
+              description: Handling unit count for the entire shipment
+            linearLength:
+              type: integer
+              example: 56
+              description: Linear length for the entire shipment
+            dimensionsUnit:
+              type: string
+              example: inches
+              default: inches
+              description: 'The unit of measurement for dimensions. Defaults to Inches (Imperial) if not passed
+
+
+                Valid Values: Inches or Centimeters
+
+                '
+            cube:
+              type: integer
+              example: 128
+              description: Cubic volume of the entire shipment (total length X total width X total height).
+            cubeDimensionsUnit:
+              type: string
+              example: Feet
+              default: feet
+              description: 'The unit of measurement for cubic dimensions. Defaults to Feet (Imperial) if not passed.
+
+
+                Valid Values: Feet or Meters
+
+                '
+            declaredValue:
+              type: integer
+              example: 700
+              description: Total monetary value of the shipment in USD (sometimes needed for cross-border moves)
+            currency:
+              type: string
+              example: USD
+              default: USD
+              description: 'Optional attribute to indicate currency of declaredValue. Defaults to USD
+
+
+                Valid values:
+
+                * CAD
+
+                * MXN
+
+                * USD
+
+                '
+        accessorials:
+          type: object
+          properties:
+            codes:
+              type: array
+              description: 'An array to hold the list of services requested for the shipment
+
+                '
+              items:
+                type: string
+              example:
+              - LFTD
+        referenceNumbers:
+          type: object
+          required:
+          - pro
+          properties:
+            pro:
+              type: string
+              description: Shipper's pre-assigned PRO number for the requested carrier.
+              example: '0011234567'
+            quoteId:
+              type: string
+              description: The quote (estimate) number provided by the carrier after submitting a rate quote request
+              example: E556724
+            shipmentId:
+              type: string
+              description: Shipment Id (SID) number for the shipment as provided by the shipper
+              example: SID556724
+            masterBol:
+              type: string
+              description: Master Bill of Lading number for the shipment as provided by the shipper
+              example: MBL98472578
+            trailerId:
+              type: string
+              description: When passed, indicates that the shipment is associated to a specific, spotted trailer as provided by the shipper
+              example: TID65821
+            manifestId:
+              type: string
+              description: When passed, indicates that the shipment is associated to a manifest that includes multiple shipments, possibly across multiple spotted trailers. Provided by the shipper
+              example: M653247
+            bol:
+              type: array
+              items:
+                type: string
+              example:
+              - BL1285647
+            po:
+              type: array
+              items:
+                type: object
+                properties:
+                  number:
+                    type: string
+                    example: '554238'
+                    description: The Purchase Order number as provided by the shipper
+                  pieces:
+                    type: integer
+                    example: 5
+                    description: Total pieces associated with the Purchase Order as provided by the shipper
+                  weight:
+                    type: string
+                    example: '150'
+                    description: Total weight associated with the Purchase Order as provided by the shipper
+                  weightUnit:
+                    type: string
+                    example: Pounds
+                    description: 'The unit of measurement for weight. Defaults to Pounds (Imperial) if not passed.
+
+
+                      Valid Values: Pounds or Kilograms
+
+                      '
+                  palletized:
+                    type: boolean
+                    example: true
+                    description: Indicates whether or not the pieces associated with the purchase order are on a pallet/slip/skid or not as provided by the shipper
+                  additionalShipperInfo:
+                    type: string
+                    example: Freight must always stay upright
+                    description: Additional information from the shipper per line item
+            additionalReferences:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Customer Reference ID
+                    description: 'Indicates the name of the reference number being provided as provided by the shipper
+
+                      '
+                  value:
+                    type: string
+                    example: CRID12345
+                    description: Additional reference number that correlates to the additional reference name as provided by the shipper
+        origin:
+          type: object
+          required:
+          - account
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the origin
+              example: '12345'
+            locationId:
+              type: string
+              description: Company's location ID for the origin
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the origin location
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary address line for the origin location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary address line for origin location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the origin location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the state/province location
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: "The 5-digit (or 6-characters for Canada) zip code for the origin location\nValid formats:\n  * 12345-1234 (5 digits + 4 - USA)\n  * 12345 (5 digits - USA/MEX)\n  * A1A1A1 (6 characters - CAN)\n  * A1A1A (5 characters - CAN)\n"
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the origin location
+
+                '
+        destination:
+          type: object
+          required:
+          - account
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the destination
+              example: '12345'
+            locationId:
+              type: string
+              description: Company's location ID for the destination
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the destination location
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary address line for the destination location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary address line for destination location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the destination location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the state/province destination location
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: 'The 5-digit (or 6-characters for Canada) zip code for the destination location
+
+                '
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the destination location
+
+                '
+        billTo:
+          type: object
+          required:
+          - account
+          - name
+          - address1
+          - city
+          - stateProvince
+          - postalCode
+          - country
+          properties:
+            account:
+              type: string
+              description: Company's account number/id for the billTo
+              example: '12345'
+            locationID:
+              type: string
+              description: Company's location ID for the billTo
+              example: '808'
+            name:
+              type: string
+              description: Company name associated with the billTo location
+              example: Closets Closets Closets
+            address1:
+              type: string
+              description: Primary address line for the billTo location
+              example: 12 S. Closets Place
+            address2:
+              type: string
+              description: Secondary address line for billTo location
+              example: ste 3
+            city:
+              type: string
+              description: City Name for the billTo location
+              example: Los Angeles
+            stateProvince:
+              type: string
+              description: 'Two letter state/province code for the state/province billTo location
+
+                '
+              example: CA
+            postalCode:
+              type: string
+              example: '90001'
+              description: 'The 5-digit (or 6-characters for Canada) zip code for the billTo location
+
+                '
+            country:
+              type: string
+              example: USA
+              description: 'Three letter country code for the billTo location
+
+                '
+        commodities:
+          type: object
+          required:
+          - handlingUnits
+          properties:
+            handlingUnits:
+              type: array
+              items:
+                type: object
+                required:
+                - count
+                - type
+                - weight
+                - weightUnit
+                - length
+                - width
+                - height
+                - dimensionUnit
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+                    description: Number of Handling units being described
+                  type:
+                    type: string
+                    example: SKD
+                    description: Type of the handling units being described
+                  tareWeight:
+                    type: integer
+                    example: 5
+                    description: Weight of the skids/pallets/slips used in the shipment
+                  weight:
+                    type: integer
+                    example: 1500
+                    description: Total weight for the specified handling units
+                  weightUnit:
+                    type: string
+                    example: Pounds
+                    description: 'The unit of measurement for weight
+
+
+                      Valid Values: Pounds or Kilograms
+
+                      '
+                  length:
+                    type: integer
+                    example: 48
+                    description: The length of the handling unit being described
+                  width:
+                    type: integer
+                    example: 48
+                    description: The width of the handling unit being described
+                  height:
+                    type: integer
+                    example: 48
+                    description: The height of the handling unit being described
+                  dimensionUnit:
+                    type: string
+                    example: Inches
+                    description: 'The unit of measurement for dimensions
+
+
+                      Valid Values: Inches or Centimeters
+
+                      '
+                  stackable:
+                    type: boolean
+                    example: false
+                    description: Identifies whether or not the freight being described can be stacked on one another
+                  lineItems:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - description
+                      - weight
+                      - weightUnit
+                      - pieces
+                      - packagingType
+                      - classification
+                      properties:
+                        description:
+                          type: string
+                          example: Small frameless mirrors
+                          description: Description of the freight being described
+                        weight:
+                          type: integer
+                          example: 1500
+                          description: Total weight for the specified lineItem
+                        weightUnit:
+                          type: string
+                          example: Pounds
+                          description: 'The unit of measurement for weight
+
+
+                            Valid Values: Pounds or Kilograms
+
+                            '
+                        pieces:
+                          type: integer
+                          example: 3
+                          description: Number of individual pieces for the line item being described
+                        packagingType:
+                          type: string
+                          example: box
+                          description: Packaging type for the individual pieces of the line item being described
+                        classification:
+                          type: string
+                          example: '55'
+                          description: Classification of the line item being described
+                        nmfc:
+                          type: string
+                          example: '86900'
+                          description: NMFC of the code being described
+                        nmfcSub:
+                          type: string
+                          example: '3'
+                          description: The Sub value for the NMFC of the freight being described
+        charges:
+          type: object
+          required:
+          - grossCharges
+          - discountAmount
+          - discountPercent
+          - fuelSurchargePercent
+          - fuelSurchargeAmount
+          - currencyType
+          - preliminaryTotalCharges
+          properties:
+            grossCharges:
+              type: number
+              example: 858.55
+              description: Gross charges for the shipment
+            discountAmount:
+              type: number
+              example: 657.65
+              description: Amount of Discount applied to the shipment
+            discountPercent:
+              type: integer
+              example: 77
+              description: Percent of Discount applied to the shipment
+            totalTareWeight:
+              type: integer
+              example: 770
+              description: Total weight of the skids/pallets/slips used in the shipment
+            tareWeightAmount:
+              type: number
+              example: 50
+              description: Charges for Tare Weight
+            deficitWeight:
+              type: number
+              example: 20.63
+              description: Added deficit weight
+            fuelSurchargePercent:
+              type: integer
+              example: 31
+              description: Fuel Charge Percent
+            fuelSurchargeAmount:
+              type: number
+              example: 62.88
+              description: Fuel Charge Amount
+            currencyType:
+              type: string
+              example: USD
+              description: 'Attribute to indicate currency of monetary charges. Defaults to USD
+
+
+                Valid Values:
+
+                * CAD
+
+                * MXN
+
+                * USD
+
+                '
+            weightUnit:
+              type: string
+              example: Pounds
+              description: 'The unit of measurement for weight charges
+
+
+                Valid Values: Pounds or Kilograms
+
+                '
+            detail:
+              type: string
+              example: House/Residential Delivery Fee
+              description: All other items in the section are standard. This line(s) would be other charges, accessorials, etc. There can be none, one or many
+            preliminaryTotalCharges:
+              type: number
+              example: 263.78
+              description: Preliminary Charges at the time of this notification
+            class:
+              type: array
+              description: Array of class based charges detail
+              items:
+                type: object
+                properties:
+                  freightClass:
+                    description: 'NMFC freight class (e.g., 55 = fairly dense freight like metal parts or bottled beverages). Standard values range from 50 to 500.
+
+                      '
+                    type: string
+                    example: '55'
+                  cwt:
+                    type: integer
+                    description: Cents per hundred weight
+                    example: 125
+            changeLog:
+              type: array
+              description: An Event is recorded for every event that had an impact for the processed day/API event
+              items:
+                type: object
+                properties:
+                  eventCategoryName:
+                    type: string
+                    example: Limited Access
+                    description: Event Category Name
+                  eventCode:
+                    type: string
+                    example: LTDAD
+                    description: Standard DLC Event Code
+                  eventSubCode:
+                    type: string
+                    example: FARM
+                    description: Standard DLC Event Sub Code
+                  carrierCode:
+                    type: string
+                    example: DBRS
+                    description: Optional Carrier Event Code
+                  carrierDescription:
+                    type: string
+                    example: Debris hauled away
+                    description: Optional Carrier Event Description
+                  weightAndResearchDocAvailable:
+                    type: boolean
+                    example: false
+                    description: Indicates if a Weight and Research document is available from the Carrier for this event
+            changeLogMessages:
+              type: array
+              description: Messages as apply to parent change log entry
+              items:
+                type: object
+                properties:
+                  informationalMessage:
+                    type: string
+                    example: The shipment has incurred a charge for an Inside Delivery Fee
+                    description: Informational message related to the change log entry
