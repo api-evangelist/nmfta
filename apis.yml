@@ -75,6 +75,8 @@ apis:
   description: Endpoints for uploading, and managing supporting documents.
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
+  - Document-Management
+  tags_raw:
   - Document Management
   properties:
   - type: OpenAPI
@@ -90,6 +92,8 @@ apis:
   description: Pull shipment events
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -166,6 +170,8 @@ apis:
   description: Manage webhook subscriptions
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -181,6 +187,8 @@ apis:
   description: Webhook management and testing
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
