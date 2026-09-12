@@ -200,6 +200,8 @@ apis:
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
 common:
+- type: Website
+  url: https://www.nmfta.org/
 - type: CapabilityMap
   url: capabilities/nmfta-capability-edges.yml
   name: NMFTA Business Capability Map
