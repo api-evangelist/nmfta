@@ -15,7 +15,9 @@ paths:
       - Subscriptions
       summary: List subscriptions
       operationId: listSubscriptions
-      description: "Returns a page of subscriptions. Pagination in headers; body uses SubscriptionsPage for consistency.\nResults are deterministically ordered by `id`.      \n"
+      description: 'Returns a page of subscriptions. Pagination in headers; body uses SubscriptionsPage for consistency.
+
+        Results are deterministically ordered by `id`.'
       parameters:
       - in: query
         name: status
@@ -53,7 +55,11 @@ paths:
       - Subscriptions
       summary: Create a subscription
       operationId: createSubscription
-      description: "Create a subscription to receive in-transit events via webhook. \nProvide the delivery configuration webhook url and hmac_secret_id  and filters event_types and shipment IDs. \nReturns the created Subscription on success.\n"
+      description: 'Create a subscription to receive in-transit events via webhook.
+
+        Provide the delivery configuration webhook url and hmac_secret_id and filters event_types and shipment IDs.
+
+        Returns the created Subscription on success.'
       requestBody:
         required: true
         content:
@@ -80,9 +86,7 @@ paths:
       operationId: getSubscription
       description: 'Retrieve a single subscription by its unique ID.
 
-        Returns the subscription''s current configuration and status.
-
-        '
+        Returns the subscription''s current configuration and status.'
       parameters:
       - in: path
         name: subscriptionId
@@ -103,7 +107,7 @@ paths:
       - Subscriptions
       summary: Update a subscription (merge-patch)
       operationId: updateSubscription
-      description: Partial update using [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386). Provide only fields you want to change.
+      description: Partial update using JSON Merge Patch. Provide only fields you want to change.
       parameters:
       - in: path
         name: subscriptionId
@@ -174,6 +178,52 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SubscriptionResponse:
+      allOf:
+      - $ref: '#/components/schemas/SubscriptionRequest'
+      - type: object
+        properties:
+          subscriptionId:
+            type: string
+            description: Unique identifier for the subscription
+            example: sub_abc123
+          status:
+            type: string
+            enum:
+            - active
+            - inactive
+            - suspended
+            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
+
+              '
+          createdAt:
+            type: string
+            format: date-time
+            description: Subscription creation timestamp
+            example: '2025-06-30T10:17:34.050Z'
+          updatedAt:
+            type: string
+            format: date-time
+            description: Last update timestamp
+            example: '2025-06-30T10:17:34.050Z'
+    DataOptions:
+      type: object
+      properties:
+        shipmentDataType:
+          type: string
+          enum:
+          - revenue_impacts_only
+          - all_monitored_events
+          default: revenue_impacts_only
+          description: Type of shipment data to include. Options may be limited by carrier capabilities.
+        eventType:
+          type: string
+          enum:
+          - revenue_impacts_only
+          - all_impacts
+          - no_events
+          default: revenue_impacts_only
+          description: Type of events to include. Options may be limited by carrier capabilities.
     Error:
       type: object
       required:
@@ -874,34 +924,6 @@ components:
                     type: string
                     example: The shipment has incurred a charge for an Inside Delivery Fee
                     description: Informational message related to the change log entry
-    SubscriptionResponse:
-      allOf:
-      - $ref: '#/components/schemas/SubscriptionRequest'
-      - type: object
-        properties:
-          subscriptionId:
-            type: string
-            description: Unique identifier for the subscription
-            example: sub_abc123
-          status:
-            type: string
-            enum:
-            - active
-            - inactive
-            - suspended
-            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
-
-              '
-          createdAt:
-            type: string
-            format: date-time
-            description: Subscription creation timestamp
-            example: '2025-06-30T10:17:34.050Z'
-          updatedAt:
-            type: string
-            format: date-time
-            description: Last update timestamp
-            example: '2025-06-30T10:17:34.050Z'
     SubscriptionRequest:
       type: object
       required:
@@ -944,24 +966,6 @@ components:
           - subscribed_accounts
           default: subscribed_accounts
           description: Scope of bills to include in notifications. 'all_accounts' refers to all accounts the user is authorized to access.
-    DataOptions:
-      type: object
-      properties:
-        shipmentDataType:
-          type: string
-          enum:
-          - revenue_impacts_only
-          - all_monitored_events
-          default: revenue_impacts_only
-          description: Type of shipment data to include. Options may be limited by carrier capabilities.
-        eventType:
-          type: string
-          enum:
-          - revenue_impacts_only
-          - all_impacts
-          - no_events
-          default: revenue_impacts_only
-          description: Type of events to include. Options may be limited by carrier capabilities.
   responses:
     NotFound:
       description: Resource not found
@@ -975,6 +979,15 @@ components:
             details:
               resource: proNumber
               value: OTPRO 999-9999999
+    Forbidden:
+      description: Access denied - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: FORBIDDEN
+            message: User not authorized as debtor or agent
     BadRequest:
       description: Bad request - invalid parameters or request body
       content:
@@ -987,15 +1000,15 @@ components:
             details:
               field: webhookUrl
               error: Must be a valid URI
-    Forbidden:
-      description: Access denied - insufficient permissions
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
           example:
-            code: FORBIDDEN
-            message: User not authorized as debtor or agent
+            code: UNAUTHORIZED
+            message: Authentication credentials missing or invalid
     Conflict:
       description: Conflict - resource already exists or request cannot be completed
       content:
@@ -1007,15 +1020,6 @@ components:
             message: A subscription for this account already exists
             details:
               accountId: '123456'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: UNAUTHORIZED
-            message: Authentication credentials missing or invalid
 x-refined-from:
 - nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
 - nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml

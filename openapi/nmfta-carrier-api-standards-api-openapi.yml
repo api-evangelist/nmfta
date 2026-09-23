@@ -11,7 +11,168 @@ paths:
     post:
       summary: Create/Update/Delete an Electronic Bill of Lading
       operationId: bol
-      description: "## Request\n\nAs a Shipper/3rd Party, I want to Create/Update/Delete an Electronic Bill of Lading and send shipment\ninformation for a particular shipment to a Carrier.\n\n- In a request, the Shipper/3rd Party MUST identify themselves so the Carrier is aware of\nwho is sending the BOL information\n  - Types of Roles: Shipper, Third Party, Consignee\n- In a request, the Shipper/3rd Party MUST provide a requested pickup date. The\nrequested pickup date MUST be in date/time format. The API will allow for a Pickup\nBegin and Pickup End date/time.\n  - LTL Consideration: The requested pickup date is NOT a formal LTL Pickup\nRequest\n- In a request, the Shipper/3rd Party MUST designate the origin and destination for the\nshipment. This can be via a location id understood by both parties, or via the address of\nthe location.\n- In a request, the Shipper/3rd Party MAY designate whether or not they want an image of\nthe BOL and/or Shipping Labels returned in the response.\n- In a request, the Shipper/3rd Party MAY designate a reference number associated with\ntheir shipment.\n- In a request, the Shipper/3rd Party MUST specify freight Billing terms for the shipment.\n- In a request, the Shipper/3rd Party MUST specify the Billing information for the shipment,\nincluding name, address, and contact information.\n- In a request, a Shipper/3rd Party MAY provide special shipment requirements that would\nindicate if accessorials are needed.\n  - Examples Include, but not limited to:\n    - Limited Access\n    - Time Critical\n    - Lift Gate Required\n    - Expedite\n- In a request, the Shipper/3rd Party MUST specify the commodity of the freight being\nshipped.\n  - LTL Consideration: The classification of LTL commodities MUST be included for\nan LTL shipment\n- In a request, additional details on the shipment MAY be included. The API will allow for\ninformation to be provided at both the commodity level, as well as at the total shipment\nlevel.\n  - LTL Consideration: The weight, handling units, and dimensions of an LTL\nshipment MUST be included\n  - Examples include:\n    - Weight\n    - Handling Units\n    - Linear Length\n    - Overall Dimensions\n- Shipper/3rd Party SHOULD provide details for a HAZMAT shipment. This information\nwith be conditionally required based on U.S. Department of Transportation's (DOT)\nHazardous Materials Regulations (49 CFR Parts 171-180). This includes:\n  - Hazardous Description\n  - Total Quantity\n    - Weight or Volume (i.e. lbs, kilograms, liters, etc.)\n  - Hazard class or Division\n  - Identification Number (UN/NA)\n  - Proper Name\n  - Technical Name\n  - Packaging Group\n  - Emergency Response\n    - 24-Hour Emergency Response\n    - Emergency Response Guidebook (ERG) Guide Number\n  - Marine Pollutant Marking\n  - Contact Number\n- Shipper/3rd Party SHOULD provide Total Shipment Value in a designated currency (USD\nas an option) for high value shipments that may require additional considerations by the\nCarrier.\n\n## Response\n\nAs a Carrier, I want to respond to the Shipper/3rd Party who created the electronic Bill of Lading\nand either accept or reject, as well as provide a unique shipment identifier associated with the\nshipment.\n\n- In a response, the Carrier must indicate if the eBOL was successfully accepted\n  - Reasons an eBOL request would be rejected:\n    - Not enough information provided in eBOL request\n    - Internal error in Carrier system (example: PRO number Shipper sent\n    already associated with a different shipment)\n- In a response, the Carrier MUST provide the timestamp of the transaction date for the\nelectronic bill of lading.\n- In a response, the Carrier MUST designate a reference number to uniquely identify the\nshipment, if one was not provided in the request.\n  - If a reference number was provided in the request, then it MUST be provided in\n  the response.\n  - Reference Best Practices for list of available reference number types.\n- The Carrier MUST provide BOL details in the response, and MUST provide a PDF image\nof the BOL and Shipping labels if requested in the Request body.\n"
+      description: '## Request
+
+
+        As a Shipper/3rd Party, I want to Create/Update/Delete an Electronic Bill of Lading and send shipment
+
+        information for a particular shipment to a Carrier.
+
+
+        - In a request, the Shipper/3rd Party MUST identify themselves so the Carrier is aware of
+
+        who is sending the BOL information
+
+        - Types of Roles: Shipper, Third Party, Consignee
+
+        - In a request, the Shipper/3rd Party MUST provide a requested pickup date. The
+
+        requested pickup date MUST be in date/time format. The API will allow for a Pickup
+
+        Begin and Pickup End date/time.
+
+        - LTL Consideration: The requested pickup date is NOT a formal LTL Pickup
+
+        Request
+
+        - In a request, the Shipper/3rd Party MUST designate the origin and destination for the
+
+        shipment. This can be via a location id understood by both parties, or via the address of
+
+        the location.
+
+        - In a request, the Shipper/3rd Party MAY designate whether or not they want an image of
+
+        the BOL and/or Shipping Labels returned in the response.
+
+        - In a request, the Shipper/3rd Party MAY designate a reference number associated with
+
+        their shipment.
+
+        - In a request, the Shipper/3rd Party MUST specify freight Billing terms for the shipment.
+
+        - In a request, the Shipper/3rd Party MUST specify the Billing information for the shipment,
+
+        including name, address, and contact information.
+
+        - In a request, a Shipper/3rd Party MAY provide special shipment requirements that would
+
+        indicate if accessorials are needed.
+
+        - Examples Include, but not limited to:
+
+        - Limited Access
+
+        - Time Critical
+
+        - Lift Gate Required
+
+        - Expedite
+
+        - In a request, the Shipper/3rd Party MUST specify the commodity of the freight being
+
+        shipped.
+
+        - LTL Consideration: The classification of LTL commodities MUST be included for
+
+        an LTL shipment
+
+        - In a request, additional details on the shipment MAY be included. The API will allow for
+
+        information to be provided at both the commodity level, as well as at the total shipment
+
+        level.
+
+        - LTL Consideration: The weight, handling units, and dimensions of an LTL
+
+        shipment MUST be included
+
+        - Examples include:
+
+        - Weight
+
+        - Handling Units
+
+        - Linear Length
+
+        - Overall Dimensions
+
+        - Shipper/3rd Party SHOULD provide details for a HAZMAT shipment. This information
+
+        with be conditionally required based on U.S. Department of Transportation''s (DOT)
+
+        Hazardous Materials Regulations (49 CFR Parts 171-180). This includes:
+
+        - Hazardous Description
+
+        - Total Quantity
+
+        - Weight or Volume (i.e. lbs, kilograms, liters, etc.)
+
+        - Hazard class or Division
+
+        - Identification Number (UN/NA)
+
+        - Proper Name
+
+        - Technical Name
+
+        - Packaging Group
+
+        - Emergency Response
+
+        - 24-Hour Emergency Response
+
+        - Emergency Response Guidebook (ERG) Guide Number
+
+        - Marine Pollutant Marking
+
+        - Contact Number
+
+        - Shipper/3rd Party SHOULD provide Total Shipment Value in a designated currency (USD
+
+        as an option) for high value shipments that may require additional considerations by the
+
+        Carrier.
+
+
+        ## Response
+
+
+        As a Carrier, I want to respond to the Shipper/3rd Party who created the electronic Bill of Lading
+
+        and either accept or reject, as well as provide a unique shipment identifier associated with the
+
+        shipment.
+
+
+        - In a response, the Carrier must indicate if the eBOL was successfully accepted
+
+        - Reasons an eBOL request would be rejected:
+
+        - Not enough information provided in eBOL request
+
+        - Internal error in Carrier system (example: PRO number Shipper sent
+
+        already associated with a different shipment)
+
+        - In a response, the Carrier MUST provide the timestamp of the transaction date for the
+
+        electronic bill of lading.
+
+        - In a response, the Carrier MUST designate a reference number to uniquely identify the
+
+        shipment, if one was not provided in the request.
+
+        - If a reference number was provided in the request, then it MUST be provided in
+
+        the response.
+
+        - Reference Best Practices for list of available reference number types.
+
+        - The Carrier MUST provide BOL details in the response, and MUST provide a PDF image
+
+        of the BOL and Shipping labels if requested in the Request body.'
       tags:
       - Carrier API Standards
       requestBody:
@@ -67,6 +228,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Result_Status_Codes'
+      operationId: postBolV1App
+      x-operation-id-source: derived
   /bol/v1/app/{pro}:
     put:
       summary: Update an Electronic Bill of Lading
@@ -103,6 +266,8 @@ paths:
                   $ref: '#/components/schemas/Result_Status_Codes'
         '404':
           description: eBOL not found.
+      operationId: putBolV1AppByPro
+      x-operation-id-source: derived
     delete:
       summary: Delete an Electronic Bill of Lading
       description: This operation deletes an existing Electronic Bill of Lading.
@@ -113,7 +278,7 @@ paths:
           type: string
         required: true
         description: PRO Number of eBOL to delete.
-      operationId: ''
+      operationId: deleteBolV1AppByPro
       tags:
       - Carrier API Standards
       responses:
@@ -129,23 +294,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Result_Status_Codes'
+      x-operation-id-source: derived
 components:
   schemas:
-    FTL_BOL_Response:
-      allOf:
-      - type: object
-        properties:
-          version:
-            $ref: '#/components/schemas/FTL_Version'
-      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
-    FTL_Version:
-      title: Version
-      type: string
-      description: 'Indicates which version of the Digital FTL Council Bill of Lading spec you are consuming
-
-        '
-      enum:
-      - 1.0.0-TL
     FTL_BOL_Request:
       allOf:
       - type: object
@@ -172,6 +323,21 @@ components:
           version:
             $ref: '#/components/schemas/FTL_Version'
       - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Request
+    FTL_BOL_Response:
+      allOf:
+      - type: object
+        properties:
+          version:
+            $ref: '#/components/schemas/FTL_Version'
+      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
+    FTL_Version:
+      title: Version
+      type: string
+      description: 'Indicates which version of the Digital FTL Council Bill of Lading spec you are consuming
+
+        '
+      enum:
+      - 1.0.0-TL
     BOL_Response:
       title: LTL BOL Response
       type: object

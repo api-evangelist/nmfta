@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Preliminary Freight Charges (PFC) Webhooks API
-  description: "The Preliminary Freight Charges (PFC) API proactively notifies responsible parties (debtors or their authorized agents, including consignees when designated as agents) that a motor carrier has created a freight bill for a shipment associated with that party. Further notifications occur when the bill is updated or removed from their account.\n\n## Key Features\n- Proactive freight charge visibility throughout shipment lifecycle\n- Real-time notifications via subscription-based push API\n- Standardized event codes and change log tracking\n- Unified API supporting both detailed data and change log consumption\n\n## Important Notes\n- PFC is not an invoice or legal document\n- PFC should not be construed as a request for payment\n- The PFC process concludes once the invoice is produced and no further updates are expected\n- Monitoring begins immediately upon onboarding, including any shipments currently in flight\n- Access is restricted to debtors and/or authorized agents only (including consignees when authorized)\n- Data options, notification frequency, and data retention may be limited by carrier capabilities, as defined in the NMFTA PFC PRD\n- Notifications are triggered by changes to shipment-level attributes that affect freight charges, including:\n  - Changes to the Shipper, Consignee, or Bill-To party\n  - Changes to the account number used for pricing\n  - Modifications to payment terms\n  - Addition or removal of accessorial charges (including waived $0 charges)\n  - Shipment characteristic changes that affect rating\n- Customers may choose to process detailed data, change logs, or both, depending on implementation preference\n"
+  description: The Preliminary Freight Charges (PFC) API proactively notifies responsible parties (debtors or their authorized agents, including consignees when designated as agents) that a motor carrier has created a freight bill for a shipment associated with that party.
   version: 1.0.4
   x-prd-version: December 2025
   contact:
@@ -38,6 +38,19 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or request body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: INVALID_REQUEST
+            message: Invalid request body or parameters
+            details:
+              field: webhookUrl
+              error: Must be a valid URI
   schemas:
     Error:
       type: object
@@ -55,16 +68,3 @@ components:
           type: object
           description: Additional error details
           additionalProperties: true
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters or request body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: INVALID_REQUEST
-            message: Invalid request body or parameters
-            details:
-              field: webhookUrl
-              error: Must be a valid URI

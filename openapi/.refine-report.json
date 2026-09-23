@@ -1,0 +1,51 @@
+{
+  "provider": "nmfta",
+  "sources": [
+    "_original/nmfta-dsdc-ftl-ebol-openapi.yml",
+    "_original/nmfta-dsdc-ftl-in-transit-visibility-openapi.yml",
+    "_original/nmfta-dsdc-ftl-invoice-and-documents-openapi.yml",
+    "_original/nmfta-dsdc-ftl-rate-quote-openapi.yml",
+    "_original/nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml",
+    "_original/nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml"
+  ],
+  "outputs": [
+    "nmfta-carrier-api-standards-api-openapi.yml",
+    "nmfta-events-api-openapi.yml",
+    "nmfta-in-transit-visibility-api-api-openapi.yml",
+    "nmfta-subscriptions-api-openapi.yml",
+    "nmfta-document-management-api-openapi.yml",
+    "nmfta-invoice-management-api-openapi.yml",
+    "nmfta-rate-quote-api-standards-api-openapi.yml",
+    "nmfta-preliminary-freight-charges-api-openapi.yml",
+    "nmfta-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nmfta-dsdc-ftl-ebol-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nmfta-dsdc-ftl-in-transit-visibility-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nmfta-dsdc-ftl-in-transit-visibility-openapi.yml: tagged webhooks POST shipmentEvents -> In Transit Visibility API",
+    "nmfta-dsdc-ftl-in-transit-visibility-openapi.yml: declared missing tag: In Transit Visibility API",
+    "nmfta-dsdc-ftl-invoice-and-documents-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nmfta-dsdc-ftl-rate-quote-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml: declared missing tag: Carrier API Standards",
+    "nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "tag 'Carrier API Standards' spans 2 source specs (nmfta-dsdc-ftl-ebol-openapi.yml, nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml): per-path servers applied",
+    "tag 'Subscriptions' spans 2 source specs (nmfta-dsdc-ftl-in-transit-visibility-openapi.yml, nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nmfta-carrier-api-standards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-document-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-in-transit-visibility-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-invoice-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-preliminary-freight-charges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-rate-quote-api-standards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nmfta-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
