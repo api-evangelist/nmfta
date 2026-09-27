@@ -177,6 +177,60 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or request body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: INVALID_REQUEST
+            message: Invalid request body or parameters
+            details:
+              field: webhookUrl
+              error: Must be a valid URI
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: NOT_FOUND
+            message: Resource not found
+            details:
+              resource: proNumber
+              value: OTPRO 999-9999999
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: UNAUTHORIZED
+            message: Authentication credentials missing or invalid
+    Forbidden:
+      description: Access denied - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: FORBIDDEN
+            message: User not authorized as debtor or agent
+    Conflict:
+      description: Conflict - resource already exists or request cannot be completed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: SUBSCRIPTION_CONFLICT
+            message: A subscription for this account already exists
+            details:
+              accountId: '123456'
   schemas:
     SubscriptionResponse:
       allOf:
@@ -224,22 +278,6 @@ components:
           - no_events
           default: revenue_impacts_only
           description: Type of events to include. Options may be limited by carrier capabilities.
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: object
-          description: Additional error details
-          additionalProperties: true
     PreliminaryFreightCharge:
       description: 'Submits a completed Preliminary Freight Charges (PFC) transaction to the endpoint defined by the subscription.
 
@@ -966,60 +1004,22 @@ components:
           - subscribed_accounts
           default: subscribed_accounts
           description: Scope of bills to include in notifications. 'all_accounts' refers to all accounts the user is authorized to access.
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: NOT_FOUND
-            message: Resource not found
-            details:
-              resource: proNumber
-              value: OTPRO 999-9999999
-    Forbidden:
-      description: Access denied - insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: FORBIDDEN
-            message: User not authorized as debtor or agent
-    BadRequest:
-      description: Bad request - invalid parameters or request body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: INVALID_REQUEST
-            message: Invalid request body or parameters
-            details:
-              field: webhookUrl
-              error: Must be a valid URI
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: UNAUTHORIZED
-            message: Authentication credentials missing or invalid
-    Conflict:
-      description: Conflict - resource already exists or request cannot be completed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: SUBSCRIPTION_CONFLICT
-            message: A subscription for this account already exists
-            details:
-              accountId: '123456'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
 x-refined-from:
 - nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
 - nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml

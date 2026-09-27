@@ -238,15 +238,6 @@ paths:
         '404':
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ResultStatusCode'
   schemas:
     ResultStatusCode:
       title: Result Status Code
@@ -266,3 +257,12 @@ components:
         description: Failure Carrier Specific Error
       - const: '700'
         description: Failure Unknown Reason
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResultStatusCode'

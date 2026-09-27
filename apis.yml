@@ -22,6 +22,22 @@ tags:
 - Freight
 - Full Truckload
 - LTL
+- Logistics
+- NMFTA
+- OpenAPI
+- Standards
+- Standards Body
+- Supply Chain
+- Transportation
+- Trucking
+tags_raw:
+- API Standards
+- DSDC
+- Digital FTL Council
+- Digital LTL Council
+- Freight
+- Full Truckload
+- LTL
 - Less-Than-Truckload
 - Logistics
 - NMFTA
@@ -34,6 +50,10 @@ tags:
 kind: standard
 deliveryModel:
   model: unknown
+  license_evidence:
+    not_product:
+    - dsdcapis/full-truckload
+    - dsdcapis/less-than-truckload
   open_source: unknown
   commercial: false
   callable_host: false
@@ -41,8 +61,8 @@ deliveryModel:
   confidence: low
   source:
   - openapi
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nmfta.png
 access: 3rd-Party
@@ -75,9 +95,10 @@ apis:
   description: Endpoints for uploading, and managing supporting documents.
   humanURL: https://dsdc.nmfta.org/apis/ebol-api-standard
   tags:
-  - Document-Management
+  - Document Management
   tags_raw:
   - Document Management
+  - Document-Management
   properties:
   - type: OpenAPI
     url: openapi/nmfta-document-management-api-openapi.yml

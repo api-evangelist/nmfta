@@ -297,6 +297,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    FTL_BOL_Response:
+      allOf:
+      - type: object
+        properties:
+          version:
+            $ref: '#/components/schemas/FTL_Version'
+      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
     FTL_BOL_Request:
       allOf:
       - type: object
@@ -323,13 +330,6 @@ components:
           version:
             $ref: '#/components/schemas/FTL_Version'
       - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Request
-    FTL_BOL_Response:
-      allOf:
-      - type: object
-        properties:
-          version:
-            $ref: '#/components/schemas/FTL_Version'
-      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
     FTL_Version:
       title: Version
       type: string
@@ -338,93 +338,6 @@ components:
         '
       enum:
       - 1.0.0-TL
-    BOL_Response:
-      title: LTL BOL Response
-      type: object
-      properties:
-        version:
-          type: string
-          example: 2.1.0
-          description: Indicates which version of the Digital LTL Council Bill of Lading spec was returned
-        transactionDate:
-          type: string
-          example: '2022-11-20T00:00:00.000'
-          description: The date associated with this electronic bill of lading transaction.
-        referenceNumbers:
-          type: object
-          properties:
-            pro:
-              type: string
-              example: PRO1234
-              description: Shipper's pre-assigned PRO number for the requested carrier. If one was not provided in the request, one will be auto assigned by the carrier.
-            shipmentConfirmationNumber:
-              type: string
-              example: SCN1234
-              description: Number provided by the carrier to acknowledge they accepted the BOL.
-        scac:
-          type: string
-          example: AAAB
-          description: 4-letter, Standard Carrier Alpha Code, returned by the carrier.
-        images:
-          type: object
-          properties:
-            bol:
-              type: string
-              description: Base 64 encoded PDF of the populated Bill Of Lading.  Any bar code within the image(s) should include the check digit when applicable.
-              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
-            shippingLabels:
-              type: string
-              description: Base 64 encoded PDF of the populated shipping Labels.  Any bar code within the image(s) should include the check digit when applicable.
-              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
-        termsAndConditions:
-          type: string
-          example: Terms and Conditions text available for download at www.myurl-nmfta.org
-          description: 'Add terms and conditions here if desired, or a link to your  terms and conditions.    '
-        messageStatus:
-          type: object
-          description: Object containing message status details.
-          properties:
-            status:
-              type: string
-              description: 'Indicates the status of the request. <br><br>
-
-                PASS - Request is successful with no exceptions.<br>
-
-                FAIL - Request is unsuccessful due to some exception.<br>
-
-                WARNING - Request is successful with some exception.
-
-                '
-              example: PASS
-            code:
-              type: string
-              description: Indicates response detail code.
-              example: '10000000'
-            message:
-              type: string
-              description: Provides information pertaining to the response code.
-              example: Transaction was successful.
-            resolution:
-              type: string
-              description: Provides guidance pertaining to the response code.
-              example: ''
-            information:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  type:
-                    type: string
-                  message:
-                    type: string
-              example: []
-        resultStatusCodes:
-          description: Error response
-          type: array
-          items:
-            $ref: '#/components/schemas/Result_Status_Codes'
     BOL_Request:
       title: LTL BOL Request
       description: Objects and/or attributes that are required are indicated by a _**red asterisk**_*. For those that are conditionally required, it will be indicated within their description, including the condition in which they are required.
@@ -1526,6 +1439,93 @@ components:
                   description: Email address of the customsBroker location's contact person.
     Result_Status_Codes:
       description: "Numerical codes describing any logical status outcomes.  Not all codes apply to this API, but are included to encourage adoption of these standards across API specifications.\n\nValid Values:\n  * 100 - Informational General Information {{addl_info}}\n  * 200 - Warning Non-Critical Error {{addl_info}}\n  * 300 - Failure Data Error {{addl_info}}\n  * 400 - Failure Formatting Error {{addl_info}}\n  * 500 - Failure Business Logic Error {{addl_info}}\n  * 600 - Failure Carrier Specific Error {{addl_info}}\n  * 700 - Failure Outside Ship Window {{addl_info}}\n  * 800 - Failure No Freight - Will be re-attempted {{addl_info}}\n  * 900 - Failure No Freight - Pick UP Closed {{addl_info}}\n  * 1000 - Failure Freight Not ready {{addl_info}}\n  * 1100 - Failure Packaging Problem {{addl_info}}\n  * 1200 - Failure BoL PDF Image Not Created {{addl_info}}\n  * 1300 - Failure Label PDF Image not Created {{addl_info}}\n  * 1400 - Failure Duplicate Pro {{addl_info}}\n  * 1500 - Failure Unknown Reason {{addl_info}}\n  * 1600 - Failure Shipper Closed {{addl_info}}\n  * 1700 - Failure Duplicate PO {{addl_info}}"
+    BOL_Response:
+      title: LTL BOL Response
+      type: object
+      properties:
+        version:
+          type: string
+          example: 2.1.0
+          description: Indicates which version of the Digital LTL Council Bill of Lading spec was returned
+        transactionDate:
+          type: string
+          example: '2022-11-20T00:00:00.000'
+          description: The date associated with this electronic bill of lading transaction.
+        referenceNumbers:
+          type: object
+          properties:
+            pro:
+              type: string
+              example: PRO1234
+              description: Shipper's pre-assigned PRO number for the requested carrier. If one was not provided in the request, one will be auto assigned by the carrier.
+            shipmentConfirmationNumber:
+              type: string
+              example: SCN1234
+              description: Number provided by the carrier to acknowledge they accepted the BOL.
+        scac:
+          type: string
+          example: AAAB
+          description: 4-letter, Standard Carrier Alpha Code, returned by the carrier.
+        images:
+          type: object
+          properties:
+            bol:
+              type: string
+              description: Base 64 encoded PDF of the populated Bill Of Lading.  Any bar code within the image(s) should include the check digit when applicable.
+              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
+            shippingLabels:
+              type: string
+              description: Base 64 encoded PDF of the populated shipping Labels.  Any bar code within the image(s) should include the check digit when applicable.
+              example: JVBERi0xLjcKCjQgMCBvYmoKPDwKL0JpdHNQZXJDb21wb25lbnQgOAovQ29sb3JTcGFjZSAvRGV2a......
+        termsAndConditions:
+          type: string
+          example: Terms and Conditions text available for download at www.myurl-nmfta.org
+          description: 'Add terms and conditions here if desired, or a link to your  terms and conditions.    '
+        messageStatus:
+          type: object
+          description: Object containing message status details.
+          properties:
+            status:
+              type: string
+              description: 'Indicates the status of the request. <br><br>
+
+                PASS - Request is successful with no exceptions.<br>
+
+                FAIL - Request is unsuccessful due to some exception.<br>
+
+                WARNING - Request is successful with some exception.
+
+                '
+              example: PASS
+            code:
+              type: string
+              description: Indicates response detail code.
+              example: '10000000'
+            message:
+              type: string
+              description: Provides information pertaining to the response code.
+              example: Transaction was successful.
+            resolution:
+              type: string
+              description: Provides guidance pertaining to the response code.
+              example: ''
+            information:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  type:
+                    type: string
+                  message:
+                    type: string
+              example: []
+        resultStatusCodes:
+          description: Error response
+          type: array
+          items:
+            $ref: '#/components/schemas/Result_Status_Codes'
 x-refined-from:
 - nmfta-dsdc-ftl-ebol-openapi.yml
 - nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml
