@@ -297,13 +297,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    FTL_BOL_Response:
-      allOf:
-      - type: object
-        properties:
-          version:
-            $ref: '#/components/schemas/FTL_Version'
-      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
     FTL_BOL_Request:
       allOf:
       - type: object
@@ -338,6 +331,13 @@ components:
         '
       enum:
       - 1.0.0-TL
+    FTL_BOL_Response:
+      allOf:
+      - type: object
+        properties:
+          version:
+            $ref: '#/components/schemas/FTL_Version'
+      - $ref: ./schemas/ftl.yaml#/components/schemas/BOL_Response
     BOL_Request:
       title: LTL BOL Request
       description: Objects and/or attributes that are required are indicated by a _**red asterisk**_*. For those that are conditionally required, it will be indicated within their description, including the condition in which they are required.
