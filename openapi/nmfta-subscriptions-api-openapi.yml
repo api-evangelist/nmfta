@@ -178,6 +178,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SubscriptionResponse:
+      allOf:
+      - $ref: '#/components/schemas/SubscriptionRequest'
+      - type: object
+        properties:
+          subscriptionId:
+            type: string
+            description: Unique identifier for the subscription
+            example: sub_abc123
+          status:
+            type: string
+            enum:
+            - active
+            - inactive
+            - suspended
+            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
+
+              '
+          createdAt:
+            type: string
+            format: date-time
+            description: Subscription creation timestamp
+            example: '2025-06-30T10:17:34.050Z'
+          updatedAt:
+            type: string
+            format: date-time
+            description: Last update timestamp
+            example: '2025-06-30T10:17:34.050Z'
     SubscriptionRequest:
       type: object
       required:
@@ -220,34 +248,22 @@ components:
           - subscribed_accounts
           default: subscribed_accounts
           description: Scope of bills to include in notifications. 'all_accounts' refers to all accounts the user is authorized to access.
-    SubscriptionResponse:
-      allOf:
-      - $ref: '#/components/schemas/SubscriptionRequest'
-      - type: object
-        properties:
-          subscriptionId:
-            type: string
-            description: Unique identifier for the subscription
-            example: sub_abc123
-          status:
-            type: string
-            enum:
-            - active
-            - inactive
-            - suspended
-            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
-
-              '
-          createdAt:
-            type: string
-            format: date-time
-            description: Subscription creation timestamp
-            example: '2025-06-30T10:17:34.050Z'
-          updatedAt:
-            type: string
-            format: date-time
-            description: Last update timestamp
-            example: '2025-06-30T10:17:34.050Z'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
     PreliminaryFreightCharge:
       description: 'Submits a completed Preliminary Freight Charges (PFC) transaction to the endpoint defined by the subscription.
 
@@ -932,22 +948,6 @@ components:
                     type: string
                     example: The shipment has incurred a charge for an Inside Delivery Fee
                     description: Informational message related to the change log entry
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: object
-          description: Additional error details
-          additionalProperties: true
     DataOptions:
       type: object
       properties:
@@ -967,6 +967,17 @@ components:
           default: revenue_impacts_only
           description: Type of events to include. Options may be limited by carrier capabilities.
   responses:
+    Conflict:
+      description: Conflict - resource already exists or request cannot be completed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: SUBSCRIPTION_CONFLICT
+            message: A subscription for this account already exists
+            details:
+              accountId: '123456'
     Unauthorized:
       description: Authentication required
       content:
@@ -976,27 +987,6 @@ components:
           example:
             code: UNAUTHORIZED
             message: Authentication credentials missing or invalid
-    Forbidden:
-      description: Access denied - insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: FORBIDDEN
-            message: User not authorized as debtor or agent
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: NOT_FOUND
-            message: Resource not found
-            details:
-              resource: proNumber
-              value: OTPRO 999-9999999
     BadRequest:
       description: Bad request - invalid parameters or request body
       content:
@@ -1009,17 +999,27 @@ components:
             details:
               field: webhookUrl
               error: Must be a valid URI
-    Conflict:
-      description: Conflict - resource already exists or request cannot be completed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
           example:
-            code: SUBSCRIPTION_CONFLICT
-            message: A subscription for this account already exists
+            code: NOT_FOUND
+            message: Resource not found
             details:
-              accountId: '123456'
+              resource: proNumber
+              value: OTPRO 999-9999999
+    Forbidden:
+      description: Access denied - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: FORBIDDEN
+            message: User not authorized as debtor or agent
 x-refined-from:
 - nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
 - nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml
