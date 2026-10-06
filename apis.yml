@@ -67,7 +67,7 @@ deliveryModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nmfta.png
 access: 3rd-Party
 created: '2026-08-03'
-modified: '2026-08-03'
+modified: '2026-10-06'
 position: Producing
 specificationVersion: '0.23'
 x-type: standards-body
@@ -221,6 +221,8 @@ apis:
   - type: SourceCode
     url: https://github.com/dsdcapis/full-truckload
 common:
+- url: https://nmfta.org/news-resources/blog/
+  type: Blog
 - type: Website
   url: https://www.nmfta.org/
 - type: CapabilityMap
