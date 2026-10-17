@@ -38,19 +38,6 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters or request body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: INVALID_REQUEST
-            message: Invalid request body or parameters
-            details:
-              field: webhookUrl
-              error: Must be a valid URI
   schemas:
     Error:
       type: object
@@ -68,3 +55,16 @@ components:
           type: object
           description: Additional error details
           additionalProperties: true
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or request body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: INVALID_REQUEST
+            message: Invalid request body or parameters
+            details:
+              field: webhookUrl
+              error: Must be a valid URI

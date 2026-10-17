@@ -178,92 +178,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    SubscriptionResponse:
-      allOf:
-      - $ref: '#/components/schemas/SubscriptionRequest'
-      - type: object
-        properties:
-          subscriptionId:
-            type: string
-            description: Unique identifier for the subscription
-            example: sub_abc123
-          status:
-            type: string
-            enum:
-            - active
-            - inactive
-            - suspended
-            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
-
-              '
-          createdAt:
-            type: string
-            format: date-time
-            description: Subscription creation timestamp
-            example: '2025-06-30T10:17:34.050Z'
-          updatedAt:
-            type: string
-            format: date-time
-            description: Last update timestamp
-            example: '2025-06-30T10:17:34.050Z'
-    SubscriptionRequest:
-      type: object
-      required:
-      - webhookUrl
-      - accounts
-      - dataOptions
-      properties:
-        webhookUrl:
-          type: string
-          format: uri
-          description: URL to receive notifications
-          example: https://yourapi.com/webhooks/pfc
-        accounts:
-          type: array
-          items:
-            type: string
-          minItems: 1
-          description: List of account numbers to monitor. At least one account is required. Availability may be limited by carrier capabilities.
-          example:
-          - ACC001
-          - ACC002
-        dataOptions:
-          $ref: '#/components/schemas/DataOptions'
-        frequency:
-          type: string
-          enum:
-          - real_time
-          - hourly
-          - daily
-          default: real_time
-          description: Notification frequency preference. Options may be limited by carrier rating frequency.
-        includeEventLog:
-          type: boolean
-          default: true
-          description: Whether to include event change log
-        billScope:
-          type: string
-          enum:
-          - all_accounts
-          - subscribed_accounts
-          default: subscribed_accounts
-          description: Scope of bills to include in notifications. 'all_accounts' refers to all accounts the user is authorized to access.
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: object
-          description: Additional error details
-          additionalProperties: true
     PreliminaryFreightCharge:
       description: 'Submits a completed Preliminary Freight Charges (PFC) transaction to the endpoint defined by the subscription.
 
@@ -948,6 +862,50 @@ components:
                     type: string
                     example: The shipment has incurred a charge for an Inside Delivery Fee
                     description: Informational message related to the change log entry
+    SubscriptionResponse:
+      allOf:
+      - $ref: '#/components/schemas/SubscriptionRequest'
+      - type: object
+        properties:
+          subscriptionId:
+            type: string
+            description: Unique identifier for the subscription
+            example: sub_abc123
+          status:
+            type: string
+            enum:
+            - active
+            - inactive
+            - suspended
+            description: 'Current subscription status.  - `active`: actively receiving notifications - `inactive`: deactivated by user or system - `suspended`: temporarily paused due to errors or system conditions
+
+              '
+          createdAt:
+            type: string
+            format: date-time
+            description: Subscription creation timestamp
+            example: '2025-06-30T10:17:34.050Z'
+          updatedAt:
+            type: string
+            format: date-time
+            description: Last update timestamp
+            example: '2025-06-30T10:17:34.050Z'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
     DataOptions:
       type: object
       properties:
@@ -966,6 +924,48 @@ components:
           - no_events
           default: revenue_impacts_only
           description: Type of events to include. Options may be limited by carrier capabilities.
+    SubscriptionRequest:
+      type: object
+      required:
+      - webhookUrl
+      - accounts
+      - dataOptions
+      properties:
+        webhookUrl:
+          type: string
+          format: uri
+          description: URL to receive notifications
+          example: https://yourapi.com/webhooks/pfc
+        accounts:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          description: List of account numbers to monitor. At least one account is required. Availability may be limited by carrier capabilities.
+          example:
+          - ACC001
+          - ACC002
+        dataOptions:
+          $ref: '#/components/schemas/DataOptions'
+        frequency:
+          type: string
+          enum:
+          - real_time
+          - hourly
+          - daily
+          default: real_time
+          description: Notification frequency preference. Options may be limited by carrier rating frequency.
+        includeEventLog:
+          type: boolean
+          default: true
+          description: Whether to include event change log
+        billScope:
+          type: string
+          enum:
+          - all_accounts
+          - subscribed_accounts
+          default: subscribed_accounts
+          description: Scope of bills to include in notifications. 'all_accounts' refers to all accounts the user is authorized to access.
   responses:
     Conflict:
       description: Conflict - resource already exists or request cannot be completed
@@ -978,15 +978,15 @@ components:
             message: A subscription for this account already exists
             details:
               accountId: '123456'
-    Unauthorized:
-      description: Authentication required
+    Forbidden:
+      description: Access denied - insufficient permissions
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
           example:
-            code: UNAUTHORIZED
-            message: Authentication credentials missing or invalid
+            code: FORBIDDEN
+            message: User not authorized as debtor or agent
     BadRequest:
       description: Bad request - invalid parameters or request body
       content:
@@ -999,6 +999,15 @@ components:
             details:
               field: webhookUrl
               error: Must be a valid URI
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: UNAUTHORIZED
+            message: Authentication credentials missing or invalid
     NotFound:
       description: Resource not found
       content:
@@ -1011,15 +1020,6 @@ components:
             details:
               resource: proNumber
               value: OTPRO 999-9999999
-    Forbidden:
-      description: Access denied - insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: FORBIDDEN
-            message: User not authorized as debtor or agent
 x-refined-from:
 - nmfta-dsdc-ftl-in-transit-visibility-openapi.yml
 - nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml
