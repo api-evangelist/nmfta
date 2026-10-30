@@ -1,4 +1,4 @@
-# NMFTA (nmfta)
+# NMFTA
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,177 +66,96 @@
 
 The National Motor Freight Traffic Association (NMFTA) is the nonprofit membership body that has set the standards for North American freight since 1956, and through its Digital Standards Development Council (DSDC) it publishes that industry agreement as open OpenAPI contracts. Two councils sit under the DSDC — the Digital LTL Council, founded November 2020, and the Digital FTL Council, which absorbed the Scheduling Standards Consortium — and between them they turn the paper artifacts of trucking into machine-readable APIs: the electronic bill of lading, the rate quote, the invoice and supporting documents, in-transit visibility, appointment scheduling, book and tender, and preliminary freight charges. For most of NMFTA's history its standards were classification and coding — the NMFC freight classification, ClassIT+, SCAC carrier codes, SPLC location codes — and the DSDC is the same institution doing the same job for the API layer. It is one of the clearest examples of an old, mandate-free trade association choosing specifications-as-code over another PDF behind a membership wall, and the gap between what its website advertises as released and what its public repositories actually contain is the most interesting thing about it.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nmfta/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nmfta/refs/heads/main/apis.yml)
+**Areas:** API Standards · DSDC · Digital FTL Council · Digital LTL Council · Freight · Full Truckload · LTL · Logistics · NMFTA · OpenAPI · Standards · Standards Body
 
-## Scope
+## NMFTA on APIs.io
 
-- **Position:** Producing
-- **Access:** 3rd-Party
-- **Type:** standards-body / Specification
-- **Host:** National Motor Freight Traffic Association (Trade association division)
+Everything profiled for NMFTA is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nmfta/](https://apis.io/providers/nmfta/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- API Standards
-- DSDC
-- Digital FTL Council
-- Digital LTL Council
-- Freight
-- Full Truckload
-- LTL
-- Less-Than-Truckload
-- Logistics
-- NMFTA
-- OpenAPI
-- Standards
-- Standards Body
-- Supply Chain
-- Transportation
-- Trucking
+- [NMFTA Carrier API Standards API](https://apis.io/apis/nmfta/nmfta-carrier-api-standards-api/) — Standards for Carrier APIs
+- [NMFTA Document Management API](https://apis.io/apis/nmfta/nmfta-document-management-api/) — Endpoints for uploading, and managing supporting documents.
+- [NMFTA Events API](https://apis.io/apis/nmfta/nmfta-events-api/) — Pull shipment events
+- [NMFTA In Transit Visibility API](https://apis.io/apis/nmfta/nmfta-in-transit-visibility-api-api/) — The In Transit Visibility API API from NMFTA — 0 operation(s) for in transit visibility api.
+- [NMFTA Invoice Management API](https://apis.io/apis/nmfta/nmfta-invoice-management-api/) — Endpoints for creating, retrieving, and managing invoices.
+- [NMFTA Preliminary Freight Charges API](https://apis.io/apis/nmfta/nmfta-preliminary-freight-charges-api/) — Access freight charges information
+- [NMFTA Rate Quote API Standards API](https://apis.io/apis/nmfta/nmfta-rate-quote-api-standards-api/) — Standards for the FTL Rate Quote API
+- [NMFTA Subscriptions API](https://apis.io/apis/nmfta/nmfta-subscriptions-api/) — Manage webhook subscriptions
+- [NMFTA Webhooks API](https://apis.io/apis/nmfta/nmfta-webhooks-api/) — Webhook management and testing
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-08-03
-- **Modified:** 2026-08-03
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Collections (6)
 
-### DSDC LTL eBOL API
+Postman and Open Collection request collections.
 
-The Digital LTL Council's electronic bill of lading standard, version 2.1.0 — the council's first and most adopted contract. This is the standard's own specification, not any carrier's implementation.
+- [Electronic Bill Of Lading API](https://apis.io/collections/nmfta/open-nmfta-dsdc-ftl-ebol/)
+- [In-Transit Visibility API](https://apis.io/collections/nmfta/open-nmfta-dsdc-ftl-in-transit-visibility/)
+- [Invoice & Document API](https://apis.io/collections/nmfta/open-nmfta-dsdc-ftl-invoice-and-documents/)
+- [Rate Quote API](https://apis.io/collections/nmfta/open-nmfta-dsdc-ftl-rate-quote/)
+- [Electronic Bill Of Lading Service](https://apis.io/collections/nmfta/open-nmfta-dsdc-ltl-ebol-2.1/)
+- [Preliminary Freight Charges (PFC) API](https://apis.io/collections/nmfta/open-nmfta-dsdc-ltl-preliminary-freight-charges/)
 
-- **Human URL:** [https://dsdc.nmfta.org/apis/ebol-api-standard](https://dsdc.nmfta.org/apis/ebol-api-standard)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- eBOL
-- Bill of Lading
-- LTL
+- [Website](https://www.nmfta.org/)
+- [Blog](https://nmfta.org/news-resources/blog/)
+- [GitHub](https://github.com/dsdcapis)
 
-#### Properties
+## API Evangelist rating
 
-- [Open API](openapi/nmfta-dsdc-ltl-ebol-2.1.0-openapi.yml)
-- [Documentation](https://dsdc.nmfta.org/apis/ebol-api-standard)
+**Kin Score 18.9** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-### DSDC LTL Preliminary Freight Charges API
+| Facet | Score |
+|---|---|
+| Discoverability | 63.4 |
+| Contract quality | 43.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 0.0 |
 
-Gives shippers, carriers and 3PLs visibility into freight charges as they evolve — reclassifications, reweighs and accessorial changes mid-shipment rather than weeks later on the invoice. The only LTL specification committed to the public DSDC repositories.
+**Agent readiness 17.3** — agent-aware
 
-- **Human URL:** [https://dsdc.nmfta.org/apis/preliminary-freight-charges-api-standard](https://dsdc.nmfta.org/apis/preliminary-freight-charges-api-standard)
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-#### Tags
+**Regulatory alignment 0.0** — Horizontal (data, software, accessibility, platform)
 
-- Freight Charges
-- Pricing
-- LTL
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nmfta/](https://apis.io/providers/nmfta/).
 
-#### Properties
+## How this profile is made
 
-- [Open API](openapi/nmfta-dsdc-ltl-preliminary-freight-charges-openapi.yml)
-- [Source Code](https://github.com/dsdcapis/less-than-truckload)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-### DSDC FTL eBOL API
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NMFTA: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-The Digital FTL Council's electronic bill of lading standard. Published in the public repository as 1.0.0-public-preview while the DSDC website advertises 1.1.0 as released.
+## Open an issue
 
-- **Human URL:** [https://dsdcapis.github.io/full-truckload/](https://dsdcapis.github.io/full-truckload/)
-
-#### Tags
-
-- eBOL
-- Bill of Lading
-- FTL
-
-#### Properties
-
-- [Open API](openapi/nmfta-dsdc-ftl-ebol-openapi.yml)
-- [Source Code](https://github.com/dsdcapis/full-truckload)
-
-### DSDC FTL Rate/Quote API
-
-Full truckload rate and quote exchange between shippers, carriers and intermediaries. Published as 1.0.0-public-preview.
-
-- **Human URL:** [https://dsdcapis.github.io/full-truckload/](https://dsdcapis.github.io/full-truckload/)
-
-#### Tags
-
-- Rate Quote
-- Pricing
-- FTL
-
-#### Properties
-
-- [Open API](openapi/nmfta-dsdc-ftl-rate-quote-openapi.yml)
-- [Source Code](https://github.com/dsdcapis/full-truckload)
-
-### DSDC FTL Invoice and Documents API
-
-Invoicing and supporting document exchange for full truckload movements. Published as 1.0.0-public-preview.
-
-- **Human URL:** [https://dsdcapis.github.io/full-truckload/](https://dsdcapis.github.io/full-truckload/)
-
-#### Tags
-
-- Invoicing
-- Documents
-- FTL
-
-#### Properties
-
-- [Open API](openapi/nmfta-dsdc-ftl-invoice-and-documents-openapi.yml)
-- [Source Code](https://github.com/dsdcapis/full-truckload)
-
-### DSDC FTL In-Transit Visibility API
-
-Shipment status and location events while a full truckload movement is under way. Published as 1.0.0-public-preview; the LTL council's equivalent is still in development.
-
-- **Human URL:** [https://dsdcapis.github.io/full-truckload/](https://dsdcapis.github.io/full-truckload/)
-
-#### Tags
-
-- Visibility
-- Tracking
-- FTL
-
-#### Properties
-
-- [Open API](openapi/nmfta-dsdc-ftl-in-transit-visibility-openapi.yml)
-- [Source Code](https://github.com/dsdcapis/full-truckload)
-
-## Common Properties
-
-- [Portal](https://nmfta.org/)
-- [Specification](https://dsdc.nmfta.org/apis)
-- [GitHub Organization](https://github.com/dsdcapis)
-- [Source Code](https://github.com/dsdcapis)
-- [Working Groups](https://dsdc.nmfta.org/digital-ltl-council)
-- [Contributing](https://dsdc.nmfta.org/contributor-agreement-form)
-- [News](https://dsdc.nmfta.org/news)
-- [Events](https://nmfta.org/nmfta-event/2026-dsdc-membership-meeting/)
-- [Contact](mailto:dsdc@nmfta.org)
-- [Governance](governance/nmfta-governance.yml)
-- [Taxonomy](taxonomy/nmfta-taxonomy.yml)
-- [Companies](companies/nmfta-companies.yml)
-- [Adoption](adoption/nmfta-adoption.yml)
-- [Leads](leads/nmfta-new-company-leads.yml)
-- [Repositories](repositories/nmfta-repositories.yml)
-- [Contributors](contributors/nmfta-contributors.yml)
-
-## Features
-
-- Host: NMFTA, founded 1956; DSDC is a division, not a separate entity
-- Councils: Digital LTL (November 2020) and Digital FTL (absorbed the Scheduling Standards Consortium)
-- APIs advertised: 10 across the two councils
-- Specifications in public repositories: 5 of 10
-- GitHub repositories: 6, two of which are named test repositories
-- Contributors: 5 humans, 123 total contributions
-- Participating companies published as logos: 32
-- Participants already in the API Evangelist network: 15
-- Regulatory mandate: none — adoption earned on cost and friction
-- Server declarations across all six harvested specifications: zero
-
-## Maintainers
-
-**FN:** Kin Lane  
-**Email:** info@apievangelist.com  
-**URL:** https://apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nmfta/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
